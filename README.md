@@ -1,2 +1,2 @@
-# Mario-Mario-Maker-
-A platformer &amp; maybe an additional level editor
+# Pseudo-Mario
+A platformer (& possibly a level maker)
