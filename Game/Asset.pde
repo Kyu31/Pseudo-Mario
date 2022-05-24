@@ -30,6 +30,6 @@ public class Asset {
   }
   
   public void setTexture(PImage img) {
-    
+    texture = img;
   }
 }
