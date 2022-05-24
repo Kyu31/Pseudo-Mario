@@ -5,8 +5,16 @@ public class Asset {
   PImage texture;
   float[] hitbox;
   
+  Asset(String n, float xcor, float ycor, PImage img, float[] hits) {
+    name = n;
+    x = xcor;
+    y = ycor; 
+    texture = img; 
+    hitbox = hits;
+  }
+  
   public void display() {
-    
+    image(texture, x, y);
   }
   
   public String getTheName() {
