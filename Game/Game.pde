@@ -8,9 +8,9 @@ void setup () {
   //startTimer = new Timer(160);
   isStartMenuOn = true;
   levels = new ArrayList<Level>();
-  
+
   //ArrayList<Block> map = new ArrayList<Block>();
-  //player = p1;
+  //player = new Player();
   //ArrayList<Enemy> enemies = new ArrayList<Enemy>();
   Level lvl1 = new Level(/*map, p1, enemies*/);
   levels.add(lvl1);
