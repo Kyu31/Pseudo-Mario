@@ -22,11 +22,11 @@ public class Asset {
   }
   
   public int getWidth() {
-    
+    return texture.width;
   }
   
   public int getHeight() {
-    
+    return texture.height;
   }
   
   public void setTexture(PImage img) {
