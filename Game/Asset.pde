@@ -12,5 +12,12 @@ public class Asset {
   public String getName() {
     
   }
-
+  
+  public int getX() {
+    
+  }
+  
+  public int getY() {
+    
+  }
 }
