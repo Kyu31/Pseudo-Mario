@@ -20,4 +20,12 @@ public class Asset {
   public int getY() {
     
   }
+  
+  public int getWidth() {
+    
+  }
+  
+  public int getHeight() {
+    
+  }
 }
