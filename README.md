@@ -13,5 +13,7 @@ Compile Instructions:
 Development Log:
     Kelly Yu
       5/23: I have changed the name of the World class to Level. I have created the skeleton of Game & Level classes that we have planned so far. Additionally, I have begun completing the setup method in Game & the constructor for Level.
-
+      
+Development Log:
     Emily Young-Squire
+      5/23: I have begun to write the skeletons for the Asset class instance variables and methods we have planned.
