@@ -9,16 +9,16 @@ public class Asset {
     
   }
   
-  public String getName() {
-    
+  public String getTheName() {
+    return name;
   }
   
   public int getX() {
-    
+    return (int)x;
   }
   
   public int getY() {
-    
+    return (int)y;
   }
   
   public int getWidth() {
