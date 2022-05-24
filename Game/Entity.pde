@@ -9,4 +9,14 @@ public class Entity extends Asset {
     ySpeed = dy;
     lives = life;
   }
+
+  public int getLives () {
+    return lives;
+  }
+
+  public void move() {
+  }
+
+  public void death(Entity other) {
+  }
 }
