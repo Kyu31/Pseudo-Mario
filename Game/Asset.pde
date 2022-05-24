@@ -28,4 +28,8 @@ public class Asset {
   public int getHeight() {
     
   }
+  
+  public void setTexture(PImage img) {
+    
+  }
 }
