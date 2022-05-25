@@ -15,7 +15,7 @@ public class Asset {
     image(texture, x, y);
   }
 
-  public String getTheName() {
+  public String getName() {
     return name;
   }
 
