@@ -4,6 +4,7 @@ public class Asset {
   float y;
   PImage texture;
   float[] hitbox;
+  boolean shouldDisplay = true;
   
   Asset(String n, float xcor, float ycor, PImage img, float[] hits) {
     name = n;
@@ -14,7 +15,9 @@ public class Asset {
   }
   
   public void display() {
-    image(texture, x, y);
+    if (shouldDisplay) {
+      image(texture, x, y);
+    }
   }
   
   public String getTheName() {
@@ -39,5 +42,9 @@ public class Asset {
   
   public void setTexture(PImage img) {
     texture = img;
+  }
+  
+  public void setDisplay(boolean c) {
+    shouldDisplay = c;
   }
 }
