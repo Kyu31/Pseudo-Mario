@@ -4,7 +4,6 @@ ArrayList<Level> levels;
 
 void setup () {
   size(1000, 800);
-  background(95, 200, 245);
   //startTimer = new Timer(160);
   isStartMenuOn = true;
   levels = new ArrayList<Level>();
@@ -17,6 +16,15 @@ void setup () {
 }
 
 void draw() {
+  background(95, 200, 245);
+  imageMode(CENTER);
+
+  /*testing Asset & Entity constructors & setTexture)
+  Entity test = new Entity("t1", width/2, height/2, "Textures/mario_idle.png", new int[]{0, 0}, 2, 2, 1);
+  image(test.getTexture(), test.getX(), test.getY());
+  test.setTexture("Textures/mario_death.png");
+  image(test.getTexture(), test.getX(), test.getY());
+  */
 }
 
 //movement keys, powerups
