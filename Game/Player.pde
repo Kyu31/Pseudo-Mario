@@ -8,8 +8,8 @@ public class Player extends Entity {
   private boolean invincible;
   //private Timer invinDuration;
 
-  public Player(float x, float y, float dx, float dy) {
-    super("Mario", x, y, "Textures/mario_idle.png", new int[]{10, 10}, dx, dy, 2);
+  public Player(float x, float y) {
+    super("Mario", x, y, "Textures/mario_idle.png", new int[]{10, 10}, 0, 0, 2);
     points = 0;
     accelerationX = 0;
     accelerationY = 0;
@@ -18,7 +18,7 @@ public class Player extends Entity {
     invincible = false;
     //invinDuration = new Timer(??);
   }
-  
+
   public int getPoints () {
     return points;
   }
@@ -33,20 +33,26 @@ public class Player extends Entity {
   public boolean isNearEdge() {
     return false;
   }
-  
-  public void move(){
-    
+
+  public void move(String direction) {
+    switch(direction) {
+    case "Left":
+
+    case "Right":
+
+    case "Up":
+
+    case "Down":
+      break;
+    }
   }
-  
-  public void display(){
-    
+
+  public void display() {
   }
-  
-  public void breaks(/*Block other*/){
-    
+
+  public void breaks(/*Block other*/) {
   }
-  
+
   public void collect() {
-    
   }
 }
