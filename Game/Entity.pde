@@ -16,6 +16,10 @@ public class Entity extends Asset {
     return lives;
   }
 
+  public boolean isOverlapping(/*Block other*/) {
+    return false;
+  }
+
   public void move() {
   }
 
