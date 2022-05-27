@@ -18,5 +18,7 @@ Development Log:
 
       5/25: I have created Player & have begun coding for the player to move. I have added methods and fields to various classes to better help figure out the player's location and movement.
 
+      5/26: I have changed all the fields to become public. I have started on the movement controls, but have faced some problems trying to implement the controls and will probably model after the class example tomorrow.
+
     Emily Young-Squire
         5/23: I have begun to write the skeletons for the Asset class instance variables and methods we have planned.
