@@ -20,26 +20,24 @@ void draw() {
   background(95, 200, 245);
   imageMode(CENTER);
 
-  /*testing Asset & Entity constructors & setTexture)
-   Entity test = new Entity("t1", width/2, height/2, "Textures/mario_idle.png", new int[]{0, 0}, 2, 2, 1);
-   image(test.getTexture(), test.getX(), test.getY());
-   test.setTexture("Textures/mario_death.png");
-   image(test.getTexture(), test.getX(), test.getY());
-   */
+  image(player.texture, player.x, player.y);
 }
 
 //movement keys, powerups
 void keyPressed () {
+  Boolean isRunning = false;
   if (key == CODED) {
     switch(keyCode) {
+    case SHIFT:
+      isRunning = true;
     case LEFT:
-      player.move("Left");
+      player.move("Left", isRunning);
     case RIGHT:
-      player.move("Right");
+      player.move("Right", isRunning);
     case UP:
-      player.move("Up");
+      player.move("Up", isRunning);
     case DOWN:
-      player.move("Down");
+      player.move("Down", isRunning);
       break;
     }
   }
