@@ -1,7 +1,7 @@
 public class Level {
-  //private ArrayList<Block> map;
-  private Player player;
-  //private ArrayList<Enemy> enemies;
+  //ArrayList<Block> map;
+  Player player;
+  //ArrayList<Enemy> enemies;
 
   public Level(/*ArrayList<Block> lvlmap,*/Player p1/*, ArrayList<Enemy> enemies*/) {
     //map = lvlmap;
