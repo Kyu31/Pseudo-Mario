@@ -3,7 +3,7 @@ public class Entity extends Asset {
   float xSpeed;
   float ySpeed;
   float acceleration;
-  final float maxSpeed = 10;
+  final float maxSpeed = 5;
   final float gravity = -0.2;
   int lives;
 
@@ -20,12 +20,12 @@ public class Entity extends Asset {
     return false;
   }
 
-  public void move(String direction, Boolean isRunning) {
+  public void move(String direction) {
     switch(direction) {
     case "Left":
-      
+      x -= xSpeed;
     case "Right":
-
+      x += xSpeed;
     case "Up":
 
     case "Down":

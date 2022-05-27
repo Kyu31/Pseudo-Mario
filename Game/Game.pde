@@ -20,24 +20,23 @@ void draw() {
   background(95, 200, 245);
   imageMode(CENTER);
 
-  image(player.texture, player.x, player.y);
+  player.display();
+  text("Coords: " + player.x + ", " + player.y, 20, 20);
 }
 
 //movement keys, powerups
 void keyPressed () {
-  Boolean isRunning = false;
   if (key == CODED) {
     switch(keyCode) {
     case SHIFT:
-      isRunning = true;
     case LEFT:
-      player.move("Left", isRunning);
+      player.move("Left");
     case RIGHT:
-      player.move("Right", isRunning);
+      player.move("Right");
     case UP:
-      player.move("Up", isRunning);
+      player.move("Up");
     case DOWN:
-      player.move("Down", isRunning);
+      player.move("Down");
       break;
     }
   }
