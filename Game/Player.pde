@@ -5,7 +5,7 @@ public class Player extends Entity {
   //Timer invinDuration;
 
   public Player(float x, float y) {
-    super("Mario", x, y, "Textures/mario_idle.png", new int[]{10, 10}, 0, 0, 2);
+    super("Mario", x, y, "Textures/mario_idle.png", new int[]{10, 10}, 2, 2, 2);
     points = 0;
     invincible = false;
     //invinDuration = new Timer(??);
@@ -17,9 +17,6 @@ public class Player extends Entity {
 
   public boolean isNearEdge() {
     return false;
-  }
-
-  public void display() {
   }
 
   public void breaks(/*Block other*/) {
