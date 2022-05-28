@@ -20,5 +20,7 @@ Development Log:
 
       5/26: I have changed all the fields to become public. I have started on the movement controls, but have faced some problems trying to implement the controls and will probably model after the class example tomorrow.
 
+      5/27: I have changed the controls to keep track of multiple keys. The player can now move left and right but has problems with displaying the correct direction to face. Player will display the correct sprite for each action (but still may need fixing). I seem to be having problems running the code though.
+
     Emily Young-Squire
         5/23: I have begun to write the skeletons for the Asset class instance variables and methods we have planned.
