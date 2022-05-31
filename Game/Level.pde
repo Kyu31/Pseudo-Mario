@@ -9,6 +9,10 @@ public class Level {
     //ArrayList<Enemy> enemies;
   }
 
+  public boolean isNearEdge() {
+    return false;
+  }
+  
   public void scroll() {
   }
 }
