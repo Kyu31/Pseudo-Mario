@@ -5,7 +5,7 @@ public class Asset {
   float w;
   float h;
   PImage texture;
-
+  
   public Asset(String n, float xcor, float ycor, String img) {
     name = n;
     x = xcor;
@@ -16,6 +16,6 @@ public class Asset {
   }
 
   public void display() {
-    image(texture, x,y);
+    image(texture, x, y);
   }
 }
