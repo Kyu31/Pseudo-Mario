@@ -2,19 +2,21 @@ Player player;
 //Timer startTimer;
 boolean isStartMenuOn;
 ArrayList<Level> levels;
-boolean[] movement;
-final int Left = 0;
-final int Right = 1;
-final int Up = 2;
-final int Down = 3;
-final int Shift = 4;
-final int isFacingLeft = 5;
+boolean Left;
+boolean Right;
+boolean Up;
+boolean Down;
+boolean Shift;
 
 void setup () {
-  size(1000, 800);
+  size(1000, 500);
   //startTimer = new Timer(160);
   isStartMenuOn = true;
-  movement = new boolean[]{false, false, false, false, false, false};
+  Left = false;
+  Right = false;
+  Up = false;
+  Down = false;
+  Shift = false;
   levels = new ArrayList<Level>();
 
   //ArrayList<Block> map = new ArrayList<Block>();
@@ -27,10 +29,9 @@ void setup () {
 void draw() {
   background(95, 200, 245);
   imageMode(CENTER);
-   
+
   player.move();
   player.display();
-  //line(0, player.y + player.texture.height/2, width, player.y + player.texture.height/2);
   text("Coords: " + player.x + ", " + player.y, 20, 20);
 }
 
@@ -39,17 +40,20 @@ void keyPressed () {
   if (key == CODED) {
     switch(keyCode) {
     case LEFT:
-      movement[Left] = true;
-      movement[isFacingLeft] = true;
+      Left = true;
+      break;
     case RIGHT:
-      movement[Right] = true;
-      movement[isFacingLeft] = false;
+      Right = true;
+      break;
     case UP:
-      movement[Up] = true;
+      Up = true;
+      break;
     case DOWN:
-      movement[Down] = true;
+      Down = true;
+      break;
     case SHIFT:
-      movement[Shift] = true;
+      Shift = true;
+      break;
     }
   }
 }
@@ -58,17 +62,20 @@ void keyReleased () {
   if (key == CODED) {
     switch(keyCode) {
     case LEFT:
-      movement[Left] = false;
-      movement[isFacingLeft] = true;
+      Left = false;
+      break;
     case RIGHT:
-      movement[Right] = false;
-      movement[isFacingLeft] = false;
+      Right = false;
+      break;
     case UP:
-      movement[Up] = false;
+      Up = false;
+      break;
     case DOWN:
-      movement[Down] = false;
+      Down = false;
+      break;
     case SHIFT:
-      movement[Shift] = false;
+      Shift = false;
+      break;
     }
   }
 }
