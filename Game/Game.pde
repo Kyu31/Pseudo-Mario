@@ -30,6 +30,7 @@ void draw() {
   background(95, 200, 245);
   imageMode(CENTER);
 
+  player.hitBoundary(levels.get(0));
   player.move();
   player.display();
   text("Coords: " + player.x + ", " + player.y, 20, 20);
