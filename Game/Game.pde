@@ -1,17 +1,28 @@
+Player player;
 //Timer startTimer;
 boolean isStartMenuOn;
 ArrayList<Level> levels;
+boolean Left;
+boolean Right;
+boolean Up;
+boolean Down;
+boolean Shift;
 
 void setup () {
-  size(1000, 800);
+  size(800, 400);
   //startTimer = new Timer(160);
   isStartMenuOn = true;
+  Left = false;
+  Right = false;
+  Up = false;
+  Down = false;
+  Shift = false;
   levels = new ArrayList<Level>();
 
-  //ArrayList<Block> map = new ArrayList<Block>();
-  //player = new Player();
+  ArrayList<Block> map = new ArrayList<Block>();
+  player = new Player(width/2, height/2);
   //ArrayList<Enemy> enemies = new ArrayList<Enemy>();
-  Level lvl1 = new Level(/*map, p1, enemies*/);
+  Level lvl1 = new Level(map, player/*, enemies*/);
   levels.add(lvl1);
 }
 
@@ -19,16 +30,54 @@ void draw() {
   background(95, 200, 245);
   imageMode(CENTER);
 
-  /*testing Asset & Entity constructors & setTexture)
-  Entity test = new Entity("t1", width/2, height/2, "Textures/mario_idle.png", new int[]{0, 0}, 2, 2, 1);
-  image(test.getTexture(), test.getX(), test.getY());
-  test.setTexture("Textures/mario_death.png");
-  image(test.getTexture(), test.getX(), test.getY());
-  */
+  player.move();
+  player.display();
+  text("Coords: " + player.x + ", " + player.y, 20, 20);
 }
 
 //movement keys, powerups
 void keyPressed () {
+  if (key == CODED) {
+    switch(keyCode) {
+    case LEFT:
+      Left = true;
+      break;
+    case RIGHT:
+      Right = true;
+      break;
+    case UP:
+      Up = true;
+      break;
+    case DOWN:
+      Down = true;
+      break;
+    case SHIFT:
+      Shift = true;
+      break;
+    }
+  }
+}
+
+void keyReleased () {
+  if (key == CODED) {
+    switch(keyCode) {
+    case LEFT:
+      Left = false;
+      break;
+    case RIGHT:
+      Right = false;
+      break;
+    case UP:
+      Up = false;
+      break;
+    case DOWN:
+      Down = false;
+      break;
+    case SHIFT:
+      Shift = false;
+      break;
+    }
+  }
 }
 
 //menu interactions

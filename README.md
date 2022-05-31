@@ -16,5 +16,11 @@ Development Log:
 
       5/24: I have created Entity & edited the Asset class. I have tested out the constructors of these classes in Game
 
+      5/25: I have created Player & have begun coding for the player to move. I have added methods and fields to various classes to better help figure out the player's location and movement.
+
+      5/26: I have changed all the fields to become public. I have started on the movement controls, but have faced some problems trying to implement the controls and will probably model after the class example tomorrow.
+
+      5/27: I have changed the controls to keep track of multiple keys. The player can now move left and right but has problems with displaying the correct direction to face. Player will display the correct sprite for each action (but still may need fixing). I seem to be having problems running the code though.
+
     Emily Young-Squire
         5/23: I have begun to write the skeletons for the Asset class instance variables and methods we have planned.
