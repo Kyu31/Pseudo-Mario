@@ -3,6 +3,7 @@ public class Asset {
   public float x;
   public  float y;
   public PImage texture;
+  public boolean shouldDisplay = true;
 
   public Asset(String n, float xcor, float ycor, String img) {
     name = n;
@@ -12,6 +13,8 @@ public class Asset {
   }
 
   public void display() {
-    image(texture, x, y);
+    if (shouldDisplay) {
+      image(texture, x, y);
+    }
   }
 }
