@@ -19,19 +19,18 @@ void setup () {
   Down = false;
   Shift = false;
   levels = new ArrayList<Level>();
-  
-  for (int i = -3; i <= 3; i++) {
-    for (int a = 0; a < 2; a++) {
-      map.add(new Block("nothing", false, "block", width/2 + (i * 120), height/2 + 80 + (a * 120), "Textures/block.png"));
-    }
-  }
-  //map.add(new Block("nothing", false, "block", width/2 - 128, height/2 + 80, "Textures/block.png"));
 
-
-  player = new Player(width/2, height/2);
+  player = new Player(15*10+8, height-15*2);
   //ArrayList<Enemy> enemies = new ArrayList<Enemy>();
   Level lvl1 = new Level(map, player/*, enemies*/);
-  levels.add(lvl1);
+  levels.add(lvl1);  
+   
+  for (int x = 0; x <= lvl1.end; x++) {
+      lvl1.map.add(new Block("nothing", false, "floor", 15*x+8, height, "Textures/floor.png"));
+      lvl1.map.add(new Block("nothing", false, "floor", 15*x+8, height-15, "Textures/floor.png"));
+  }
+  
+
 }
 
 void draw() {
