@@ -1,45 +1,21 @@
 public class Asset {
-  private String name;
-  private float x;
-  private float y;
-  private PImage texture;
-
+  String name;
+  float x;
+  float y;
+  float w;
+  float h;
+  PImage texture;
+  
   public Asset(String n, float xcor, float ycor, String img) {
     name = n;
     x = xcor;
-    y = ycor; 
+    y = ycor;
     texture = loadImage(img);
+    w = texture.width;
+    h = texture.height;
   }
 
   public void display() {
     image(texture, x, y);
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public float getX() {
-    return x;
-  }
-
-  public float getY() {
-    return y;
-  }
-
-  public int getWidth() {
-    return texture.width;
-  }
-
-  public int getHeight() {
-    return texture.height;
-  }
-  
-  public PImage getTexture() {
-    return texture;
-  }
-
-  public void setTexture(String img) {
-    texture = loadImage(img);
   }
 }
