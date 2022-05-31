@@ -6,8 +6,8 @@ public class Collectable extends Block {
     value = vals;
   }
   
-  //public void event(Player p) {
-  //  p.collect(this);
-   // this.shouldDisplay(false);
-  //}
+  public void event(Player p) {
+    p.collect(this);
+    //this.setDisplay(false);
+  }
 }
