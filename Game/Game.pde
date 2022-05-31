@@ -9,7 +9,7 @@ boolean Down;
 boolean Shift;
 
 void setup () {
-  size(1000, 500);
+  size(800, 400);
   //startTimer = new Timer(160);
   isStartMenuOn = true;
   Left = false;
@@ -19,10 +19,10 @@ void setup () {
   Shift = false;
   levels = new ArrayList<Level>();
 
-  //ArrayList<Block> map = new ArrayList<Block>();
+  ArrayList<Block> map = new ArrayList<Block>();
   player = new Player(width/2, height/2);
   //ArrayList<Enemy> enemies = new ArrayList<Enemy>();
-  Level lvl1 = new Level(/*map,*/ player/*, enemies*/);
+  Level lvl1 = new Level(map, player/*, enemies*/);
   levels.add(lvl1);
 }
 
