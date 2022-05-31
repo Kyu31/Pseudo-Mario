@@ -1,20 +1,21 @@
 public class Asset {
-  public String name;
-  public float x;
-  public  float y;
-  public PImage texture;
-  public boolean shouldDisplay = true;
-
+  String name;
+  float x;
+  float y;
+  float w;
+  float h;
+  PImage texture;
+  
   public Asset(String n, float xcor, float ycor, String img) {
     name = n;
     x = xcor;
-    y = ycor; 
+    y = ycor;
     texture = loadImage(img);
+    w = texture.width;
+    h = texture.height;
   }
 
   public void display() {
-    if (shouldDisplay) {
-      image(texture, x, y);
-    }
+    image(texture, x, y);
   }
 }
