@@ -1,19 +1,21 @@
 public class Entity extends Asset {
-  int[] hitbox;
   float xSpeed;
   float ySpeed;
   int lives;
+  boolean isOnfloor;
+  String sideFacing;
 
-  public Entity(String name, float x, float y, String img, int[] hits, float dx, float dy, int life) {
+  public Entity(String name, float x, float y, String img, float dx, float dy, int life) {
     super(name, x, y, img);
-    hitbox = hits;
     xSpeed = dx;
     ySpeed = dy;
     lives = life;
+    isOnfloor = true;
+    sideFacing = "Right";
   }
 
-  public boolean isOverlapping(/*Block other*/) {
-    return false;
+  public String sideColliding(/*Block other*/) {
+    return "";
   }
 
   public void move() {
