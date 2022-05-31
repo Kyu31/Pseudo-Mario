@@ -8,6 +8,6 @@ public class Collectable extends Block {
   
   public void event(Player p) {
     p.collect(this);
-    this.setDisplay(false);
+    //this.setDisplay(false);
   }
 }

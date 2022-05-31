@@ -2,7 +2,7 @@ public class Player extends Entity {
   int points;
   float accelerationX;
   float accelerationY;
-  final float maxSpeed = 5;
+  final float maxSpeed = 3;
   final float gravity = -0.2;
   //Collectable carrying;
   boolean invincible;
@@ -64,9 +64,9 @@ public class Player extends Entity {
     super.display();
   }
 
-  public void breaks(/*Block other*/) {
+  public void breaks(Block other) {
   }
 
-  public void collect() {
+  public void collect(Block other) {
   }
 }
