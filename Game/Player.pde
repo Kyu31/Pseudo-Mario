@@ -11,7 +11,13 @@ public class Player extends Entity {
   //Timer invinDuration;
 
   public Player(float x, float y) {
+<<<<<<< HEAD
     super("Mario", x, y, "Textures/Mario_idle.png", 0, 0, 2);
+=======
+    super("Mario", x, y, "Textures/mario_idle.png", 0, 0, 2);
+    w *= 0.8;
+    h *= 0.8;
+>>>>>>> 995cc585d2a656836135c40c3ba62dd5c918ea4b
     points = 0;
     accelerationX = 0;
     accelerationY = 0;
@@ -54,7 +60,7 @@ public class Player extends Entity {
       gravity = 0;
       friction = 1;
     }
-    if (Down && !Up) {
+    if ((Down && !Up) && (y <= height/2)) {
       accelerationY = 0.2;
       friction = 1;
     }

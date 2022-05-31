@@ -1,4 +1,5 @@
 Player player;
+ArrayList<Block> map = new ArrayList<Block>();
 //Timer startTimer;
 boolean isStartMenuOn;
 ArrayList<Level> levels;
@@ -18,8 +19,15 @@ void setup () {
   Down = false;
   Shift = false;
   levels = new ArrayList<Level>();
+  
+  for (int i = -3; i <= 3; i++) {
+    for (int a = 0; a < 2; a++) {
+      map.add(new Block("nothing", false, "block", width/2 + (i * 120), height/2 + 80 + (a * 120), "Textures/block.png"));
+    }
+  }
+  //map.add(new Block("nothing", false, "block", width/2 - 128, height/2 + 80, "Textures/block.png"));
 
-  ArrayList<Block> map = new ArrayList<Block>();
+
   player = new Player(width/2, height/2);
   //ArrayList<Enemy> enemies = new ArrayList<Enemy>();
   Level lvl1 = new Level(map, player/*, enemies*/);
@@ -29,6 +37,10 @@ void setup () {
 void draw() {
   background(95, 200, 245);
   imageMode(CENTER);
+  
+  for (Block b : map) {
+    b.display();
+  }
 
   player.hitBoundary(levels.get(0));
   player.move();
