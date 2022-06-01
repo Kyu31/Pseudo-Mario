@@ -22,5 +22,7 @@ Development Log:
 
       5/27: I have changed the controls to keep track of multiple keys. The player can now move left and right but has problems with displaying the correct direction to face. Player will display the correct sprite for each action (but still may need fixing). I seem to be having problems running the code though.
 
+      5/30: The player can now move around, but doesn't change sprite based on movement. The player is blocked by boundaries of the screen but no the blocks.
+
     Emily Young-Squire
         5/23: I have begun to write the skeletons for the Asset class instance variables and methods we have planned.
