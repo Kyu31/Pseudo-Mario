@@ -30,16 +30,25 @@ public class Entity extends Asset {
       lives = 0;
     }
     
-    //for(Block block : lvl.map){
-    //  sideColliding(block);
-    //  if(sideColliding.equals("bottom") && ySpeed >= 0){
-    //    isOnFloor = true;
-    //    ySpeed = 0;
-    //  }
-    //  if(!sideColliding.equals("bottom") && ySpeed > 0){
-    //    isOnFloor = false;
-    //  }
-    //}
+    for(Block block : lvl.map){
+      sideColliding = sideColliding(block);
+      if(sideColliding.equals("bottom") && ySpeed >= 0){
+        isOnFloor = true;
+        ySpeed = 0;
+      }
+      if(sideColliding.equals("top") && ySpeed <= 0){
+        ySpeed = 0;
+      }
+      if(sideColliding.equals("right") && xSpeed >= 0){
+        xSpeed = 0;
+      }
+      if(sideColliding.equals("left") && xSpeed <= 0){
+        xSpeed = 0;
+      }
+      if(!sideColliding.equals("bottom") && ySpeed > 0){
+        isOnFloor = false;
+      }
+    }
   }
 
   public String sideColliding(Block other) {
