@@ -48,7 +48,7 @@ public class Player extends Entity {
     }
 
     if (!(Left || Right || Up || Down)) {
-      friction = 0.92;
+      friction = 0.9;
       gravity = 0.3;
     }
 
@@ -88,6 +88,9 @@ public class Player extends Entity {
   }
 
   public void display() {
+    if(Up){
+     texture = loadImage("Textures/Mario_jump.png"); 
+    }
     super.display();
   }
 
