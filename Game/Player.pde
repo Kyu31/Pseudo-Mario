@@ -96,14 +96,16 @@ public class Player extends Entity {
     if (lives == 1) {
       size = "small";
     }
-    if (Up) {
-      texture = new Animation("Textures/" + size + "Mario_jump" + direction, 1);
-    }
-    if (Down) {
-      texture = new Animation("Textures/" + size + "Mario_duck" + direction, 1);
-    }
-    if (Left || Right) {
+    if (abs(xSpeed) > 0) {
+      if (abs(ySpeed) > 0) {
+        texture = new Animation("Textures/" + size + "Mario_jump" + direction, 1);
+      }
       texture = new Animation("Textures/" + size + "Mario_walk" + direction, 3);
+    } else {
+      texture = new Animation("Textures/" + size + "Mario_idle" + direction, 1);
+    }
+    if (Down && ySpeed == 0) {
+      texture = new Animation("Textures/" + size + "Mario_duck" + direction, 1);
     }
     super.display();
   }
