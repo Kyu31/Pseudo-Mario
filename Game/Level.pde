@@ -8,14 +8,14 @@ public class Level {
     map = lvlmap;
     player = p1;
     //ArrayList<Enemy> enemies;
-    
+
     end = 800;
   }
 
   public boolean isNearEdge() {
     return false;
   }
-  
+
   public void scroll() {
   }
 }

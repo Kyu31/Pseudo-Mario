@@ -6,18 +6,20 @@ public class Player extends Entity {
   float friction;
   float gravity;
   float jump;
+  String direction;
   //Collectable carrying;
   boolean invincible;
   //Timer invinDuration;
 
   public Player(float x, float y) {
-    super("Mario", x, y, "Textures/Mario_idle.png", 0, 0, 2);
+    super("Mario", x, y, "Textures/Mario_idleRight", 1, 0, 0, 2);
     points = 0;
     accelerationX = 0;
     accelerationY = 0;
     friction = 0.9;
     gravity = 0.3;
     jump = -20;
+    direction = "Right";
     invincible = false;
     //invinDuration = new Timer(??);
   }
@@ -26,10 +28,12 @@ public class Player extends Entity {
     if (Left && !Right) {
       accelerationX = -0.05;
       friction = 1;
+      direction = "Left";
     }
     if (Right && !Left) {
       accelerationX = 0.05;
       friction = 1;
+      direction = "Right";
     }
     if (!Left && !Right) {
       accelerationX = 0;
@@ -88,8 +92,18 @@ public class Player extends Entity {
   }
 
   public void display() {
-    if(Up){
-     texture = loadImage("Textures/Mario_jump.png"); 
+    String size = "";
+    if (lives == 1) {
+      size = "small";
+    }
+    if (Up) {
+      texture = new Animation("Textures/" + size + "Mario_jump" + direction, 1);
+    }
+    if (Down) {
+      texture = new Animation("Textures/" + size + "Mario_duck" + direction, 1);
+    }
+    if (Left || Right) {
+      texture = new Animation("Textures/" + size + "Mario_walk" + direction, 3);
     }
     super.display();
   }

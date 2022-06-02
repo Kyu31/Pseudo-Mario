@@ -24,19 +24,17 @@ void setup () {
   //ArrayList<Enemy> enemies = new ArrayList<Enemy>();
   Level lvl1 = new Level(map, player/*, enemies*/);
   levels.add(lvl1);  
-   
-  for (int x = 0; x <= lvl1.end; x++) {
-      lvl1.map.add(new Block("nothing", false, "floor", 15*x+8, height, "Textures/floor.png"));
-      lvl1.map.add(new Block("nothing", false, "floor", 15*x+8, height-15, "Textures/floor.png"));
-  }
-  
 
+  for (int x = 0; x <= lvl1.end; x++) {
+    lvl1.map.add(new Block("nothing", false, "floor", 15*x+8, height, "Textures/floor", 1));
+    lvl1.map.add(new Block("nothing", false, "floor", 15*x+8, height-15, "Textures/floor", 1));
+  }
 }
 
 void draw() {
   background(95, 200, 245);
   imageMode(CENTER);
-  
+
   for (Block b : map) {
     b.display();
   }
