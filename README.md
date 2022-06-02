@@ -24,5 +24,7 @@ Development Log:
 
       5/30: The player can now move around, but doesn't change sprite based on movement. The player is blocked by boundaries of the screen but no the blocks.
 
+      6/1: I added a new animation class and changed all the constructors so that texture would be an animation. I'm currently working on Player's display.
+
     Emily Young-Squire
         5/23: I have begun to write the skeletons for the Asset class instance variables and methods we have planned.
