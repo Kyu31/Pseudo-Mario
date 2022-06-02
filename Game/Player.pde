@@ -16,7 +16,7 @@ public class Player extends Entity {
     points = 0;
     accelerationX = 0;
     accelerationY = 0;
-    friction = 0.9;
+    friction = 0.85;
     gravity = 0.3;
     jump = -20;
     direction = "Right";
@@ -52,7 +52,7 @@ public class Player extends Entity {
     }
 
     if (!(Left || Right || Up || Down)) {
-      friction = 0.9;
+      friction = 0.85;
       gravity = 0.3;
     }
 
@@ -96,16 +96,17 @@ public class Player extends Entity {
     if (lives == 1) {
       size = "small";
     }
-    if (abs(xSpeed) > 0) {
-      if (abs(ySpeed) > 0) {
-        texture = new Animation("Textures/" + size + "Mario_jump" + direction, 1);
-      }
+    if (Left || Right) {
       texture = new Animation("Textures/" + size + "Mario_walk" + direction, 3);
-    } else {
-      texture = new Animation("Textures/" + size + "Mario_idle" + direction, 1);
     }
-    if (Down && ySpeed == 0) {
+    if (!isOnFloor) {
+      texture = new Animation("Textures/" + size + "Mario_jump" + direction, 1);
+    }
+    if (Down && isOnFloor) {
       texture = new Animation("Textures/" + size + "Mario_duck" + direction, 1);
+    }
+    if (!(Left || Right || Up || Down)){
+      texture = new Animation("Textures/" + size + "Mario_idle" + direction, 1);
     }
     super.display();
   }
