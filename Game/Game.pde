@@ -21,7 +21,11 @@ void setup () {
 
   levels = new ArrayList<Level>();
 
+<<<<<<< HEAD
   player = new Player(16*10+8, height-16*2);
+=======
+  player = new Player(15*10+8, height - 40);
+>>>>>>> 1415b43724160b095a034e1f8edc9c48bde440e8
   //ArrayList<Enemy> enemies = new ArrayList<Enemy>();
   Level lvl1 = new Level(map, player/*, enemies*/, new float[]{16*10+8, height-16*2}, width);
   levels.add(lvl1);  

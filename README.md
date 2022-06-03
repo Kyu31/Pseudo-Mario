@@ -26,5 +26,27 @@ Development Log:
 
       6/1: I added a new animation class and changed all the constructors so that texture would be an animation. I'm currently working on Player's display.
 
+      6/2: Majority of the player's display is working. I changed the utilization of Animation for all constructors. I added a floor class that extends block.
+
     Emily Young-Squire
-        5/23: I have begun to write the skeletons for the Asset class instance variables and methods we have planned.
+      5/23: I have begun to write the skeletons for the Asset class instance variables and methods we have planned.
+
+      5/24: I have finished writing the instance variables and methods for the asset class and am now moving on to the subclasses.
+
+      5/25: I have created and written the skeleton for a Block subclass of the asset class and fixed up errors that I have found in the Asset class.
+
+      5/26: I have finished the Block class and made sure that it fits in with the rest of the files.
+
+      5/27: I have created the skeleton of the collectable class and have added in the basic methods and instance variables.
+
+      5/28: I have finished the collectable class and slightly changed the instance variables to better fit into the game.
+
+      5/29: I have left merging a bit too long, so I am trying to fix the error that I am having in merging my branch with the main branch, and I am starting to look into how to write the timer class.
+
+      5/30: I have fixed the huge merge conflict error and am finally able to successfully merge the changes I have made, and I have changed the instance variables from private to public, and have adjusted the methods accordingly.
+
+      5/31: I have created the basic base of the Mario game of a layer of blocks underneath Mario and imported the block image that will be used.
+
+      6/1: I have worked on fixing the error where Mario can only touch the blocks and other assets but cannot stand in front or behind them.
+
+      6/2:  I have worked on reading in a separate file with the map of blocks and assets, as well as devising some sort of key to interpret all of it (as well as the beginnings of a Timer class).
