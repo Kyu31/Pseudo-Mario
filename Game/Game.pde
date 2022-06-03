@@ -18,27 +18,30 @@ void setup () {
   Up = false;
   Down = false;
   Shift = false;
+
   levels = new ArrayList<Level>();
 
+<<<<<<< HEAD
+  player = new Player(16*10+8, height-16*2);
+=======
   player = new Player(15*10+8, height - 40);
+>>>>>>> 1415b43724160b095a034e1f8edc9c48bde440e8
   //ArrayList<Enemy> enemies = new ArrayList<Enemy>();
-  Level lvl1 = new Level(map, player/*, enemies*/);
+  Level lvl1 = new Level(map, player/*, enemies*/, new float[]{16*10+8, height-16*2}, width);
   levels.add(lvl1);  
-   
-  for (int x = 0; x <= lvl1.end; x++) {
-      lvl1.map.add(new Block("nothing", false, "floor", 15*x+8, height, "Textures/floor.png"));
-      lvl1.map.add(new Block("nothing", false, "floor", 15*x+8, height-15, "Textures/floor.png"));
-  }
-  
 
+  for (int x = 0; x <= lvl1.end; x++) {
+    lvl1.map.add(new Floor(16*x+8, height));
+    lvl1.map.add(new Floor(16*x+8, height-16));
+  }
 }
 
 void draw() {
   background(95, 200, 245);
   imageMode(CENTER);
-  
+
   for (Block b : map) {
-    b.display();
+    b.display(0, 1, 1);
   }
 
   player.hitBoundary(levels.get(0));

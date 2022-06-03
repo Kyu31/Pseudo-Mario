@@ -1,14 +1,15 @@
 public class Block extends Asset {
   String contains;
   boolean isBreakable;
-  
-  Block(String thing, boolean breaks, String n, float xcor, float ycor, String img) { 
-    super(n, xcor, ycor, img);
+  boolean isSafe;
+
+  Block(String thing, boolean breaks, boolean safety, String n, float xcor, float ycor, ArrayList<PImage> imgs, String startImg) { 
+    super(n, xcor, ycor, imgs, startImg);
     contains = thing;
     isBreakable = breaks;
+    isSafe = safety;
   }
-  
+
   public void event() {
-    
   }
 }
