@@ -2,14 +2,15 @@ public class Level {
   ArrayList<Block> map;
   Player player;
   //ArrayList<Enemy> enemies;
+  float[] start;
   float end; 
 
-  public Level(ArrayList<Block> lvlmap, Player p1/*, ArrayList<Enemy> enemies*/) {
+  public Level(ArrayList<Block> lvlmap, Player p1/*, ArrayList<Enemy> enemies*/, float[] startCoords, float endBoundary) {
     map = lvlmap;
     player = p1;
     //ArrayList<Enemy> enemies;
-
-    end = 800;
+    start = startCoords;
+    end = endBoundary;
   }
 
   public boolean isNearEdge() {
