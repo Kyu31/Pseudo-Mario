@@ -12,8 +12,8 @@ public class Asset {
     y = ycor;
     texture = new Animation(imgs);
     texture.addFrames(startImg, 1);
-    w = texture.images.get(0).width;
-    h = texture.images.get(0).height;
+    w = texture.images.get(texture.frame).width;
+    h = texture.images.get(texture.frame).height;
   }
 
   public void display(int startFrame, int numFrames, int delay) {

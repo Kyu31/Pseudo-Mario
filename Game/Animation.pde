@@ -21,8 +21,9 @@ public class Animation {
   }
 
   void display(int startFrame, int frames, int delay, float x, float y) {
-    if(currentTime == 0){
-    frame = (frame+1) % frames;
+    if (currentTime == 0) {
+      frame = (frame+1) % frames;
+      
     }
     currentTime = (currentTime+1) % delay;
 
