@@ -20,7 +20,7 @@ void setup () {
   Shift = false;
   levels = new ArrayList<Level>();
 
-  player = new Player(15*10+8, height-15*2);
+  player = new Player(15*10+8, height - 40);
   //ArrayList<Enemy> enemies = new ArrayList<Enemy>();
   Level lvl1 = new Level(map, player/*, enemies*/);
   levels.add(lvl1);  

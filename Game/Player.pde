@@ -82,6 +82,12 @@ public class Player extends Entity {
     if (ySpeed < -maxSpeed) {
       ySpeed = -maxSpeed;
     }
+    
+    if (y + ySpeed > height - 38) {
+      System.out.println("triggered " + ySpeed);
+      ySpeed = 0;
+      xSpeed = 0;
+    }
 
     x += xSpeed;
     y += ySpeed;
