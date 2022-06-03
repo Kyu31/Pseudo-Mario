@@ -1,25 +1,31 @@
 public class Animation {
-  PImage[] images;
-  int imageCount;
+  ArrayList<PImage> images;
   int frame;
+  int currentTime;
 
-  Animation(String imagePrefix, int count) {
-    imageCount = count;
-    images = new PImage[imageCount];
+  Animation(ArrayList<PImage> imgs) {
+    images = imgs;
+    currentTime = 0;
+  }
 
-    for (int i = 0; i < imageCount; i++) {
-      String filename = imagePrefix;
-      if (imageCount > 1) { 
+  void addFrames(String imagePrefix, int frames) {
+    for (int i = 0; i < frames; i++) {
+      String filename = "Textures/" + imagePrefix;
+      if (frames > 1) { 
         filename += nf(i, 4);
       }
       filename += ".png";
-      images[i] = loadImage(filename);
+      PImage newFrame = loadImage(filename);
+      images.add(newFrame);
     }
   }
 
-  void display(float xpos, float ypos) {
-    frame = (frame+1) % imageCount;
+  void display(int startFrame, int frames, int delay, float x, float y) {
+    if(currentTime == 0){
+    frame = (frame+1) % frames;
+    }
+    currentTime = (currentTime+1) % delay;
 
-    image(images[frame], xpos, ypos);
+    image(images.get(frame + startFrame), x, y);
   }
 }
