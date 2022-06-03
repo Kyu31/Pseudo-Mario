@@ -6,16 +6,17 @@ public class Asset {
   float h;
   Animation texture;
 
-  public Asset(String n, float xcor, float ycor, String imgPrefix, int frames) {
+  public Asset(String n, float xcor, float ycor, ArrayList<PImage> imgs, String startImg) {
     name = n;
     x = xcor;
     y = ycor;
-    texture = new Animation(imgPrefix, frames);
-    w = texture.images[texture.frame].width;
-    h = texture.images[texture.frame].height;
+    texture = new Animation(imgs);
+    texture.addFrames(startImg, 1);
+    w = texture.images.get(0).width;
+    h = texture.images.get(0).height;
   }
 
-  public void display() {
-    texture.display(x, y);
+  public void display(int startFrame, int numFrames, int delay) {
+    texture.display(startFrame, numFrames, delay, x, y);
   }
 }
