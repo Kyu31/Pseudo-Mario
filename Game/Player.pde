@@ -4,7 +4,7 @@ public class Player extends Entity {
   float accelerationY;
   final float maxSpeed = 5;
   float friction;
-  float gravity;
+  float gravity = 0.3;
   float jump;
   String direction;
   //Collectable carrying;
@@ -12,16 +12,32 @@ public class Player extends Entity {
   //Timer invinDuration;
 
   public Player(float x, float y) {
-    super("Mario", x, y, "Textures/Mario_idleRight", 1, 0, 0, 2);
+    //String name, float x, float y, ArrayList<PImage> imgs, float dx, float dy, int life
+    super("Mario", x, y, new ArrayList<PImage>(), "Mario_idleRight", 0, 0, 2);
     points = 0;
     accelerationX = 0;
     accelerationY = 0;
     friction = 0.85;
-    gravity = 0.3;
-    jump = -20;
+    jump = -30;
     direction = "Right";
     invincible = false;
     //invinDuration = new Timer(??);
+    //frames
+
+    texture.addFrames("Mario_duckRight", 1);          //1
+    texture.addFrames("Mario_jumpRight", 1);          //2
+    texture.addFrames("Mario_walkRight", 3);          //3-5
+    texture.addFrames("Mario_idleLeft", 1);           //6
+    texture.addFrames("Mario_duckLeft", 1);           //7
+    texture.addFrames("Mario_jumpLeft", 1);           //8
+    texture.addFrames("Mario_walkLeft", 3);           //9-11
+    texture.addFrames("smallMario_idleRight", 1);     //12
+    texture.addFrames("smallMario_jumpRight", 1);     //13
+    texture.addFrames("smallMario_walkRight", 3);     //14-16
+    texture.addFrames("smallMario_idleLeft", 1);      //17
+    texture.addFrames("smallMario_jumpLeft", 1);      //18
+    texture.addFrames("smallMario_walkLeft", 3);      //19-21
+    texture.addFrames("Mario_death", 1);              //22
   }
 
   public void move() {
@@ -53,7 +69,6 @@ public class Player extends Entity {
 
     if (!(Left || Right || Up || Down)) {
       friction = 0.85;
-      gravity = 0.3;
     }
 
     xSpeed += accelerationX;
@@ -80,7 +95,7 @@ public class Player extends Entity {
       }
     }
 
-    if (ySpeed > 5 * maxSpeed) {
+    if (ySpeed > 8 * maxSpeed) {
       ySpeed = maxSpeed;
     }
     if (ySpeed < -maxSpeed) {
@@ -92,23 +107,79 @@ public class Player extends Entity {
   }
 
   public void display() {
-    String size = "";
-    if (lives == 1) {
-      size = "small";
+    switch(lives) {
+    case 0:                                        //death
+      super.display(22, 1, 1);
+      break;
+    case 1:                                        //small
+      w = texture.images.get(12).width;
+      h = texture.images.get(12).height;
+      if (direction.equals("Right")) {
+        if (!isOnFloor) {      
+          super.display(13, 1, 1);                 //jump
+        } else if (abs(xSpeed) > 0) {
+          if (Shift) {
+            super.display(14, 3, 3);               //run
+          } else {
+            super.display(14, 3, 5);               //walk
+          }
+        } else if (isOnFloor && !(Left || Right || Up)) {
+          super.display(12, 1, 1);                 //idle
+        }
+      }
+      if (direction.equals("Left")) {
+        if (!isOnFloor) {
+          super.display(18, 1, 1);                 //jump
+        } else if (abs(xSpeed) > 0) {
+          if (Shift) {
+            super.display(19, 3, 3);               //run
+          } else {
+            super.display(19, 3, 5);               //walk
+          }
+        } else if (isOnFloor && !(Left || Right || Up)) {
+          super.display(17, 1, 1);                 //idle
+        }
+      }
+      break;
+    case 2:                                        //big
+      if (direction.equals("Right")) {
+        if (!isOnFloor) {
+          super.display(2, 1, 1);                  //jump
+        } else if (abs(xSpeed) > 0) {
+          if (Shift) {
+            super.display(3, 3, 3);                //run
+          } else {
+            super.display(3, 3, 5);                //walk
+          }
+        } else if (isOnFloor) {
+          if (Down) {
+            super.display(1, 1, 1);                //duck
+          } 
+          if (!(Left || Right || Up || Down)) {
+            super.display(0, 1, 1);                //idle
+          }
+        }
+      }
+      if (direction.equals("Left")) {
+        if (!isOnFloor) {
+          super.display(8, 1, 1);                  //jump
+        } else if (abs(xSpeed) > 0) {
+          if (Shift) {
+            super.display(9, 3, 3);                //run
+          } else {
+            super.display(9, 3, 5);                //walk
+          }
+        } else if (isOnFloor) {
+          if (Down) {
+            super.display(7, 1, 1);                //duck
+          } 
+          if (!(Left || Right || Up || Down)) {
+            super.display(6, 1, 1);                //idle
+          }
+        }
+        break;
+      }
     }
-    if (Left || Right) {
-      texture = new Animation("Textures/" + size + "Mario_walk" + direction, 3);
-    }
-    if (!isOnFloor) {
-      texture = new Animation("Textures/" + size + "Mario_jump" + direction, 1);
-    }
-    if (Down && isOnFloor) {
-      texture = new Animation("Textures/" + size + "Mario_duck" + direction, 1);
-    }
-    if (!(Left || Right || Up || Down)){
-      texture = new Animation("Textures/" + size + "Mario_idle" + direction, 1);
-    }
-    super.display();
   }
 
   public void breaks(Block other) {
