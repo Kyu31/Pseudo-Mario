@@ -5,8 +5,8 @@ public class Entity extends Asset {
   boolean isOnFloor;
   String sideColliding;
 
-  public Entity(String name, float x, float y, String imgPrefix, int frames, float dx, float dy, int life) {
-    super(name, x, y, imgPrefix, frames);
+  public Entity(String name, float x, float y, ArrayList<PImage> imgs, String startImg, float dx, float dy, int life) {
+    super(name, x, y, imgs, startImg);
     xSpeed = dx;
     ySpeed = dy;
     lives = life;
@@ -24,9 +24,6 @@ public class Entity extends Asset {
       xSpeed = 0;
     }
     if (y > height-h/2) {
-      isOnFloor = true;
-      ySpeed = 0;
-      y = height-h/2;
       lives = 0;
     }
 
@@ -83,6 +80,9 @@ public class Entity extends Asset {
       } else {
         return "none";
       }
+    }
+    if(lives == 0){
+      return "none";
     }
     return "none";
   }
