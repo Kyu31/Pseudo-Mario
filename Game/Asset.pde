@@ -10,8 +10,7 @@ public class Asset {
     name = n;
     x = xcor;
     y = ycor;
-    texture = new Animation(imgs);
-    texture.addFrames(startImg, 1);
+    texture = new Animation(imgs, startImg);
     w = texture.images.get(texture.frame).width;
     h = texture.images.get(texture.frame).height;
   }
