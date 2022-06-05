@@ -29,6 +29,9 @@ void setup () {
   for (int x = 0; x <= lvl1.end; x++) {
     lvl1.map.add(new Floor(16*x+8, height));
     lvl1.map.add(new Floor(16*x+8, height-16));
+    if (x > width/2) {
+      lvl1.map.add(new Brick(null, 16*x+8, height-16*2));
+    }
   }
 }
 
@@ -36,14 +39,19 @@ void draw() {
   background(95, 200, 245);
   imageMode(CENTER);
 
-  for (Block b : map) {
+  Level currentlvl = levels.get(0);
+
+  for (Block b : currentlvl.map) {
     b.display(0, 1, 1);
+    b.event(currentlvl);
   }
 
-  player.hitBoundary(levels.get(0));
-  player.move();
-  player.display();
-  text("Coords: " + player.x + ", " + player.y, 20, 20);
+  //while (!currentlvl.cleared) {
+    player.hitBoundary(levels.get(0));
+    player.move();
+    player.display();
+    text("Coords: " + player.x + ", " + player.y, 20, 20);
+  //}
 }
 
 //movement keys, powerups
