@@ -4,18 +4,19 @@ public class Asset {
   float y;
   float w;
   float h;
-  PImage texture;
-  
-  public Asset(String n, float xcor, float ycor, String img) {
+  Animation texture;
+
+  public Asset(String n, float xcor, float ycor, ArrayList<PImage> imgs, String startImg) {
     name = n;
     x = xcor;
     y = ycor;
-    texture = loadImage(img);
-    w = texture.width;
-    h = texture.height;
+    texture = new Animation(imgs);
+    texture.addFrames(startImg, 1);
+    w = texture.images.get(0).width;
+    h = texture.images.get(0).height;
   }
 
-  public void display() {
-    image(texture, x, y);
+  public void display(int startFrame, int numFrames, int delay) {
+    texture.display(startFrame, numFrames, delay, x, y);
   }
 }

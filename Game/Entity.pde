@@ -5,8 +5,8 @@ public class Entity extends Asset {
   boolean isOnFloor;
   String sideColliding;
 
-  public Entity(String name, float x, float y, String img, float dx, float dy, int life) {
-    super(name, x, y, img);
+  public Entity(String name, float x, float y, ArrayList<PImage> imgs, String startImg, float dx, float dy, int life) {
+    super(name, x, y, imgs, startImg);
     xSpeed = dx;
     ySpeed = dy;
     lives = life;
@@ -24,22 +24,28 @@ public class Entity extends Asset {
       xSpeed = 0;
     }
     if (y > height-h/2) {
-      isOnFloor = true;
-      ySpeed = 0;
-      y = height-h/2;
       lives = 0;
     }
-    
-    //for(Block block : lvl.map){
-    //  sideColliding(block);
-    //  if(sideColliding.equals("bottom") && ySpeed >= 0){
-    //    isOnFloor = true;
-    //    ySpeed = 0;
-    //  }
-    //  if(!sideColliding.equals("bottom") && ySpeed > 0){
-    //    isOnFloor = false;
-    //  }
-    //}
+
+    for (Block block : lvl.map) {
+      sideColliding = sideColliding(block);
+      if (sideColliding.equals("bottom") && ySpeed >= 0) {
+        isOnFloor = true;
+        ySpeed = 0;
+      }
+      if (sideColliding.equals("top") && ySpeed <= 0) {
+        ySpeed = 0;
+      }
+      if (sideColliding.equals("right") && xSpeed >= 0) {
+        xSpeed = 0;
+      }
+      if (sideColliding.equals("left") && xSpeed <= 0) {
+        xSpeed = 0;
+      }
+      if (!sideColliding.equals("bottom") && ySpeed > 0) {
+        isOnFloor = false;
+      }
+    }
   }
 
   public String sideColliding(Block other) {
@@ -74,6 +80,9 @@ public class Entity extends Asset {
       } else {
         return "none";
       }
+    }
+    if(lives == 0){
+      return "none";
     }
     return "none";
   }
