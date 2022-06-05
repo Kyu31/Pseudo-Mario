@@ -28,6 +28,8 @@ Development Log:
 
       6/2: Majority of the player's display is working. I changed the utilization of Animation for all constructors. I added a floor class that extends block.
 
+      6/4: I haven't fixed the problems with player's movements and display. I have made small adjustments to the constructors of Animation & Asset (so that Animation takes in a start image) and Block, Block's subclasses, and Collectable (to reflect how Collectable is no longer a subclass of Block & the field contains is a Collectable). I have started building on Flag's event method and tried testing it in game along with Brick.
+
     Emily Young-Squire
       5/23: I have begun to write the skeletons for the Asset class instance variables and methods we have planned.
 
