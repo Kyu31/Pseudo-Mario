@@ -50,3 +50,7 @@ Development Log:
       6/1: I have worked on fixing the error where Mario can only touch the blocks and other assets but cannot stand in front or behind them.
 
       6/2:  I have worked on reading in a separate file with the map of blocks and assets, as well as devising some sort of key to interpret all of it (as well as the beginnings of a Timer class).
+
+      6/3: I have worked with Kelly to edit the UML diagram and add the new instance variables and methods, and understand how the new animation works and how that will fit with the other entities (other than player).
+
+      6/4: I have begun and finished the new subclass of the block class, flag class, and added a corresponding new instance variable to the Game class.
