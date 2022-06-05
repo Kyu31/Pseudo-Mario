@@ -13,7 +13,7 @@ public class Player extends Entity {
 
   public Player(float x, float y) {
     //String name, float x, float y, ArrayList<PImage> imgs, float dx, float dy, int life
-    super("Mario", x, y, new ArrayList<PImage>(), "Mario_idleRight", 0, 0, 1);
+    super("Mario", x, y, new ArrayList<PImage>(), "Mario_idleRight", 0, 0, 2);
     points = 0;
     accelerationX = 0;
     accelerationY = 0;
@@ -22,8 +22,8 @@ public class Player extends Entity {
     direction = "Right";
     invincible = false;
     //invinDuration = new Timer(??);
-    //frames
 
+    //frames
     texture.addFrames("Mario_duckRight", 1);          //1
     texture.addFrames("Mario_jumpRight", 1);          //2
     texture.addFrames("Mario_walkRight", 3);          //3-5
@@ -40,6 +40,30 @@ public class Player extends Entity {
     texture.addFrames("Mario_death", 1);              //22
   }
 
+  public void hitBoundary(Level lvl) {
+    super.hitBoundary(lvl);
+
+    for (Block block : lvl.map) {
+      sideColliding = sideColliding(block);
+      if (sideColliding.equals("bottom") && ySpeed >= 0) {
+        isOnFloor = true;
+        ySpeed = 0;
+      }
+      if (sideColliding.equals("top") && ySpeed <= 0) {
+        ySpeed = 0;
+      }
+      if (sideColliding.equals("right") && xSpeed >= 0) {
+        xSpeed = 0;
+      }
+      if (sideColliding.equals("left") && xSpeed <= 0) {
+        xSpeed = 0;
+      }
+      if (!sideColliding.equals("bottom") && ySpeed > 0) {
+        isOnFloor = false;
+      }
+    }
+  }
+
   public void move() {
     if (Left && !Right) {
       accelerationX = -0.05;
@@ -51,7 +75,7 @@ public class Player extends Entity {
       friction = 1;
       direction = "Right";
     }
-    if (!Left && !Right) {
+    if (!Left && !Right || Left && Right) {
       accelerationX = 0;
     }
     if (Up && !Down && isOnFloor) {
@@ -101,7 +125,7 @@ public class Player extends Entity {
     if (ySpeed < -maxSpeed) {
       ySpeed = -maxSpeed;
     }
-    
+
     if (y + ySpeed > height - 38) {
       System.out.println("triggered " + ySpeed);
       ySpeed = 0;
@@ -127,7 +151,7 @@ public class Player extends Entity {
           } else {
             super.display(14, 3, 5);               //walk
           }
-        } else if (isOnFloor && !(Left || Right || Up)) {
+        } else /*if (isOnFloor && !(Left || Right || Up))*/ {
           super.display(12, 1, 1);                 //idle
         }
       }
@@ -140,7 +164,7 @@ public class Player extends Entity {
           } else {
             super.display(19, 3, 5);               //walk
           }
-        } else if (isOnFloor && !(Left || Right || Up)) {
+        } else /*if (isOnFloor && !(Left || Right || Up))*/ {
           super.display(17, 1, 1);                 //idle
         }
       }
@@ -155,13 +179,10 @@ public class Player extends Entity {
           } else {
             super.display(3, 3, 5);                //walk
           }
-        } else if (isOnFloor) {
-          if (Down) {
-            super.display(1, 1, 1);                //duck
-          } 
-          if (!(Left || Right || Up || Down)) {
-            super.display(0, 1, 1);                //idle
-          }
+        } else if (Down) {
+          super.display(1, 1, 1);                //duck
+        } else {
+          super.display(0, 1, 1);                //idle
         }
       }
       if (direction.equals("Left")) {
@@ -173,22 +194,19 @@ public class Player extends Entity {
           } else {
             super.display(9, 3, 5);                //walk
           }
-        } else if (isOnFloor) {
-          if (Down) {
-            super.display(7, 1, 1);                //duck
-          } 
-          if (!(Left || Right || Up || Down)) {
-            super.display(6, 1, 1);                //idle
-          }
+        } else if (Down) {
+          super.display(7, 1, 1);                //duck
+        } else {
+          super.display(6, 1, 1);                //idle
         }
-        break;
       }
+      break;
     }
   }
 
   public void breaks(Block other) {
   }
 
-  public void collect(Block other) {
+  public void collect(Collectable other) {
   }
 }
