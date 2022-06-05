@@ -3,8 +3,9 @@ public class Animation {
   int frame;
   int currentTime;
 
-  Animation(ArrayList<PImage> imgs) {
+  Animation(ArrayList<PImage> imgs, String startImg) {
     images = imgs;
+    imgs.add(loadImage("Textures/"+startImg+".png"));
     currentTime = 0;
   }
 
@@ -23,10 +24,9 @@ public class Animation {
   void display(int startFrame, int frames, int delay, float x, float y) {
     if (currentTime == 0) {
       frame = (frame+1) % frames;
-      
     }
     currentTime = (currentTime+1) % delay;
 
-    image(images.get(frame + startFrame), x, y);
+    image(images.get(frame+startFrame), x, y);
   }
 }
