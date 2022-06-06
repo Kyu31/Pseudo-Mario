@@ -55,4 +55,6 @@ Development Log:
 
       6/3: I have worked with Kelly to edit the UML diagram and add the new instance variables and methods, and understand how the new animation works and how that will fit with the other entities (other than player).
 
-      6/4: I have begun and finished the new subclass of the block class, flag class, and added a corresponding new instance variable to the Game class.
+      6/4: I have begun and finished the new subclass of the block class, flag class, and added a corresponding new instance variable to the Game class (won).
+
+      6/5: I have begun and finished the new subclass of the block class, trap class, and added a corresponding new instance variable to the Game class (died).
