@@ -1,5 +1,5 @@
 Player player;
-ArrayList<Block> map;
+ArrayList<Block> map = new ArrayList<Block>();
 //Timer startTimer;
 boolean isStartMenuOn;
 ArrayList<Level> levels;
