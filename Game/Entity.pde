@@ -1,12 +1,13 @@
 public class Entity extends Asset {
   float xSpeed;
   float ySpeed;
+  float gravity = 0.3;
   int lives;
   boolean isOnFloor;
   String sideColliding;
 
-  public Entity(String name, float x, float y, ArrayList<PImage> imgs, String startImg, float dx, float dy, int life) {
-    super(name, x, y, imgs, startImg);
+  public Entity(String name, float x, float y, String startImg, float dx, float dy, int life) {
+    super(name, x, y, new ArrayList<PImage>(), startImg);
     xSpeed = dx;
     ySpeed = dy;
     lives = life;

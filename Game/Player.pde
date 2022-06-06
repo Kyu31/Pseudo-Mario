@@ -4,7 +4,6 @@ public class Player extends Entity {
   float accelerationY;
   final float maxSpeed = 5;
   float friction;
-  float gravity = 0.3;
   float jump;
   String direction;
   //Collectable carrying;
@@ -118,11 +117,11 @@ public class Player extends Entity {
       }
     }
 
-    if (ySpeed > maxSpeed) {
-      ySpeed = maxSpeed;
+    if (ySpeed > 2*maxSpeed) {
+      ySpeed = 2*maxSpeed;
     }
-    if (ySpeed < 3 * -maxSpeed) {
-      ySpeed = 3 * -maxSpeed;
+    if (ySpeed < 3*-maxSpeed) {
+      ySpeed = 3*-maxSpeed;
     }
 
     x += xSpeed;
