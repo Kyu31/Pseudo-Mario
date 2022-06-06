@@ -1,6 +1,6 @@
 public class Flag extends Block {
-  Flag(boolean breaks, String n, float xcor, float ycor, ArrayList<PImage> imgs, String startImg) {
-    super(null, breaks, true, n, xcor, ycor, imgs, startImg);
+  Flag(boolean breaks, String n, float xcor, float ycor, String startImg) {
+    super(null, breaks, true, n, xcor, ycor, startImg);
   }
 
   public void event(Level lvl) {

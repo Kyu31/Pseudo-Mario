@@ -3,8 +3,8 @@ public class Block extends Asset {
   boolean isBreakable;
   boolean isSafe;
 
-  Block(Collectable thing, boolean breaks, boolean safety, String n, float xcor, float ycor, ArrayList<PImage> imgs, String startImg) { 
-    super(n, xcor, ycor, imgs, startImg);
+  Block(Collectable thing, boolean breaks, boolean safety, String n, float xcor, float ycor, String startImg) { 
+    super(n, xcor, ycor, new ArrayList<PImage>(), startImg);
     contains = thing;
     isBreakable = breaks;
     isSafe = safety;

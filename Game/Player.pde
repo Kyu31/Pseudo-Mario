@@ -4,7 +4,6 @@ public class Player extends Entity {
   float accelerationY;
   final float maxSpeed = 5;
   float friction;
-  float gravity = 0.3;
   float jump;
   String direction;
   //Collectable carrying;
@@ -12,13 +11,12 @@ public class Player extends Entity {
   //Timer invinDuration;
 
   public Player(float x, float y) {
-    //String name, float x, float y, ArrayList<PImage> imgs, float dx, float dy, int life
-    super("Mario", x, y, new ArrayList<PImage>(), "Mario_idleRight", 0, 0, 2);
+    super("Mario", x, y, "Mario_idleRight", 0, 0, 2);
     points = 0;
     accelerationX = 0;
     accelerationY = 0;
     friction = 0.85;
-    jump = -30;
+    jump = -7;
     direction = "Right";
     invincible = false;
     //invinDuration = new Timer(??);
@@ -75,7 +73,7 @@ public class Player extends Entity {
       friction = 1;
       direction = "Right";
     }
-    if (!Left && !Right || Left && Right) {
+    if (!Left && !Right) {
       accelerationX = 0;
     }
     if (Up && !Down && isOnFloor) {
@@ -119,17 +117,11 @@ public class Player extends Entity {
       }
     }
 
-    if (ySpeed > 8 * maxSpeed) {
-      ySpeed = maxSpeed;
+    if (ySpeed > 2*maxSpeed) {
+      ySpeed = 2*maxSpeed;
     }
-    if (ySpeed < -maxSpeed) {
-      ySpeed = -maxSpeed;
-    }
-
-    if (y + ySpeed > height - 38) {
-      System.out.println("triggered " + ySpeed);
-      ySpeed = 0;
-      xSpeed = 0;
+    if (ySpeed < 3*-maxSpeed) {
+      ySpeed = 3*-maxSpeed;
     }
 
     x += xSpeed;
