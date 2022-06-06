@@ -22,8 +22,8 @@ void setup () {
   levels = new ArrayList<Level>();
 
   player = new Player(16*2+8, height-16*2);
-  //ArrayList<Enemy> enemies = new ArrayList<Enemy>();
-  Level lvl1 = new Level(map, player/*, enemies*/, new float[]{16*2+8, height-16*2}, width);
+  ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+  Level lvl1 = new Level(map, player, enemies, new float[]{16*2+8, height-16*2}, width);
   levels.add(lvl1);  
 
   for (int x = 8; x <= lvl1.end; x += 16) {

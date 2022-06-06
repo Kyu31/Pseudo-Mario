@@ -5,6 +5,7 @@ public class Entity extends Asset {
   int lives;
   boolean isOnFloor;
   String sideColliding;
+  boolean debug = true;
 
   public Entity(String name, float x, float y, String startImg, float dx, float dy, int life) {
     super(name, x, y, new ArrayList<PImage>(), startImg);
@@ -37,6 +38,9 @@ public class Entity extends Asset {
     float maxYdist = h/2 + other.h/2;
 
     if (abs(dx) < maxXdist) {
+      if (debug) {
+        rect(other.x-other.w/2, other.y-other.h/2, other.w, other.h);
+      }
       if (abs(dy) < maxYdist) {
         float overlapX = maxXdist - abs(dx);
         float overlapY = maxYdist - abs(dy);
@@ -62,7 +66,7 @@ public class Entity extends Asset {
         return "none";
       }
     }
-    if(lives == 0){
+    if (lives == 0) {
       return "none";
     }
     return "none";
