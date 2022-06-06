@@ -3,6 +3,8 @@ ArrayList<Block> map = new ArrayList<Block>();
 //Timer startTimer;
 boolean isStartMenuOn;
 ArrayList<Level> levels;
+boolean won = false;
+boolean died = false;
 boolean Left;
 boolean Right;
 boolean Up;
