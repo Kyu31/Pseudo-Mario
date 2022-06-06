@@ -35,4 +35,11 @@ public class Goomba extends Enemy {
       }
     }
   }
+  
+  public void move() {
+    ySpeed += gravity;
+  
+    x += xSpeed;
+    y += ySpeed;
+  }
 }
