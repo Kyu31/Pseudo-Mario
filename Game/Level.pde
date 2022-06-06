@@ -1,15 +1,15 @@
 public class Level {
   ArrayList<Block> map;
   Player player;
-  //ArrayList<Enemy> enemies;
+  ArrayList<Enemy> enemies;
   float[] start;
   float end; 
   boolean cleared;
 
-  public Level(ArrayList<Block> lvlmap, Player p1/*, ArrayList<Enemy> enemies*/, float[] startCoords, float endBoundary) {
+  public Level(ArrayList<Block> lvlmap, Player p1, ArrayList<Enemy> enemies, float[] startCoords, float endBoundary) {
     map = lvlmap;
     player = p1;
-    //ArrayList<Enemy> enemies;
+    this.enemies = enemies;
     start = startCoords;
     end = endBoundary;
     cleared = false;
