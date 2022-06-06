@@ -195,6 +195,10 @@ public class Player extends Entity {
       break;
     }
   }
+  
+  public boolean isNearEdge(Level lvl){
+    return false;
+  }
 
   public void breaks(Block other) {
   }
