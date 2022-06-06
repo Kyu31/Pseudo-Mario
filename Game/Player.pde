@@ -18,7 +18,7 @@ public class Player extends Entity {
     accelerationX = 0;
     accelerationY = 0;
     friction = 0.85;
-    jump = -30;
+    jump = -7;
     direction = "Right";
     invincible = false;
     //invinDuration = new Timer(??);
@@ -75,7 +75,7 @@ public class Player extends Entity {
       friction = 1;
       direction = "Right";
     }
-    if (!Left && !Right || Left && Right) {
+    if (!Left && !Right) {
       accelerationX = 0;
     }
     if (Up && !Down && isOnFloor) {
@@ -119,17 +119,11 @@ public class Player extends Entity {
       }
     }
 
-    if (ySpeed > 8 * maxSpeed) {
+    if (ySpeed > maxSpeed) {
       ySpeed = maxSpeed;
     }
-    if (ySpeed < -maxSpeed) {
-      ySpeed = -maxSpeed;
-    }
-
-    if (y + ySpeed > height - 38) {
-      System.out.println("triggered " + ySpeed);
-      ySpeed = 0;
-      xSpeed = 0;
+    if (ySpeed < 3 * -maxSpeed) {
+      ySpeed = 3 * -maxSpeed;
     }
 
     x += xSpeed;
