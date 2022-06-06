@@ -21,37 +21,47 @@ void setup () {
 
   levels = new ArrayList<Level>();
 
-  player = new Player(16*10+8, height-16*2);
+  player = new Player(16*2+8, height-16*2);
   //ArrayList<Enemy> enemies = new ArrayList<Enemy>();
-  Level lvl1 = new Level(map, player/*, enemies*/, new float[]{16*10+8, height-16*2}, width);
+  Level lvl1 = new Level(map, player/*, enemies*/, new float[]{16*2+8, height-16*2}, width);
   levels.add(lvl1);  
 
-  for (int x = 0; x <= lvl1.end; x++) {
-    lvl1.map.add(new Floor(16*x+8, height));
-    lvl1.map.add(new Floor(16*x+8, height-16));
-    if (x > width/2) {
-      lvl1.map.add(new Brick(null, 16*x+8, height-16*2));
+  for (int x = 8; x <= lvl1.end; x += 16) {
+    lvl1.map.add(new Floor(x, height));
+    lvl1.map.add(new Floor(x, height-16));
+    if (x > width*0.25 && x < width*0.75) {
+      lvl1.map.add(new Brick(null, x, height-16*2));
+    }
+    if (x > width*0.25+16 && x < width*0.75) {
+      lvl1.map.add(new Brick(null, x, height-16*3));
+    }
+    if (x > width*0.25+16*2 && x < width*0.75) {
+      lvl1.map.add(new Brick(null, x, height-16*4));
+    }
+    if (x > width*0.25+16*3 && x < width*0.75) {
+      lvl1.map.add(new Brick(null, x, height-16*5));
     }
   }
 }
 
 void draw() {
-  background(95, 200, 245);
-  imageMode(CENTER);
-
   Level currentlvl = levels.get(0);
+  
+  background(95, 200, 245);
+  image(loadImage("Textures/castle.png"), currentlvl.start[0], currentlvl.start[1]-16*2);
+  imageMode(CENTER);
 
   for (Block b : currentlvl.map) {
     b.display(0, 1, 1);
     b.event(currentlvl);
   }
 
-  //while (!currentlvl.cleared) {
+  if (!currentlvl.cleared) {
     player.hitBoundary(levels.get(0));
     player.move();
     player.display();
     text("Coords: " + player.x + ", " + player.y, 20, 20);
-  //}
+  }
 }
 
 //movement keys, powerups
