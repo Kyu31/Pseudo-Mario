@@ -1,8 +1,8 @@
 public class Collectable extends Asset {
   int value;
   
-  Collectable(int vals, String n, float xcor, float ycor, ArrayList<PImage> imgs, String startImg) {
-    super(n, xcor, ycor, imgs, startImg);
+  Collectable(int vals, String n, float xcor, float ycor, String startImg) {
+    super(n, xcor, ycor, new ArrayList<PImage>(), startImg);
     value = vals;
   }
 

@@ -12,8 +12,7 @@ public class Player extends Entity {
   //Timer invinDuration;
 
   public Player(float x, float y) {
-    //String name, float x, float y, ArrayList<PImage> imgs, float dx, float dy, int life
-    super("Mario", x, y, new ArrayList<PImage>(), "Mario_idleRight", 0, 0, 2);
+    super("Mario", x, y, "Mario_idleRight", 0, 0, 2);
     points = 0;
     accelerationX = 0;
     accelerationY = 0;
