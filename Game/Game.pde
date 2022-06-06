@@ -1,5 +1,5 @@
 Player player;
-ArrayList<Block> map = new Map("BlockMap.txt");
+ArrayList<Block> map;
 //Timer startTimer;
 boolean isStartMenuOn;
 ArrayList<Level> levels;
@@ -20,13 +20,20 @@ void setup () {
   Shift = false;
 
   levels = new ArrayList<Level>();
+  map = new Map("BlockMap.txt").map;
 
   player = new Player(16*2+8, height-16*2);
   ArrayList<Enemy> enemies = new ArrayList<Enemy>();
   Level lvl1 = new Level(map, player, enemies, new float[]{16*2+8, height-16*2}, 1600);
-  levels.add(lvl1);  
+  levels.add(lvl1);
+  
+  for (int i = 0; i < lvl1.map.size(); i++) {
+    System.out.println(lvl1.map.get(i));
+    lvl1.map.remove(i);
+    i -= 1;
+  }
 
-  /*for (int x = 8; x <= lvl1.end; x += 16) {
+  for (int x = 8; x <= lvl1.end; x += 16) {
     lvl1.map.add(new Floor(x, height));
     lvl1.map.add(new Floor(x, height-16));
     if (x > width*0.25 && x < width*0.75) {
@@ -41,7 +48,7 @@ void setup () {
     if (x > width*0.25+16*3 && x < width*0.75) {
       lvl1.map.add(new Brick(null, x, height-16*5));
     }
-  }*/
+  }
 }
 
 void draw() {
