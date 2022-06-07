@@ -55,9 +55,8 @@ void setup () {
 
 void draw() {
   Level currentlvl = levels.get(0);
-  
   background(95, 200, 245);
-  image(loadImage("Textures/castle.png"), currentlvl.start[0], currentlvl.start[1]-16*2);
+  //image(loadImage("Textures/castle.png"), currentlvl.start[0], currentlvl.start[1]-16*2);
   imageMode(CENTER);
 
   for (Block b : currentlvl.map) {
@@ -121,3 +120,7 @@ void keyReleased () {
 //menu interactions
 void mouseClicked () {
 }
+
+/*void scroll() {
+  if (player.x >= 
+}*/
