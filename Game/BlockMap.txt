@@ -1,6 +1,6 @@
 6 100
-                           fffffffffffff
-                          ffffffffffffff                 ffffff      f
-                         fffffffffffffff          f      f           f            fffffffff         
+...........................fffffffffffff............................................................
+..........................ffffffffffffff.................ffffff......f..............................
+.........................fffffffffffffff..........f......f...........f............fffffffff.........
 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
