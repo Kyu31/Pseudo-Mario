@@ -7,6 +7,7 @@ public class Map {
   public Map(String filename) {
     lines = loadStrings(filename);
     map = new ArrayList<Block>();
+    map.add(new Castle(null, 40, 368-16*2));
     int indexOfSpace = lines[0].indexOf(' ');
     rows = Integer.parseInt(lines[0].substring(0, indexOfSpace)) - 2;
     cols = Integer.parseInt(lines[0].substring(indexOfSpace + 1));
