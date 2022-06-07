@@ -42,7 +42,9 @@ public class Player extends Entity {
     super.hitBoundary(lvl);
 
     for (Block block : lvl.map) {
-      sideColliding = sideColliding(block);
+      if (!block.isCastle) {
+        sideColliding = sideColliding(block);
+      }
       if (sideColliding.equals("bottom") && ySpeed >= 0) {
         isOnFloor = true;
         ySpeed = 0;
