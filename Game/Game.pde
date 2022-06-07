@@ -20,28 +20,34 @@ void setup () {
   Shift = false;
 
   levels = new ArrayList<Level>();
+  map = new Map("BlockMap.txt").map;
 
   player = new Player(32*2+16, height-32*2);
   ArrayList<Enemy> enemies = new ArrayList<Enemy>();
-  Level lvl1 = new Level(map, player, enemies, new float[]{32*2+16, height-32*2}, width);
-  levels.add(lvl1);  
+  Level lvl1 = new Level(map, player, enemies, new float[]{32*2+16, height-32*2}, 1600);
+  levels.add(lvl1);
+  /*
+  for (int i = 0; i < lvl1.map.size(); i++) {
+    System.out.println(lvl1.map.get(i));
+    lvl1.map.remove(i);
+    i -= 1;
+  }*/
 
   for (int x = 16; x <= lvl1.end+16; x += 32) {
     lvl1.map.add(new Floor(x, height));
-    lvl1.map.add(new Floor(x, height-32));
-    if (x > width*0.25 && x < width*0.75) {
-      lvl1.map.add(new Brick(null, x, height-32*2));
+    //lvl1.map.add(new Floor(x, height-32));
+    //if (x > width*0.25 && x < width*0.75) {
+    //  lvl1.map.add(new Brick(null, x, height-32*2));
+    //}
+    //if (x > width*0.25+32 && x < width*0.75) {
+    //  lvl1.map.add(new Brick(null, x, height-32*3));
+    //}
+    //if (x > width*0.25+32*2 && x < width*0.75) {
+    //  lvl1.map.add(new Brick(null, x, height-32*4));
+    //}
+    //if (x > width*0.25+32*3 && x < width*0.75) {
+    //  lvl1.map.add(new Brick(null, x, height-32*5));
     }
-    if (x > width*0.25+32 && x < width*0.75) {
-      lvl1.map.add(new Brick(null, x, height-32*3));
-    }
-    if (x > width*0.25+32*2 && x < width*0.75) {
-      lvl1.map.add(new Brick(null, x, height-32*4));
-    }
-    if (x > width*0.25+32*3 && x < width*0.75) {
-      lvl1.map.add(new Brick(null, x, height-32*5));
-    }
-  }
   
   enemies.add(new Goomba(lvl1.end-32, height-32*2));
 }
