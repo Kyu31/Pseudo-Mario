@@ -62,3 +62,5 @@ Development Log:
       6/4: I have begun and finished the new subclass of the block class, flag class, and added a corresponding new instance variable to the Game class (won).
 
       6/5: I have begun and finished the new subclass of the block class, trap class, and added a corresponding new instance variable to the Game class (died).
+
+      6/6: I have figured out how to create a map file that can be read into the program to generate the map of blocks that will appear on the screen (extending beyond the dimensions of the window) and will later include the location of other assets.

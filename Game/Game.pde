@@ -20,11 +20,17 @@ void setup () {
   Shift = false;
 
   levels = new ArrayList<Level>();
-  map = new Map("BlockMap.txt").map;
+  Map official = new Map("BlockMap.txt");
+  map = official.map;
+  int endIndex = official.cols;
 
   player = new Player(32*2+16, height-32*2);
   ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+<<<<<<< HEAD
   Level lvl1 = new Level(map, player, enemies, new float[]{32*2+16, height-32*2}, 1600);
+=======
+  Level lvl1 = new Level(map, player, enemies, new float[]{16*2+8, height-16*2}, endIndex * 16);
+>>>>>>> 99b57b33aaf2b1401132c48d6868dc6f6f25a5d5
   levels.add(lvl1);
   /*
   for (int i = 0; i < lvl1.map.size(); i++) {
@@ -54,9 +60,12 @@ void setup () {
 
 void draw() {
   Level currentlvl = levels.get(0);
-  
   background(95, 200, 245);
+<<<<<<< HEAD
   image(loadImage("Textures/castle.png"), currentlvl.start[0], currentlvl.start[1]-32*2);
+=======
+  //image(loadImage("Textures/castle.png"), currentlvl.start[0], currentlvl.start[1]-16*2);
+>>>>>>> 99b57b33aaf2b1401132c48d6868dc6f6f25a5d5
   imageMode(CENTER);
 
   for (Block b : currentlvl.map) {
@@ -126,3 +135,7 @@ void keyReleased () {
 //menu interactions
 void mouseClicked () {
 }
+
+/*void scroll() {
+  if (player.x >= 
+}*/
