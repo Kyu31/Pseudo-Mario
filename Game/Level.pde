@@ -15,10 +15,6 @@ public class Level {
     cleared = false;
   }
 
-  public boolean isNearEdge() {
-    return false;
-  }
-
   public void scroll() {
   }
 }
