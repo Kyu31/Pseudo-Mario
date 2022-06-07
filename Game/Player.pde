@@ -131,12 +131,12 @@ public class Player extends Entity {
   public void display() {
     switch(lives) {
     case 0:                                        //death
-      super.display(22, 1, 1);
+      super.display(22, 1);
       break;
     case 1:                                        //small
       if (direction.equals("Right")) {
         if (!isOnFloor) {      
-          super.display(13, 1, 1);                 //jump
+          super.display(13, 1);                 //jump
         } else if (abs(xSpeed) > 0) {
           if (Shift) {
             super.display(14, 3, 3);               //run
@@ -144,12 +144,12 @@ public class Player extends Entity {
             super.display(14, 3, 5);               //walk
           }
         } else /*if (isOnFloor && !(Left || Right || Up))*/ {
-          super.display(12, 1, 1);                 //idle
+          super.display(12, 1);                 //idle
         }
       }
       if (direction.equals("Left")) {
         if (!isOnFloor) {
-          super.display(18, 1, 1);                 //jump
+          super.display(18, 1);                 //jump
         } else if (abs(xSpeed) > 0) {
           if (Shift) {
             super.display(19, 3, 3);               //run
@@ -157,14 +157,14 @@ public class Player extends Entity {
             super.display(19, 3, 5);               //walk
           }
         } else /*if (isOnFloor && !(Left || Right || Up))*/ {
-          super.display(17, 1, 1);                 //idle
+          super.display(17, 1);                 //idle
         }
       }
       break;
     case 2:                                        //big
       if (direction.equals("Right")) {
         if (!isOnFloor) {
-          super.display(2, 1, 1);                  //jump
+          super.display(2, 1);                  //jump
         } else if (abs(xSpeed) > 0) {
           if (Shift) {
             super.display(3, 3, 3);                //run
@@ -172,14 +172,14 @@ public class Player extends Entity {
             super.display(3, 3, 5);                //walk
           }
         } else if (Down) {
-          super.display(1, 1, 1);                //duck
+          super.display(1, 1);                //duck
         } else {
-          super.display(0, 1, 1);                //idle
+          super.display(0, 1);                //idle
         }
       }
       if (direction.equals("Left")) {
         if (!isOnFloor) {
-          super.display(8, 1, 1);                  //jump
+          super.display(8, 1);                  //jump
         } else if (abs(xSpeed) > 0) {
           if (Shift) {
             super.display(9, 3, 3);                //run
@@ -187,9 +187,9 @@ public class Player extends Entity {
             super.display(9, 3, 5);                //walk
           }
         } else if (Down) {
-          super.display(7, 1, 1);                //duck
+          super.display(7, 1);                //duck
         } else {
-          super.display(6, 1, 1);                //idle
+          super.display(6, 1);                //idle
         }
       }
       break;

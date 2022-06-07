@@ -14,6 +14,10 @@ public class Asset {
     w = texture.images.get(texture.frame).width;
     h = texture.images.get(texture.frame).height;
   }
+  
+  public void display(int startFrame, int numFrames) {
+    texture.display(startFrame, numFrames, 1, x, y);
+  }
 
   public void display(int startFrame, int numFrames, int delay) {
     texture.display(startFrame, numFrames, delay, x, y);
