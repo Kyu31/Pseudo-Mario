@@ -60,12 +60,12 @@ void draw() {
   //image(loadImage("Textures/castle.png"), currentlvl.start[0], currentlvl.start[1]-16*2);
   imageMode(CENTER);
   
-  if ((player.accelerationX != 0) && (player.x >= width - 64)){
+  if ((player.accelerationX > 0) && (player.x >= width - 160)){
     for (Block b : map) {
       b.x -= (32) * .1;
     }
   }
-  if ((player.accelerationX != 0) && (player.x <= 64) && (lvl1.map.get(0).x - 32 <= 0)) {
+  if ((player.accelerationX < 0) && (player.x <= 160) && (lvl1.map.get(0).x - 32 <= -1)) {
     for (Block b : map) {
       b.x += (32) * .1;
     }
