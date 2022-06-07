@@ -20,11 +20,13 @@ void setup () {
   Shift = false;
 
   levels = new ArrayList<Level>();
-  map = new Map("BlockMap.txt").map;
+  Map official = new Map("BlockMap.txt");
+  map = official.map;
+  int endIndex = official.cols;
 
   player = new Player(16*2+8, height-16*2);
   ArrayList<Enemy> enemies = new ArrayList<Enemy>();
-  Level lvl1 = new Level(map, player, enemies, new float[]{16*2+8, height-16*2}, 1600);
+  Level lvl1 = new Level(map, player, enemies, new float[]{16*2+8, height-16*2}, endIndex * 16);
   levels.add(lvl1);
   /*
   for (int i = 0; i < lvl1.map.size(); i++) {
