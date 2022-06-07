@@ -2,6 +2,7 @@ public class Block extends Asset {
   Collectable contains;
   boolean isBreakable;
   boolean isSafe;
+  boolean isCastle = false;
 
   Block(Collectable thing, boolean breaks, boolean safety, String n, float xcor, float ycor, String startImg) { 
     super(n, xcor, ycor, new ArrayList<PImage>(), startImg);
