@@ -136,8 +136,8 @@ public class Player extends Entity {
     case 1:                                        //small
       if (direction.equals("Right")) {
         if (!isOnFloor) {      
-          super.display(13, 1);                 //jump
-        } else if (abs(xSpeed) > 0) {
+          super.display(13, 1, 1);                 //jump
+        } else if (abs(accelerationX) > 0) {
           if (Shift) {
             super.display(14, 3, 3);               //run
           } else {
@@ -149,8 +149,8 @@ public class Player extends Entity {
       }
       if (direction.equals("Left")) {
         if (!isOnFloor) {
-          super.display(18, 1);                 //jump
-        } else if (abs(xSpeed) > 0) {
+          super.display(18, 1, 1);                 //jump
+        } else if (abs(accelerationX) > 0) {
           if (Shift) {
             super.display(19, 3, 3);               //run
           } else {
@@ -164,8 +164,8 @@ public class Player extends Entity {
     case 2:                                        //big
       if (direction.equals("Right")) {
         if (!isOnFloor) {
-          super.display(2, 1);                  //jump
-        } else if (abs(xSpeed) > 0) {
+          super.display(2, 1, 1);                  //jump
+        } else if (abs(accelerationX) > 0) {
           if (Shift) {
             super.display(3, 3, 3);                //run
           } else {
@@ -179,8 +179,8 @@ public class Player extends Entity {
       }
       if (direction.equals("Left")) {
         if (!isOnFloor) {
-          super.display(8, 1);                  //jump
-        } else if (abs(xSpeed) > 0) {
+          super.display(8, 1, 1);                  //jump
+        } else if (abs(accelerationX) > 0) {
           if (Shift) {
             super.display(9, 3, 3);                //run
           } else {
@@ -195,8 +195,8 @@ public class Player extends Entity {
       break;
     }
   }
-  
-  public boolean isNearEdge(Level lvl){
+
+  public boolean isNearEdge(Level lvl) {
     return false;
   }
 
