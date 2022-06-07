@@ -13,7 +13,7 @@ public class Map {
     for (int r = 0; r <= rows; r++) {
       for (int c = 0; c < cols; c++) {
         if (lines[r + 1].charAt(c) == 'b') {
-          map.add(new Brick(null, c + 8 + (c * 16), 300 - (rows - (r + 2.5) * 16)));
+          map.add(new Brick(null, c + 8 + (c * 15), 300 - (rows - (r + 2.5) * 16)));
         }
       }
     }
