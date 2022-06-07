@@ -10,8 +10,8 @@ public class Map {
     int cols = Integer.parseInt(lines[0].substring(indexOfSpace + 1));
     for (int r = 0; r <= rows; r++) {
       for (int c = 0; c < cols; c++) {
-        if (lines[r + 1].charAt(c) == 'f') {
-          map.add(new Brick(null, c + 8 + (c * 16), 300 - (rows - r * 16)));
+        if (lines[r + 1].charAt(c) == 'b') {
+          map.add(new Brick(null, c + 8 + (c * 16), 300 - (rows - (r + 2.5) * 16)));
         }
       }
     }
