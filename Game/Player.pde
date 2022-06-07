@@ -16,7 +16,7 @@ public class Player extends Entity {
     accelerationX = 0;
     accelerationY = 0;
     friction = 0.85;
-    jump = -7;
+    jump = -16;
     direction = "Right";
     invincible = false;
     //invinDuration = new Timer(??);
@@ -63,6 +63,8 @@ public class Player extends Entity {
   }
 
   public void move() {
+    w = texture.images.get(texture.frame).width;
+    h = texture.images.get(texture.frame).height;
     if (Left && !Right) {
       accelerationX = -0.05;
       friction = 1;
@@ -82,8 +84,9 @@ public class Player extends Entity {
       friction = 1;
     }
     if (Down && !Up) {
+      accelerationX = 0;
       accelerationY = 0.2;
-      friction = 1;
+      friction = 0.85;
     }
     if (!Up && !Down) {
       accelerationY = 0;
@@ -120,8 +123,8 @@ public class Player extends Entity {
     if (ySpeed > 2*maxSpeed) {
       ySpeed = 2*maxSpeed;
     }
-    if (ySpeed < 3*-maxSpeed) {
-      ySpeed = 3*-maxSpeed;
+    if (ySpeed < 4*-maxSpeed) {
+      ySpeed = 4*-maxSpeed;
     }
 
     x += xSpeed;
@@ -134,45 +137,50 @@ public class Player extends Entity {
       super.display(22, 1);
       break;
     case 1:                                        //small
+      //w = 16;
+      //h = 16;
       if (direction.equals("Right")) {
         if (!isOnFloor) {      
-          super.display(13, 1, 1);                 //jump
+          super.display(13, 1);                 //jump
         } else if (abs(accelerationX) > 0) {
           if (Shift) {
-            super.display(14, 3, 3);               //run
+            super.display(14, 3, 8);               //run
           } else {
-            super.display(14, 3, 5);               //walk
+            super.display(14, 3, 10);               //walk
           }
-        } else /*if (isOnFloor && !(Left || Right || Up))*/ {
+        } else {
           super.display(12, 1);                 //idle
         }
       }
       if (direction.equals("Left")) {
         if (!isOnFloor) {
-          super.display(18, 1, 1);                 //jump
+          super.display(18, 1);                 //jump
         } else if (abs(accelerationX) > 0) {
           if (Shift) {
-            super.display(19, 3, 3);               //run
+            super.display(19, 3, 8);               //run
           } else {
-            super.display(19, 3, 5);               //walk
+            super.display(19, 3, 10);               //walk
           }
-        } else /*if (isOnFloor && !(Left || Right || Up))*/ {
+        } else {
           super.display(17, 1);                 //idle
         }
       }
       break;
     case 2:                                        //big
+      //w = 16;
+      //h = 32;
       if (direction.equals("Right")) {
         if (!isOnFloor) {
           super.display(2, 1, 1);                  //jump
+        } else if (Down) {
+          //h = 16;
+          super.display(1, 1);                //duck
         } else if (abs(accelerationX) > 0) {
           if (Shift) {
-            super.display(3, 3, 3);                //run
+            super.display(3, 3, 8);                //run
           } else {
-            super.display(3, 3, 5);                //walk
+            super.display(3, 3, 10);                //walk
           }
-        } else if (Down) {
-          super.display(1, 1);                //duck
         } else {
           super.display(0, 1);                //idle
         }
@@ -180,14 +188,15 @@ public class Player extends Entity {
       if (direction.equals("Left")) {
         if (!isOnFloor) {
           super.display(8, 1, 1);                  //jump
+        } else if (Down) {
+          //h = 16;
+          super.display(7, 1);                //duck
         } else if (abs(accelerationX) > 0) {
           if (Shift) {
-            super.display(9, 3, 3);                //run
+            super.display(9, 3, 8);                //run
           } else {
-            super.display(9, 3, 5);                //walk
+            super.display(9, 3, 10);                //walk
           }
-        } else if (Down) {
-          super.display(7, 1);                //duck
         } else {
           super.display(6, 1);                //idle
         }
