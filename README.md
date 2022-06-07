@@ -32,6 +32,8 @@ Development Log:
 
       6/5: I have added background and tested bricks. I have changed the parameters of Asset and fixed the sub classes' constructors. I have created the Enemy & Goomba classes.
 
+      6/6: I have fixed the idle animation for the player & added debug code for collision. I have begun testing goombas.
+
     Emily Young-Squire
       5/23: I have begun to write the skeletons for the Asset class instance variables and methods we have planned.
 
