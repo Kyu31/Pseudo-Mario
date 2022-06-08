@@ -135,7 +135,3 @@ void keyReleased () {
 //menu interactions
 void mouseClicked () {
 }
-
-/*void scroll() {
-  if (player.x >= 
-}*/
