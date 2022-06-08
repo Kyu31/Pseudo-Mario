@@ -9,6 +9,7 @@ boolean Up;
 boolean Down;
 boolean Shift;
 Level lvl1;
+int endIndex;
 
 void setup () {
   size(800, 400);
@@ -23,7 +24,7 @@ void setup () {
   levels = new ArrayList<Level>();
   Map official = new Map("BlockMap.txt");
   map = official.map;
-  int endIndex = official.cols;
+  endIndex = official.cols;
 
   player = new Player(16*2+8, height-16*2);
   ArrayList<Enemy> enemies = new ArrayList<Enemy>();
@@ -60,14 +61,14 @@ void draw() {
   //image(loadImage("Textures/castle.png"), currentlvl.start[0], currentlvl.start[1]-16*2);
   imageMode(CENTER);
   
-  if ((player.accelerationX > 0) && (player.x >= width - 160)){
+  if ((player.accelerationX > 0) && (player.x >= width - 160) /*&& (lvl1.map.get(1).x + 5 * 16 >= 800)*/){
     for (Block b : map) {
-      b.x -= (32) * .1;
+      b.x -= (32) * player.accelerationX;
     }
   }
   if ((player.accelerationX < 0) && (player.x <= 160) && (lvl1.map.get(0).x - 32 <= -1)) {
     for (Block b : map) {
-      b.x += (32) * .1;
+      b.x += (32) * -1 * player.accelerationX;
     }
   }
 
