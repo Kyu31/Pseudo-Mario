@@ -39,7 +39,7 @@ void draw() {
   imageMode(CENTER);
 
   for (Block b : currentlvl.map) {
-    b.display(0, 1, 1);
+    b.display(0, 1);
     b.event(currentlvl);
   }
   
