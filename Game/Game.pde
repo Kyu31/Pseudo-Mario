@@ -8,9 +8,10 @@ boolean Right;
 boolean Up;
 boolean Down;
 boolean Shift;
+final int sizeUnit = 16;
 
 void setup () {
-  size(1000, 500);
+  size(1200, 240);
   //startTimer = new Timer(160);
   isStartMenuOn = true;
   Left = false;
@@ -24,48 +25,17 @@ void setup () {
   map = official.map;
   int endIndex = official.cols;
 
-  player = new Player(32*2+16, height-32*2);
+  player = new Player(sizeUnit*2+sizeUnit/2, height-sizeUnit*2);
   ArrayList<Enemy> enemies = new ArrayList<Enemy>();
-<<<<<<< HEAD
-  Level lvl1 = new Level(map, player, enemies, new float[]{32*2+16, height-32*2}, 1600);
-=======
-  Level lvl1 = new Level(map, player, enemies, new float[]{16*2+8, height-16*2}, endIndex * 16);
->>>>>>> 99b57b33aaf2b1401132c48d6868dc6f6f25a5d5
+  Level lvl1 = new Level(map, player, enemies, new float[]{sizeUnit*2+sizeUnit/2, height-sizeUnit*2}, endIndex * sizeUnit);
   levels.add(lvl1);
-  /*
-  for (int i = 0; i < lvl1.map.size(); i++) {
-    System.out.println(lvl1.map.get(i));
-    lvl1.map.remove(i);
-    i -= 1;
-  }*/
-
-  for (int x = 16; x <= lvl1.end+16; x += 32) {
-    lvl1.map.add(new Floor(x, height));
-    //lvl1.map.add(new Floor(x, height-32));
-    //if (x > width*0.25 && x < width*0.75) {
-    //  lvl1.map.add(new Brick(null, x, height-32*2));
-    //}
-    //if (x > width*0.25+32 && x < width*0.75) {
-    //  lvl1.map.add(new Brick(null, x, height-32*3));
-    //}
-    //if (x > width*0.25+32*2 && x < width*0.75) {
-    //  lvl1.map.add(new Brick(null, x, height-32*4));
-    //}
-    //if (x > width*0.25+32*3 && x < width*0.75) {
-    //  lvl1.map.add(new Brick(null, x, height-32*5));
-    }
   
-  enemies.add(new Goomba(lvl1.end-32, height-32*2));
+  enemies.add(new Goomba(lvl1.end-sizeUnit, height-sizeUnit*2));
 }
 
 void draw() {
   Level currentlvl = levels.get(0);
   background(95, 200, 245);
-<<<<<<< HEAD
-  image(loadImage("Textures/castle.png"), currentlvl.start[0], currentlvl.start[1]-32*2);
-=======
-  //image(loadImage("Textures/castle.png"), currentlvl.start[0], currentlvl.start[1]-16*2);
->>>>>>> 99b57b33aaf2b1401132c48d6868dc6f6f25a5d5
   imageMode(CENTER);
 
   for (Block b : currentlvl.map) {

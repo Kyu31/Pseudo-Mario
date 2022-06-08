@@ -11,12 +11,12 @@ public class Player extends Entity {
   //Timer invinDuration;
 
   public Player(float x, float y) {
-    super("Mario", x, y, "Mario_idleRight", 0, 0, 2);
+    super("Mario", x, y, sizeUnit, 2*sizeUnit, "Mario_idleRight", 0, 0, 2);
     points = 0;
     accelerationX = 0;
     accelerationY = 0;
     friction = 0.85;
-    jump = -16;
+    jump = -7;
     direction = "Right";
     invincible = false;
     //invinDuration = new Timer(??);
@@ -65,8 +65,6 @@ public class Player extends Entity {
   }
 
   public void move() {
-    w = texture.images.get(texture.frame).width;
-    h = texture.images.get(texture.frame).height;
     if (Left && !Right) {
       accelerationX = -0.05;
       friction = 1;
@@ -125,8 +123,8 @@ public class Player extends Entity {
     if (ySpeed > 2*maxSpeed) {
       ySpeed = 2*maxSpeed;
     }
-    if (ySpeed < 4*-maxSpeed) {
-      ySpeed = 4*-maxSpeed;
+    if (ySpeed < 3*-maxSpeed) {
+      ySpeed = 3*-maxSpeed;
     }
 
     x += xSpeed;
@@ -139,8 +137,8 @@ public class Player extends Entity {
       super.display(22, 1);
       break;
     case 1:                                        //small
-      //w = 16;
-      //h = 16;
+      w = sizeUnit;
+      h = sizeUnit;
       if (direction.equals("Right")) {
         if (!isOnFloor) {      
           super.display(13, 1);                 //jump
@@ -169,13 +167,13 @@ public class Player extends Entity {
       }
       break;
     case 2:                                        //big
-      //w = 16;
-      //h = 32;
+      w = sizeUnit;
+      h = 2*sizeUnit;
       if (direction.equals("Right")) {
         if (!isOnFloor) {
           super.display(2, 1, 1);                  //jump
         } else if (Down) {
-          //h = 16;
+          h = 11/16*sizeUnit;
           super.display(1, 1);                //duck
         } else if (abs(accelerationX) > 0) {
           if (Shift) {

@@ -1,6 +1,6 @@
 public class Goomba extends Enemy {
   public Goomba(float xcor, float ycor) {
-    super("goomba", xcor, ycor, "goomba0000", 100);
+    super("goomba", xcor, ycor, sizeUnit, sizeUnit, "goomba0000", 100);
     texture.addFrames("goomba0001", 1);
   }
 
