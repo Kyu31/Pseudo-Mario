@@ -9,6 +9,7 @@ boolean Up;
 boolean Down;
 boolean Shift;
 final int sizeUnit = 16;
+int endIndex;
 
 void setup () {
   size(1200, 240);
