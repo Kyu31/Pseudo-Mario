@@ -8,11 +8,10 @@ boolean Right;
 boolean Up;
 boolean Down;
 boolean Shift;
-Level lvl1;
-int endIndex;
+final int sizeUnit = 16;
 
 void setup () {
-  size(800, 400);
+  size(1200, 240);
   //startTimer = new Timer(160);
   isStartMenuOn = true;
   Left = false;
@@ -26,39 +25,17 @@ void setup () {
   map = official.map;
   endIndex = official.cols;
 
-  player = new Player(16*2+8, height-16*2);
+  player = new Player(sizeUnit*2+sizeUnit/2, height-sizeUnit*2);
   ArrayList<Enemy> enemies = new ArrayList<Enemy>();
-  lvl1 = new Level(map, player, enemies, new float[]{16*2+8, height-16*2}, endIndex * 16);
+  Level lvl1 = new Level(map, player, enemies, new float[]{sizeUnit*2+sizeUnit/2, height-sizeUnit*2}, endIndex * sizeUnit);
   levels.add(lvl1);
-  /*
-  for (int i = 0; i < lvl1.map.size(); i++) {
-    System.out.println(lvl1.map.get(i));
-    lvl1.map.remove(i);
-    i -= 1;
-  }*/
-
-  for (int x = 8; x <= lvl1.end; x += 16) {
-    lvl1.map.add(new Floor(x, height));
-    lvl1.map.add(new Floor(x, height-16));
-    //if (x > width*0.25 && x < width*0.75) {
-      //lvl1.map.add(new Brick(null, x, height-16*2));
-    //}
-    //if (x > width*0.25+16 && x < width*0.75) {
-     // lvl1.map.add(new Brick(null, x, height-16*3));
-    //}
-    //if (x > width*0.25+16*2 && x < width*0.75) {
-     // lvl1.map.add(new Brick(null, x, height-16*4));
-    //}
-    //if (x > width*0.25+16*3 && x < width*0.75) {
-     // lvl1.map.add(new Brick(null, x, height-16*5));
-    //}
-  }
+  
+  enemies.add(new Goomba(lvl1.end-sizeUnit, height-sizeUnit*2));
 }
 
 void draw() {
   Level currentlvl = levels.get(0);
   background(95, 200, 245);
-  //image(loadImage("Textures/castle.png"), currentlvl.start[0], currentlvl.start[1]-16*2);
   imageMode(CENTER);
   
   if ((player.accelerationX > 0) && (player.x >= width - 160) /*&& (lvl1.map.get(1).x + 5 * 16 >= 800)*/){
@@ -75,6 +52,12 @@ void draw() {
   for (Block b : currentlvl.map) {
     b.display(0, 1, 1);
     b.event(currentlvl);
+  }
+  
+  for (Enemy enemies : currentlvl.enemies){
+    enemies.hitBoundary(levels.get(0));
+    enemies.move();
+    enemies.display(0, 2);
   }
 
   if (!currentlvl.cleared) {

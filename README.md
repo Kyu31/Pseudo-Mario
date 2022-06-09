@@ -32,6 +32,10 @@ Development Log:
 
       6/5: I have added background and tested bricks. I have changed the parameters of Asset and fixed the sub classes' constructors. I have created the Enemy & Goomba classes.
 
+      6/6: I have fixed the idle animation for the player & added debug code for collision. I have begun testing goombas.
+
+      6/7: I have implemented a global variable of sizeUnit & used it to dictate size in Asset's w & h. I have added floor as one of the blocks being read in by the file for map.
+
     Emily Young-Squire
       5/23: I have begun to write the skeletons for the Asset class instance variables and methods we have planned.
 

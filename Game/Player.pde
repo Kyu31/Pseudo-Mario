@@ -11,7 +11,7 @@ public class Player extends Entity {
   //Timer invinDuration;
 
   public Player(float x, float y) {
-    super("Mario", x, y, "Mario_idleRight", 0, 0, 2);
+    super("Mario", x, y, sizeUnit, 2*sizeUnit, "Mario_idleRight", 0, 0, 2);
     points = 0;
     accelerationX = 0;
     accelerationY = 0;
@@ -84,8 +84,9 @@ public class Player extends Entity {
       friction = 1;
     }
     if (Down && !Up) {
+      accelerationX = 0;
       accelerationY = 0.2;
-      friction = 1;
+      friction = 0.85;
     }
     if (!Up && !Down) {
       accelerationY = 0;
@@ -133,72 +134,78 @@ public class Player extends Entity {
   public void display() {
     switch(lives) {
     case 0:                                        //death
-      super.display(22, 1, 1);
+      super.display(22, 1);
       break;
     case 1:                                        //small
+      w = sizeUnit;
+      h = sizeUnit;
       if (direction.equals("Right")) {
         if (!isOnFloor) {      
-          super.display(13, 1, 1);                 //jump
+          super.display(13, 1);                 //jump
         } else if (abs(accelerationX) > 0) {
           if (Shift) {
-            super.display(14, 3, 3);               //run
+            super.display(14, 3, 8);               //run
           } else {
-            super.display(14, 3, 5);               //walk
+            super.display(14, 3, 10);               //walk
           }
-        } else /*if (isOnFloor && !(Left || Right || Up))*/ {
-          super.display(12, 1, 1);                 //idle
+        } else {
+          super.display(12, 1);                 //idle
         }
       }
       if (direction.equals("Left")) {
         if (!isOnFloor) {
-          super.display(18, 1, 1);                 //jump
+          super.display(18, 1);                 //jump
         } else if (abs(accelerationX) > 0) {
           if (Shift) {
-            super.display(19, 3, 3);               //run
+            super.display(19, 3, 8);               //run
           } else {
-            super.display(19, 3, 5);               //walk
+            super.display(19, 3, 10);               //walk
           }
-        } else /*if (isOnFloor && !(Left || Right || Up))*/ {
-          super.display(17, 1, 1);                 //idle
+        } else {
+          super.display(17, 1);                 //idle
         }
       }
       break;
     case 2:                                        //big
+      w = sizeUnit;
+      h = 2*sizeUnit;
       if (direction.equals("Right")) {
         if (!isOnFloor) {
           super.display(2, 1, 1);                  //jump
+        } else if (Down) {
+          h = 11/16*sizeUnit;
+          super.display(1, 1);                //duck
         } else if (abs(accelerationX) > 0) {
           if (Shift) {
-            super.display(3, 3, 3);                //run
+            super.display(3, 3, 8);                //run
           } else {
-            super.display(3, 3, 5);                //walk
+            super.display(3, 3, 10);                //walk
           }
-        } else if (Down) {
-          super.display(1, 1, 1);                //duck
         } else {
-          super.display(0, 1, 1);                //idle
+          super.display(0, 1);                //idle
         }
       }
       if (direction.equals("Left")) {
         if (!isOnFloor) {
           super.display(8, 1, 1);                  //jump
+        } else if (Down) {
+          //h = 16;
+          super.display(7, 1);                //duck
         } else if (abs(accelerationX) > 0) {
           if (Shift) {
-            super.display(9, 3, 3);                //run
+            super.display(9, 3, 8);                //run
           } else {
-            super.display(9, 3, 5);                //walk
+            super.display(9, 3, 10);                //walk
           }
-        } else if (Down) {
-          super.display(7, 1, 1);                //duck
         } else {
-          super.display(6, 1, 1);                //idle
+          super.display(6, 1);                //idle
         }
       }
       break;
     }
   }
-  
-  public boolean isNearEdge(Level lvl){
+
+  public boolean isNearEdge(Level lvl) {
     return false;
   }
 

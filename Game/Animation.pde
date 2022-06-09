@@ -21,12 +21,12 @@ public class Animation {
     }
   }
 
-  void display(int startFrame, int frames, int delay, float x, float y) {
+  void display(int startFrame, int frames, int delay, float x, float y, float w, float h) {
     if (currentTime == 0) {
       frame = (frame+1) % frames;
     }
     currentTime = (currentTime+1) % delay;
 
-    image(images.get(frame+startFrame), x, y);
+    image(images.get(frame+startFrame), x, y, w, h);
   }
 }
