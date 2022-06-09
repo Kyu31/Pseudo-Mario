@@ -9,6 +9,7 @@ boolean Up;
 boolean Down;
 boolean Shift;
 final int sizeUnit = 16;
+Level lvl1;
 int endIndex;
 
 void setup () {
