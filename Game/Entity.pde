@@ -1,13 +1,14 @@
 public class Entity extends Asset {
   float xSpeed;
   float ySpeed;
-  float gravity = 0.3;
+  float gravity = 0.5;
   int lives;
   boolean isOnFloor;
   String sideColliding;
+  boolean debug = true;
 
-  public Entity(String name, float x, float y, String startImg, float dx, float dy, int life) {
-    super(name, x, y, new ArrayList<PImage>(), startImg);
+  public Entity(String name, float x, float y, float base, float length, String startImg, float dx, float dy, int life) {
+    super(name, x, y, base, length, new ArrayList<PImage>(), startImg);
     xSpeed = dx;
     ySpeed = dy;
     lives = life;
@@ -29,7 +30,7 @@ public class Entity extends Asset {
     }
   }
 
-  public String sideColliding(Block other) {
+  public String sideColliding(Asset other) {
     float dx = x - other.x;
     float dy = y - other.y;
 
@@ -44,17 +45,33 @@ public class Entity extends Asset {
         if (overlapX >= overlapY) {
           if (dy > 0) {
             y += overlapY;
+            if (debug) {
+              fill(0); //white
+              rect(other.x-other.w/2, other.y-other.h/2, other.w, other.h);
+            }
             return "top";
           } else {
             y -= overlapY;
+            if (debug) {
+              fill(255); //black
+              rect(other.x-other.w/2, other.y-other.h/2, other.w, other.h);
+            }
             return "bottom";
           }
         } else {
           if (dx > 0) {
             x += overlapX;
+            if (debug) {
+              fill(100); //light gray
+              rect(other.x-other.w/2, other.y-other.h/2, other.w, other.h);
+            }
             return "left";
           } else {
             x -= overlapX;
+            if (debug) {
+              fill(200); //dark gray
+              rect(other.x-other.w/2, other.y-other.h/2, other.w, other.h);
+            }
             return "right";
           }
         }
@@ -62,7 +79,7 @@ public class Entity extends Asset {
         return "none";
       }
     }
-    if(lives == 0){
+    if (lives == 0) {
       return "none";
     }
     return "none";

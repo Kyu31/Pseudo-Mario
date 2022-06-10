@@ -32,6 +32,12 @@ Development Log:
 
       6/5: I have added background and tested bricks. I have changed the parameters of Asset and fixed the sub classes' constructors. I have created the Enemy & Goomba classes.
 
+      6/6: I have fixed the idle animation for the player & added debug code for collision. I have begun testing goombas.
+
+      6/7: I have implemented a global variable of sizeUnit & used it to dictate size in Asset's w & h. I have added floor as one of the blocks being read in by the file for map.
+
+      6/9: I have merged the Map class into Level to create a constructor for Level that takes in a file & added new fields for different aspects to be displayed such as background. I have moved all the displaying for assets into a display function for the level.
+
     Emily Young-Squire
       5/23: I have begun to write the skeletons for the Asset class instance variables and methods we have planned.
 
@@ -60,3 +66,5 @@ Development Log:
       6/4: I have begun and finished the new subclass of the block class, flag class, and added a corresponding new instance variable to the Game class (won).
 
       6/5: I have begun and finished the new subclass of the block class, trap class, and added a corresponding new instance variable to the Game class (died).
+
+      6/6: I have figured out how to create a map file that can be read into the program to generate the map of blocks that will appear on the screen (extending beyond the dimensions of the window) and will later include the location of other assets.
