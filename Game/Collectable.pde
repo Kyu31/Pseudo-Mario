@@ -6,8 +6,8 @@ public class Collectable extends Asset {
     value = vals;
   }
 
-  public void event(Level lvl) {
-    lvl.player.collect(this);
-    //this.setDisplay(false);
+  public void event(Level lvl, Player player) {
+    player.points += value;
+    //remove collectable from collectables list
   }
 }

@@ -3,8 +3,8 @@ public class Flag extends Block {
     super(null, breaks, true, n, xcor, ycor, 1/8*sizeUnit, 10*sizeUnit, startImg);
   }
 
-  public void event(Level lvl) {
-    if (!lvl.player.sideColliding(this).equals("none")) {
+  public void event(Level lvl, Player player) {
+    if (!player.sideColliding(this).equals("none")) {
       lvl.cleared = true;
     }
   }
