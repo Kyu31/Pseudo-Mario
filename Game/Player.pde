@@ -206,9 +206,4 @@ public class Player extends Entity {
   public boolean isNearEdge(Level lvl) {
     return false;
   }
-
-  public void collect(Collectable item) {
-    player.points += item.value;
-    //remove collectable from collectables list
-  }
 }
