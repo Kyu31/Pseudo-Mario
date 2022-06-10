@@ -36,6 +36,8 @@ Development Log:
 
       6/7: I have implemented a global variable of sizeUnit & used it to dictate size in Asset's w & h. I have added floor as one of the blocks being read in by the file for map.
 
+      6/9: I have merged the Map class into Level to create a constructor for Level that takes in a file & added new fields for different aspects to be displayed such as background. I have moved all the displaying for assets into a display function for the level.
+
     Emily Young-Squire
       5/23: I have begun to write the skeletons for the Asset class instance variables and methods we have planned.
 
