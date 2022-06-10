@@ -10,10 +10,9 @@ boolean Down;
 boolean Shift;
 final int sizeUnit = 16;
 Level lvl1;
-int endIndex;
 
 void setup () {
-  size(1200, 240);
+  size(800, 400);
   //startTimer = new Timer(160);
   isStartMenuOn = true;
   Left = false;
@@ -25,12 +24,17 @@ void setup () {
   levels = new ArrayList<Level>();
   Map official = new Map("BlockMap.txt");
   map = official.map;
-  endIndex = official.cols;
+  int endIndex = official.cols;
 
   player = new Player(sizeUnit*2+sizeUnit/2, height-sizeUnit*2);
   ArrayList<Enemy> enemies = new ArrayList<Enemy>();
   Level lvl1 = new Level(map, player, enemies, new float[]{sizeUnit*2+sizeUnit/2, height-sizeUnit*2}, endIndex * sizeUnit);
   levels.add(lvl1);
+  
+  for (int x = 8; x <= lvl1.end; x += 16) {
+    lvl1.map.add(new Floor(x, height));
+    lvl1.map.add(new Floor(x, height-16));
+  }
   
   enemies.add(new Goomba(lvl1.end-sizeUnit, height-sizeUnit*2));
 }
