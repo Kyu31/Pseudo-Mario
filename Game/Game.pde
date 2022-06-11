@@ -32,7 +32,7 @@ void setup () {
     lvl1.map.add(new Floor(x, height-16));
   }
   
-  enemies.add(new Goomba(lvl1.end-sizeUnit, height-sizeUnit*2));
+  //enemies.add(new Goomba(lvl1.end-sizeUnit, height-sizeUnit*2));
 }
 
 void draw() {
@@ -40,7 +40,7 @@ void draw() {
   background(95, 200, 245);
   imageMode(CENTER);
   
-  if ((player.accelerationX > 0) && (player.x >= width - 160) /*&& (lvl1.map.get(1).x + 5 * 16 >= 800)*/){
+  /*if ((player.accelerationX > 0) && (player.x >= 800 - 160) /*&& (lvl1.map.get(1).x + 5 * 16 >= 800)){
     for (Block b : map) {
       b.x -= (32) * player.accelerationX;
     }
@@ -49,7 +49,7 @@ void draw() {
     for (Block b : map) {
       b.x += (32) * -1 * player.accelerationX;
     }
-  }
+  }*/
 
   currentlvl.display();
 }
