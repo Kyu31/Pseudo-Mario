@@ -59,9 +59,9 @@ public class Level {
     }
     
     for (Block b : map) {
-      if (b.x >= 0 && b.x <= 400) {
+      //if (b.x >= 0 && b.x <= 400) {
         b.display(0, 1);
-      }
+      //}
       b.event(this, player);
     }
     
@@ -85,5 +85,15 @@ public class Level {
   }
 
   public void scroll() {
+    if ((player.accelerationX > 0) && (player.x >= 800 - 160) /*&& (lvl1.map.get(1).x + 5 * 16 >= 800)*/){
+      for (Block b : map) {
+        b.x -= (32) * player.accelerationX;
+      }
+    }
+    if ((player.accelerationX < 0) && (player.x <= 160) && (lvl1.map.get(0).x - 32 <= -1)) {
+      for (Block b : map) {
+        b.x += (32) * -1 * player.accelerationX;
+      }
+    }
   }
 }
