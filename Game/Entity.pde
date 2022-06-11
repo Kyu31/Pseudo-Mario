@@ -49,6 +49,7 @@ public class Entity extends Asset {
               fill(0); //white
               rect(other.x-other.w/2, other.y-other.h/2, other.w, other.h);
             }
+            System.out.println("TOP");
             return "top";
           } else {
             y -= overlapY;
@@ -56,22 +57,25 @@ public class Entity extends Asset {
               fill(255); //black
               rect(other.x-other.w/2, other.y-other.h/2, other.w, other.h);
             }
+            System.out.println("BOTTOM");
             return "bottom";
           }
         } else {
-          if (dx > 0) {
+          if (dx == 0) {
             x += overlapX;
             if (debug) {
               fill(100); //light gray
               rect(other.x-other.w/2, other.y-other.h/2, other.w, other.h);
             }
+            System.out.println("LEFT: y = " + other.y + " x = " + other.x + " actual x = " + x + " actual y = " + y);
             return "left";
-          } else {
+          } else if (dx < 0) {
             x -= overlapX;
             if (debug) {
               fill(200); //dark gray
               rect(other.x-other.w/2, other.y-other.h/2, other.w, other.h);
             }
+            System.out.println("RIGHT");
             return "right";
           }
         }
