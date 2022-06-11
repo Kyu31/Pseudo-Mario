@@ -65,7 +65,6 @@ public class Entity extends Asset {
               fill(100); //light gray
               rect(other.x-other.w/2, other.y-other.h/2, other.w, other.h);
             }
-            System.out.println("LEFT: y = " + other.y + " x = " + other.x + " actual x = " + x + " actual y = " + y);
             return "left";
           } 
           if (dx < 0) {
