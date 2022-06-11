@@ -9,6 +9,7 @@ boolean Down;
 boolean Shift;
 final int sizeUnit = 16;
 Level lvl1;
+Screen menu;
 
 void setup () {
   size(800, 400);
@@ -19,6 +20,8 @@ void setup () {
   Up = false;
   Down = false;
   Shift = false;
+  menu = new Screen();
+  menu.switchScreen("level");
 
   levels = new ArrayList<Level>();
 
@@ -33,8 +36,10 @@ void draw() {
   Level currentlvl = levels.get(0);
   background(95, 200, 245);
   imageMode(CENTER);
-
-  currentlvl.display();
+  
+  if (menu.current == 1) {
+    currentlvl.display();
+  }
 }
 
 //movement keys, powerups
