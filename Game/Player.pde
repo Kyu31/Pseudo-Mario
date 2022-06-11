@@ -105,16 +105,15 @@ public class Player extends Entity {
     if (Shift) {
       if (xSpeed > maxSpeed) {
         xSpeed = maxSpeed;
-      }
-      if (xSpeed < -maxSpeed) {
-        xSpeed = -maxSpeed;
+      } else if (xSpeed < - 1 * maxSpeed) {
+        xSpeed = -1 * maxSpeed;
       }
     } else {
       if (xSpeed > maxSpeed/2) {
         xSpeed = maxSpeed/2;
       }
-      if (xSpeed < -maxSpeed/2) {
-        xSpeed = -maxSpeed/2;
+      if (xSpeed < -1 * maxSpeed/2) {
+        xSpeed = -1 * maxSpeed/2;
       }
     }
 
@@ -127,7 +126,9 @@ public class Player extends Entity {
 
     x += xSpeed;
     y += ySpeed;
-  }
+    
+    System.out.println(xSpeed);
+  } 
 
   public void display() {
     switch(lives) {
