@@ -16,7 +16,8 @@ public class Screen {
       current = 1;
     } else if (newScreen.equals("end")) {
       current = 2;
-    } else 
+    }
+  }
   
   /*public void display(int index) {
     if (
