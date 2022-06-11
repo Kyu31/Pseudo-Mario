@@ -59,7 +59,9 @@ public class Level {
     }
     
     for (Block b : map) {
-      b.display(0, 1);
+      if (b.x >= 0 && b.x <= 400) {
+        b.display(0, 1);
+      }
       b.event(this, player);
     }
     
