@@ -2,7 +2,7 @@ public class Player extends Entity {
   int points;
   float accelerationX;
   float accelerationY;
-  final float maxSpeed = 4;
+  final float maxSpeed = 5;
   float friction;
   float jump;
   String direction;
