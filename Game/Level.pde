@@ -86,20 +86,20 @@ public class Level {
   }
 
   public void scroll() {
-    if ((player.accelerationX > 0) && (player.x >= 800 - 320) /*&& (lvl1.map.get(1).x + 5 * 16 >= 800)*/){
+    if ((player.accelerationX > 0) && (player.x >= 300) && (background.get(background.size() - 1).x + 32 >= 800)){
       for (Block b : map) {
-        b.x -= (32) * player.accelerationX;
+        b.x -= (32) * player.accelerationX * 1.5;
       }
       for (Asset a : background) {
-        a.x -= (32) * player.accelerationX;
+        a.x -= (32) * player.accelerationX * 1.5;
       }
     }
-    if ((player.accelerationX < 0) && (player.x <= 320) && (background.get(0).x - 32 <= -1)) {
+    if ((player.accelerationX < 0) && (player.x <= 400) && (background.get(0).x - 32 <= -1)) {
       for (Block b : map) {
-        b.x += (32) * -1 * player.accelerationX;
+        b.x += (32) * -1 * player.accelerationX * 1.5;
       }
       for (Asset a : background) {
-        a.x += (32) * -1 * player.accelerationX;
+        a.x += (32) * -1 * player.accelerationX * 1.5;
       }
     }
   }
