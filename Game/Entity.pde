@@ -59,14 +59,16 @@ public class Entity extends Asset {
             return "bottom";
           }
         } else {
-          if (dx == 0) {
+          if ((dx > 0) && (dy > 0)) {
             x += overlapX;
             if (debug) {
               fill(100); //light gray
               rect(other.x-other.w/2, other.y-other.h/2, other.w, other.h);
             }
+            System.out.println("LEFT: y = " + other.y + " x = " + other.x + " actual x = " + x + " actual y = " + y);
             return "left";
-          } else if (dx < 0) {
+          } 
+          if (dx < 0) {
             x -= overlapX;
             if (debug) {
               fill(200); //dark gray
