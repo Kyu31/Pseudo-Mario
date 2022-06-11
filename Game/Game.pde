@@ -22,13 +22,9 @@ void setup () {
   Shift = false;
 
   levels = new ArrayList<Level>();
-  Map official = new Map("BlockMap.txt");
-  map = official.map;
-  int endIndex = official.cols;
 
-  player = new Player(sizeUnit*2+sizeUnit/2, height-sizeUnit*2);
-  ArrayList<Enemy> enemies = new ArrayList<Enemy>();
-  Level lvl1 = new Level(map, player, enemies, new float[]{sizeUnit*2+sizeUnit/2, height-sizeUnit*2}, endIndex * sizeUnit);
+  Level lvl1 = new Level("Levels/BlockMap.txt");
+  player = new Player(lvl1);
   levels.add(lvl1);
   
   for (int x = 8; x <= lvl1.end; x += 16) {
@@ -55,23 +51,7 @@ void draw() {
     }
   }
 
-  for (Block b : currentlvl.map) {
-    b.display(0, 1, 1);
-    b.event(currentlvl);
-  }
-  
-  for (Enemy enemies : currentlvl.enemies){
-    enemies.hitBoundary(levels.get(0));
-    enemies.move();
-    enemies.display(0, 2);
-  }
-
-  if (!currentlvl.cleared) {
-    player.hitBoundary(levels.get(0));
-    player.move();
-    player.display();
-    text("Coords: " + player.x + ", " + player.y, 20, 20);
-  }
+  currentlvl.display();
 }
 
 //movement keys, powerups

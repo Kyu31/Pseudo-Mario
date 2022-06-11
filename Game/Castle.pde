@@ -1,7 +1,6 @@
-public class Castle extends Block {
+public class Castle extends Asset {
 
-  public Castle(Collectable contains, float xcor, float ycor) {
-    super(contains, true, true, "castle", xcor, ycor, 5*sizeUnit, 5*sizeUnit, "castle");
-    isCastle = true;
+  public Castle(float xcor, float ycor) {
+    super("castle", xcor, ycor, 5*sizeUnit, 5*sizeUnit, new ArrayList<PImage>(), "castle");
   }
 }

@@ -10,13 +10,13 @@ public class Player extends Entity {
   boolean invincible;
   //Timer invinDuration;
 
-  public Player(float x, float y) {
-    super("Mario", x, y, sizeUnit, 2*sizeUnit, "Mario_idleRight", 0, 0, 2);
+  public Player(Level lvl) {
+    super("Mario", lvl.start[0], lvl.start[1], sizeUnit, 2*sizeUnit, "Mario_idleRight", 0, 0, 2);
     points = 0;
     accelerationX = 0;
     accelerationY = 0;
     friction = 0.85;
-    jump = -7;
+    jump = -9;
     direction = "Right";
     invincible = false;
     //invinDuration = new Timer(??);
@@ -42,9 +42,7 @@ public class Player extends Entity {
     super.hitBoundary(lvl);
 
     for (Block block : lvl.map) {
-      if (!block.isCastle) {
-        sideColliding = sideColliding(block);
-      }
+      sideColliding = sideColliding(block);
       if (sideColliding.equals("bottom") && ySpeed >= 0) {
         isOnFloor = true;
         ySpeed = 0;
@@ -173,7 +171,7 @@ public class Player extends Entity {
         if (!isOnFloor) {
           super.display(2, 1, 1);                  //jump
         } else if (Down) {
-          h = 11/16*sizeUnit;
+          //h = 11/16*sizeUnit;
           super.display(1, 1);                //duck
         } else if (abs(accelerationX) > 0) {
           if (Shift) {
@@ -207,11 +205,5 @@ public class Player extends Entity {
 
   public boolean isNearEdge(Level lvl) {
     return false;
-  }
-
-  public void breaks(Block other) {
-  }
-
-  public void collect(Collectable other) {
   }
 }

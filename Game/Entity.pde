@@ -30,7 +30,7 @@ public class Entity extends Asset {
     }
   }
 
-  public String sideColliding(Block other) {
+  public String sideColliding(Asset other) {
     float dx = x - other.x;
     float dy = y - other.y;
 
@@ -46,14 +46,14 @@ public class Entity extends Asset {
           if (dy > 0) {
             y += overlapY;
             if (debug) {
-              fill(0);
+              fill(0); //white
               rect(other.x-other.w/2, other.y-other.h/2, other.w, other.h);
             }
             return "top";
           } else {
             y -= overlapY;
             if (debug) {
-              fill(255);
+              fill(255); //black
               rect(other.x-other.w/2, other.y-other.h/2, other.w, other.h);
             }
             return "bottom";
@@ -62,14 +62,14 @@ public class Entity extends Asset {
           if (dx > 0) {
             x += overlapX;
             if (debug) {
-              fill(100);
+              fill(100); //light gray
               rect(other.x-other.w/2, other.y-other.h/2, other.w, other.h);
             }
             return "left";
           } else {
             x -= overlapX;
             if (debug) {
-              fill(200);
+              fill(200); //dark gray
               rect(other.x-other.w/2, other.y-other.h/2, other.w, other.h);
             }
             return "right";
