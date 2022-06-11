@@ -82,17 +82,24 @@ public class Level {
       player.display();
       text("Coords: " + player.x + ", " + player.y, 20, 20);
     }
+    scroll();
   }
 
   public void scroll() {
-    if ((player.accelerationX > 0) && (player.x >= 800 - 160) /*&& (lvl1.map.get(1).x + 5 * 16 >= 800)*/){
+    if ((player.accelerationX > 0) && (player.x >= 800 - 320) /*&& (lvl1.map.get(1).x + 5 * 16 >= 800)*/){
       for (Block b : map) {
         b.x -= (32) * player.accelerationX;
       }
+      for (Asset a : background) {
+        a.x -= (32) * player.accelerationX;
+      }
     }
-    if ((player.accelerationX < 0) && (player.x <= 160) && (lvl1.map.get(0).x - 32 <= -1)) {
+    if ((player.accelerationX < 0) && (player.x <= 320) && (background.get(0).x - 32 <= -1)) {
       for (Block b : map) {
         b.x += (32) * -1 * player.accelerationX;
+      }
+      for (Asset a : background) {
+        a.x += (32) * -1 * player.accelerationX;
       }
     }
   }
