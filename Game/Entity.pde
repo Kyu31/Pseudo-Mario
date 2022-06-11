@@ -59,14 +59,14 @@ public class Entity extends Asset {
             return "bottom";
           }
         } else {
-          if (dx > 0) {
+          if (dx == 0) {
             x += overlapX;
             if (debug) {
               fill(100); //light gray
               rect(other.x-other.w/2, other.y-other.h/2, other.w, other.h);
             }
             return "left";
-          } else {
+          } else if (dx < 0) {
             x -= overlapX;
             if (debug) {
               fill(200); //dark gray

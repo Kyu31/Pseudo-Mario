@@ -111,8 +111,7 @@ public class Player extends Entity {
     } else {
       if (xSpeed > maxSpeed/2) {
         xSpeed = maxSpeed/2;
-      }
-      if (xSpeed < -1 * maxSpeed/2) {
+      } else if (xSpeed < -1 * maxSpeed/2) {
         xSpeed = -1 * maxSpeed/2;
       }
     }
@@ -126,8 +125,6 @@ public class Player extends Entity {
 
     x += xSpeed;
     y += ySpeed;
-    
-    System.out.println(xSpeed);
   } 
 
   public void display() {
