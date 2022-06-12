@@ -35,7 +35,7 @@ public class Level {
         }
         //collectables
         if (lines[r].charAt(c) == 'o') {
-          collectables.add(new Collectable(1, "coin", sizeUnit/2 + c*sizeUnit, height-(rows-1)*sizeUnit + r*sizeUnit - 3, 14, 16, "Coin"));
+          collectables.add(new Collectable(5, "coin", sizeUnit/2 + c*sizeUnit, height-(rows-1)*sizeUnit + r*sizeUnit - 3, 14, 16, "Coin"));
         }
         
         //blocks
@@ -46,6 +46,9 @@ public class Level {
           map.add(new Floor(sizeUnit/2 + c*sizeUnit, height-(rows-1)*sizeUnit + r*sizeUnit));
         }
         //enemies
+        if (lines[r].charAt(c) == 'g') {
+          enemies.add(new Goomba(sizeUnit/2 + c*sizeUnit, height-(rows-1)*sizeUnit + r*sizeUnit - 3));
+        }
 
         if (lines[r].charAt(c) == 'p') {
           start[0] = sizeUnit/2 + c*sizeUnit;
@@ -69,13 +72,21 @@ public class Level {
     }
     
     for (int c = 0; c < collectables.size(); c++) {
-      if ((player.x + 3 >= collectables.get(c).x - 7) && (player.x - 3 <= collectables.get(c).x + 7) && (player.y >= collectables.get(c).y - 6) && (player.y <= collectables.get(c).y + 3)) {
+      if ((player.x + 3 >= collectables.get(c).x - 7) && (player.x - 3 <= collectables.get(c).x + 7) && (player.y >= collectables.get(c).y - 6) && (player.y <= collectables.get(c).y + 14)) {
         collectables.get(c).event(this, player);
+        player.points += collectables.get(c).value;
+        player.numCoins++;
         collectables.remove(c);
         c --;
       } else {
         collectables.get(c).event(this, player);
         collectables.get(c).display(0, 1);
+        collectables.get(c).x -= 2;
+        collectables.get(c).x -= 2;
+        collectables.get(c).x -= 2;
+        collectables.get(c).x += 2;
+        collectables.get(c).x += 2;
+        collectables.get(c).x += 2;
       }
     }
 
@@ -89,7 +100,9 @@ public class Level {
       player.hitBoundary(this);
       player.move();
       player.display();
-      text("Coords: " + player.x + ", " + player.y, 20, 20);
+      text("Coords: " + (int)player.x + ", " + (int)player.y, 20, 20);
+      text("Points: " + player.points, 150, 20);
+      text(" Coins x " + player.numCoins, 265, 20);
     }
     scroll();
   }
