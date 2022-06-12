@@ -103,7 +103,7 @@ void keyReleased () {
 
 //menu interactions
 void mouseClicked () {
-  if ((mouseX <= 440) && (mouseX >= 340) && (mouseY <= 340) && (mouseY >= 290)) {
+  if ((mouseX <= 450) && (mouseX >= 330) && (mouseY <= 350) && (mouseY >= 280)) {
     if (menu.current == 1) {
         menu.current = 2;
       }
