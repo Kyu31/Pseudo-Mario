@@ -11,8 +11,8 @@ public class Player extends Entity {
   //Timer invinDuration;
   int numCoins;
 
-  public Player(Level lvl) {
-    super("Mario", lvl.start[0], lvl.start[1], sizeUnit, 2*sizeUnit, "Mario_idleRight", 0, 0, 2);
+  public Player() {
+    super("Mario", 40, 300, sizeUnit, 2*sizeUnit, "Mario_idleRight", 0, 0, 2);
     points = 0;
     accelerationX = 0;
     accelerationY = 0;
