@@ -7,14 +7,9 @@ public class Collectable extends Asset {
   }
   
   public void display() {
-    x -= 2;
-    x -= 2;
-    x -= 2;
-    x += 2;
-    x += 2;
-    x += 2;
   }
 
-  public void event(Level lvl, Player player) {
+  public void event(Player player) {
+    player.points += value;
   }
 }
