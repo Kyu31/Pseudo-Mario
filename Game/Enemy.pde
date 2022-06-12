@@ -1,11 +1,10 @@
 public class Enemy extends Entity {
   int value;
-  double xSpeed;
   
   public Enemy(String n, float xcor, float ycor, float base, float length, String startImg, int points) {
     super(n, xcor, ycor, base, length, startImg, 0, 0, 1);
     value = points;
-    xSpeed = 1.5;
+    xSpeed = 1;
   }
   
   /*public void move() {
