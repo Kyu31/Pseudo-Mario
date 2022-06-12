@@ -1,6 +1,5 @@
 Player player;
 //Timer startTimer;
-boolean isStartMenuOn;
 ArrayList<Level> levels;
 boolean Left;
 boolean Right;
@@ -14,7 +13,6 @@ Screen menu;
 void setup () {
   size(800, 400);
   //startTimer = new Timer(160);
-  isStartMenuOn = true;
   Left = false;
   Right = false;
   Up = false;
@@ -28,8 +26,6 @@ void setup () {
   Level lvl1 = new Level("Levels/BlockMap.txt");
   player = new Player(lvl1);
   levels.add(lvl1);
-  
-  //enemies.add(new Goomba(lvl1.end-sizeUnit, height-sizeUnit*2));
 }
 
 void draw() {
