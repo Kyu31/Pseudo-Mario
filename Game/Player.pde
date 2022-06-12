@@ -9,6 +9,7 @@ public class Player extends Entity {
   //Collectable carrying;
   boolean invincible;
   //Timer invinDuration;
+  int numCoins;
 
   public Player(Level lvl) {
     super("Mario", lvl.start[0], lvl.start[1], sizeUnit, 2*sizeUnit, "Mario_idleRight", 0, 0, 2);
@@ -20,6 +21,7 @@ public class Player extends Entity {
     direction = "Right";
     invincible = false;
     //invinDuration = new Timer(??);
+    numCoins = 0;
 
     //frames
     texture.addFrames("Mario_duckRight", 1);          //1
