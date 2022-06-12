@@ -38,13 +38,12 @@ void draw() {
   if (menu.current == 3) {
     background(95, 200, 245);
     imageMode(CENTER);
-    currentlvl.display();
+    currentlvl.display(player);
   } else {
     background(0, 0, 0);
     imageMode(CENTER);
     //menu.display(menu.current);
     menu.display();
-    System.out.println("x: " + mouseX + " y: " + mouseY);
     if ((mouseX <= 430) && (mouseX >= 350) && (mouseY <= 330) && (mouseY >= 300)) {
       if (menu.current == 0) {
         menu.current = 1;
