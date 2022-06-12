@@ -11,20 +11,6 @@ public class Screen {
     screens[4] = "end";
   }
   
-  public void switchScreen(String newScreen) {
-    if (newScreen.equals("start")) {
-      current = 0;
-    } else if (newScreen.equals("clickedStart")) {
-      current = 1;
-    } else if (newScreen.equals("secondStart")) {
-      current = 2;
-    } else if (newScreen.equals("level")) {
-      current = 3;
-    } else if (newScreen.equals("end")) {
-      current = 4;
-    }
-  }
-  
   public void display() {
     if (current == 0) {
       PImage start = loadImage("Start.png");
@@ -41,6 +27,8 @@ public class Screen {
       secondStart.resize(800, 400);
       image(secondStart, 400, 200);
       fill(0);
+      delay(15);
+      current = 3;
     }
   }
   
