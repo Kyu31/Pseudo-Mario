@@ -91,8 +91,9 @@ public class Level {
     }
 
     for (Enemy enemies : enemies) {
-      enemies.hitBoundary(this);
+      System.out.println(enemies.x);
       enemies.move();
+      enemies.hitBoundary(this);
       enemies.display(0, 2);
     }
 
@@ -118,6 +119,9 @@ public class Level {
       for (Collectable c : collectables) {
         c.x -= (32) * player.accelerationX * 1.75;
       }
+      for (Enemy e : enemies) {
+        e.x -= (32) * player.accelerationX * 1.75;
+      }
     }
     if ((player.accelerationX < 0) && (player.x <= 400) && (background.get(0).x - 32 <= -1)) {
       for (Block b : map) {
@@ -128,6 +132,9 @@ public class Level {
       }
       for (Collectable c : collectables) {
         c.x += (32) * -1 * player.accelerationX * 1.75;
+      }
+      for (Enemy e : enemies) {
+        e.x += (32) * -1 * player.accelerationX * 1.75;
       }
     }
   }
