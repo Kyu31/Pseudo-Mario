@@ -91,7 +91,6 @@ public class Level {
     }
 
     for (Enemy enemies : enemies) {
-      System.out.println(enemies.x);
       enemies.move();
       enemies.hitBoundary(this);
       enemies.display(0, 2);
