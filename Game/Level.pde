@@ -69,7 +69,7 @@ public class Level {
     }
     
     for (int c = 0; c < collectables.size(); c++) {
-      if ((player.x + 3 >= collectables.get(c).x - 7) && (player.x - 3 <= collectables.get(c).x + 7) && (player.y >= collectables.get(c).y - 6)) {
+      if ((player.x + 3 >= collectables.get(c).x - 7) && (player.x - 3 <= collectables.get(c).x + 7) && (player.y >= collectables.get(c).y - 6) && (player.y <= collectables.get(c).y + 3)) {
         collectables.get(c).event(this, player);
         collectables.remove(c);
         c --;
