@@ -122,8 +122,10 @@ public class Player extends Entity {
     if (ySpeed < 3*-maxSpeed) {
       ySpeed = 3*-maxSpeed;
     }
-
-    x += xSpeed;
+    
+    if (!((x + xSpeed >= 800) || (x + xSpeed <= 0))) {
+      x += xSpeed;
+    }
     y += ySpeed;
   } 
 
