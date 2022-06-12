@@ -9,6 +9,14 @@ public class Collectable extends Asset {
   public void display() {
     x -= 1;
     delay(1);
+    x -= 1;
+    delay(1);
+    x -= 1;
+    delay(1);
+    x += 1;
+    delay(1);
+    x += 1;
+    delay(1);
     x += 1;
     delay(1);
   }
