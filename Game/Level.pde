@@ -29,15 +29,13 @@ public class Level {
     enemies = new ArrayList<Enemy>();
     for (int r = 0; r < rows; r++) {
       for (int c = 0; c < cols; c++) {
-        System.out.println(lines[r].charAt(c));
         //background
         if (lines[r].charAt(c) == 'c') {
           background.add(new Castle(sizeUnit/2 + c*sizeUnit, height-(rows-1)*sizeUnit + r*sizeUnit));
         }
         //collectables
         if (lines[r].charAt(c) == 'o') {
-          System.out.println("AYYYYY");
-          collectables.add(new Collectable(1, "coin", sizeUnit/2 + c*sizeUnit, height-(rows-1)*sizeUnit + r*sizeUnit, 14, 16, "Coin"));
+          collectables.add(new Collectable(1, "coin", sizeUnit/2 + c*sizeUnit, height-(rows-1)*sizeUnit + r*sizeUnit - 3, 14, 16, "Coin"));
         }
         
         //blocks
@@ -71,13 +69,13 @@ public class Level {
     }
     
     for (int c = 0; c < collectables.size(); c++) {
-      if ((player.x + 3 >= collectables.get(c).x - 7) && (player.x - 3 <= collectables.get(c).x + 7) && (player.y - 5 <= collectables.get(c).y + 5)) {
+      if ((player.x + 3 >= collectables.get(c).x - 7) && (player.x - 3 <= collectables.get(c).x + 7) && (player.y >= collectables.get(c).y - 6)) {
         collectables.get(c).event(this, player);
         collectables.remove(c);
         c --;
       } else {
-        collectables.get(c).display(0, 1);
         collectables.get(c).event(this, player);
+        collectables.get(c).display(0, 1);
       }
     }
 
