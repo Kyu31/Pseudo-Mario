@@ -3,12 +3,16 @@ public class Screen {
   int current = 0;
   
   public Screen() {
-    screens = new String[5];
+    screens = new String[9];
     screens[0] = "start";
     screens[1] = "clickedStart";
-    screens[2] = "secondStart";
-    screens[3] = "level";
-    screens[4] = "end";
+    screens[2] = "firstStart";
+    screens[3] = "lvl1";
+    screens[4] = "secondStart";
+    screens[5] = "lvl2";
+    screens[6] = "thirdStart";
+    screens[7] = "lvl3";
+    screens[8] = "end";
   }
   
   public void display() {
@@ -23,12 +27,26 @@ public class Screen {
       image(clickedStart, 400, 200);
       fill(0);
     } else if (current == 2) {
-      PImage secondStart = loadImage("Menus/SecondStart.png");
+      PImage firstStart = loadImage("Menus/firstStart.png");
+      firstStart.resize(800, 400);
+      image(firstStart, 400, 200);
+      fill(0);
+      delay(15);
+      current = 3;
+    } else if (current == 4) {
+      PImage secondStart = loadImage("Menus/secondStart.png");
       secondStart.resize(800, 400);
       image(secondStart, 400, 200);
       fill(0);
       delay(15);
-      current = 3;
+      current = 5;
+    } else if (current == 6) {
+      PImage secondStart = loadImage("Menus/thirdStart.png");
+      secondStart.resize(800, 400);
+      image(secondStart, 400, 200);
+      fill(0);
+      delay(15);
+      current = 7;
     }
   }
   

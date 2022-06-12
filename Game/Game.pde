@@ -23,18 +23,34 @@ void setup () {
 
   levels = new ArrayList<Level>();
 
-  Level lvl1 = new Level("Levels/BlockMap.txt");
-  player = new Player(lvl1);
+  Level lvl1 = new Level("Levels/lvl1.txt");
+  Level lvl2 = new Level("Levels/lvl2.txt");
+  Level lvl3 = new Level("Levels/lvl3.txt");
+  player = new Player();
   levels.add(lvl1);
+<<<<<<< HEAD
+=======
+  levels.add(lvl2);
+  levels.add(lvl3);
+  
+  //enemies.add(new Goomba(lvl1.end-sizeUnit, height-sizeUnit*2));
+>>>>>>> 3e7702e4326adb05069062cdb8e54d620d1177f5
 }
 
 void draw() {
-  Level currentlvl = levels.get(0);
-  
   if (menu.current == 3) {
     background(95, 200, 245);
     imageMode(CENTER);
+    Level currentlvl = levels.get(0);
     currentlvl.display(player);
+    System.out.println("playerX: " + player.x + " castle.x: " + currentlvl.background.get(currentlvl.background.size() - 1).x);
+    if (player.x >= currentlvl.background.get(currentlvl.background.size() - 1).x) {
+      System.out.println("YAYYYY");
+      player.x = 40;
+      player.y = 300;
+      menu.current++;
+      levels.remove(0);
+    }
   } else {
     background(0, 0, 0);
     imageMode(CENTER);
