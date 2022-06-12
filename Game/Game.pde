@@ -21,7 +21,7 @@ void setup () {
   Down = false;
   Shift = false;
   menu = new Screen();
-  menu.switchScreen("start");
+  menu.current = 0;
 
   levels = new ArrayList<Level>();
 
@@ -45,12 +45,15 @@ void draw() {
     //menu.display(menu.current);
     menu.display();
     System.out.println("x: " + mouseX + " y: " + mouseY);
-    if ((mouseX <= 448) && (mouseX >= 352) && (mouseY <= 213.5) && (mouseY >= 187.5)) {
-      menu.switchScreen("clickedStart");
-    } //else {
-      //menu.switchScreen("start");
-    //}
-    if (
+    if ((mouseX <= 430) && (mouseX >= 350) && (mouseY <= 330) && (mouseY >= 300)) {
+      if (menu.current == 0) {
+        menu.current = 1;
+      }
+    } else {
+      if (menu.current == 1) {
+        menu.current = 0;
+      }
+    }
   }
 }
 
@@ -101,7 +104,9 @@ void keyReleased () {
 
 //menu interactions
 void mouseClicked () {
-  if (((mouseX <= 448) && (mouseX >= 352) && (mouseY <= 213.5) && (mouseY >= 187.5)) {
-    menu.switchScreen("level");
+  if ((mouseX <= 440) && (mouseX >= 340) && (mouseY <= 340) && (mouseY >= 290)) {
+    if (menu.current == 1) {
+        menu.current = 2;
+      }
   }
 }
