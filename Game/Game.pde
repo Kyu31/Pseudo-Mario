@@ -21,7 +21,7 @@ void setup () {
   Down = false;
   Shift = false;
   menu = new Screen();
-  menu.switchScreen("level");
+  menu.current = 0;
 
   levels = new ArrayList<Level>();
 
@@ -34,11 +34,25 @@ void setup () {
 
 void draw() {
   Level currentlvl = levels.get(0);
-  background(95, 200, 245);
-  imageMode(CENTER);
   
-  if (menu.current == 1) {
-    currentlvl.display();
+  if (menu.current == 3) {
+    background(95, 200, 245);
+    imageMode(CENTER);
+    currentlvl.display(player);
+  } else {
+    background(0, 0, 0);
+    imageMode(CENTER);
+    //menu.display(menu.current);
+    menu.display();
+    if ((mouseX <= 430) && (mouseX >= 350) && (mouseY <= 330) && (mouseY >= 300)) {
+      if (menu.current == 0) {
+        menu.current = 1;
+      }
+    } else {
+      if (menu.current == 1) {
+        menu.current = 0;
+      }
+    }
   }
 }
 
@@ -89,4 +103,9 @@ void keyReleased () {
 
 //menu interactions
 void mouseClicked () {
+  if ((mouseX <= 440) && (mouseX >= 340) && (mouseY <= 340) && (mouseY >= 290)) {
+    if (menu.current == 1) {
+        menu.current = 2;
+      }
+  }
 }

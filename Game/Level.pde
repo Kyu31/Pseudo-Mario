@@ -29,12 +29,17 @@ public class Level {
     enemies = new ArrayList<Enemy>();
     for (int r = 0; r < rows; r++) {
       for (int c = 0; c < cols; c++) {
+        System.out.println(lines[r].charAt(c));
         //background
         if (lines[r].charAt(c) == 'c') {
           background.add(new Castle(sizeUnit/2 + c*sizeUnit, height-(rows-1)*sizeUnit + r*sizeUnit));
         }
         //collectables
-
+        if (lines[r].charAt(c) == 'o') {
+          System.out.println("AYYYYY");
+          collectables.add(new Collectable(1, "coin", sizeUnit/2 + c*sizeUnit, height-(rows-1)*sizeUnit + r*sizeUnit, 14, 16, "Coin"));
+        }
+        
         //blocks
         if (lines[r].charAt(c) == 'b') {
           map.add(new Brick(null, sizeUnit/2 + c*sizeUnit, height-(rows-1)*sizeUnit + r*sizeUnit));
@@ -53,7 +58,7 @@ public class Level {
     cleared = false;
   }
 
-  public void display() {
+  public void display(Player player) {
     for (Asset scenery : background) {
       scenery.display(0, 1);
     }
@@ -65,9 +70,15 @@ public class Level {
       b.event(this, player);
     }
     
-    for (Collectable c : collectables) {
-      c.display(0, 1);
-      c.event(this, player);
+    for (int c = 0; c < collectables.size(); c++) {
+      if ((player.x + 3 >= collectables.get(c).x - 7) && (player.x - 3 <= collectables.get(c).x + 7) && (player.y - 5 <= collectables.get(c).y + 5)) {
+        collectables.get(c).event(this, player);
+        collectables.remove(c);
+        c --;
+      } else {
+        collectables.get(c).display(0, 1);
+        collectables.get(c).event(this, player);
+      }
     }
 
     for (Enemy enemies : enemies) {
@@ -88,18 +99,24 @@ public class Level {
   public void scroll() {
     if ((player.accelerationX > 0) && (player.x >= 300) && (background.get(background.size() - 1).x + 32 >= 800)){
       for (Block b : map) {
-        b.x -= (32) * player.accelerationX * 1.5;
+        b.x -= (32) * player.accelerationX * 1.75;
       }
       for (Asset a : background) {
-        a.x -= (32) * player.accelerationX * 1.5;
+        a.x -= (32) * player.accelerationX * 1.75;
+      }
+      for (Collectable c : collectables) {
+        c.x -= (32) * player.accelerationX * 1.75;
       }
     }
     if ((player.accelerationX < 0) && (player.x <= 400) && (background.get(0).x - 32 <= -1)) {
       for (Block b : map) {
-        b.x += (32) * -1 * player.accelerationX * 1.5;
+        b.x += (32) * -1 * player.accelerationX * 1.75;
       }
       for (Asset a : background) {
-        a.x += (32) * -1 * player.accelerationX * 1.5;
+        a.x += (32) * -1 * player.accelerationX * 1.75;
+      }
+      for (Collectable c : collectables) {
+        c.x += (32) * -1 * player.accelerationX * 1.75;
       }
     }
   }

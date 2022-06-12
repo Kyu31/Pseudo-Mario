@@ -5,6 +5,13 @@ public class Collectable extends Asset {
     super(n, xcor, ycor, base, length, new ArrayList<PImage>(), startImg);
     value = vals;
   }
+  
+  public void display() {
+    x -= 1;
+    delay(1);
+    x += 1;
+    delay(1);
+  }
 
   public void event(Level lvl, Player player) {
     player.points += value;
