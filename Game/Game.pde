@@ -37,19 +37,20 @@ void setup () {
 }
 
 void draw() {
-  if (menu.current == 3) {
+  if ((menu.current == 3) || (menu.current == 5) || (menu.current == 7)) {
     background(95, 200, 245);
     imageMode(CENTER);
-    Level currentlvl = levels.get(0);
+    int thisLevel = menu.current / 2 - 1;
+    Level currentlvl = levels.get(thisLevel);
     currentlvl.display(player);
-    System.out.println("playerX: " + player.x + " castle.x: " + currentlvl.background.get(currentlvl.background.size() - 1).x);
     if (player.x >= currentlvl.background.get(currentlvl.background.size() - 1).x) {
-      System.out.println("YAYYYY");
       player.x = 40;
       player.y = 300;
       menu.current++;
-      levels.remove(0);
+      //levels.remove(0);
     }
+  } else if ((menu.current != 0) && (menu.current % 2 == 0)) {
+    menu.display();
   } else {
     background(0, 0, 0);
     imageMode(CENTER);
@@ -116,7 +117,7 @@ void keyReleased () {
 void mouseClicked () {
   if ((mouseX <= 450) && (mouseX >= 330) && (mouseY <= 350) && (mouseY >= 280)) {
     if (menu.current == 1) {
-        menu.current = 2;
-      }
+      menu.current = 2;
+    }
   }
 }
