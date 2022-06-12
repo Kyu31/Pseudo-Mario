@@ -13,17 +13,17 @@ public class Screen {
   
   public void display() {
     if (current == 0) {
-      PImage start = loadImage("Start.png");
+      PImage start = loadImage("Menus/Start.png");
       start.resize(800, 400);
       image(start, 400, 200);
       fill(0);
     } else if (current == 1) {
-      PImage clickedStart = loadImage("ClickedStart.png");
+      PImage clickedStart = loadImage("Menus/ClickedStart.png");
       clickedStart.resize(800, 400);
       image(clickedStart, 400, 200);
       fill(0);
     } else if (current == 2) {
-      PImage secondStart = loadImage("SecondStart.png");
+      PImage secondStart = loadImage("Menus/SecondStart.png");
       secondStart.resize(800, 400);
       image(secondStart, 400, 200);
       fill(0);
