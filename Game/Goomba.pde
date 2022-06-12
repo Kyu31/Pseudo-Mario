@@ -38,6 +38,8 @@ public class Goomba extends Enemy {
   
   public void move() {
     ySpeed += gravity;
+    
+    System.out.println(xSpeed);
   
     x += xSpeed;
     y += ySpeed;
