@@ -24,7 +24,7 @@ public class Screen {
       image(start, 400, 200);
       fill(0);
     } else if (current == 1) {
-      PImage clickedStart = loadImage("Menus/ClickedStart.png");
+      PImage clickedStart = loadImage("Menus/clickedStart.png");
       clickedStart.resize(800, 400);
       image(clickedStart, 400, 200);
       fill(0);
