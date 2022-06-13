@@ -6,7 +6,6 @@ public class Level {
   float[] start;
   float end; 
   boolean cleared;
-  String filename;
 
   public Level(ArrayList<Block> lvlmap, ArrayList<Collectable> collect, ArrayList<Asset> scenery, ArrayList<Enemy> enemies, float[] startCoords, float endBoundary) {
     map = lvlmap;
@@ -18,8 +17,7 @@ public class Level {
     cleared = false;
   }
 
-  public Level(String f) {
-    filename = f;
+  public Level(String filename) {
     String[] lines = loadStrings(filename);
     int rows = lines.length;
     int cols = lines[0].length();
