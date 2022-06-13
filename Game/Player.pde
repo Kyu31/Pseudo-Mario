@@ -215,10 +215,6 @@ public class Player extends Entity {
     }
   }
 
-  public boolean isNearEdge(Level lvl) {
-    return false;
-  }
-
   public boolean damage(Enemy other) {
     if (this.sideColliding(other).equals("bottom")) {
       other.lives--;
