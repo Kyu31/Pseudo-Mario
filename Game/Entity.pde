@@ -5,7 +5,7 @@ public class Entity extends Asset {
   int lives;
   boolean isOnFloor;
   String sideColliding;
-  boolean debug = true;
+  boolean debug = false;
 
   public Entity(String name, float x, float y, float base, float length, String startImg, float dx, float dy, int life) {
     super(name, x, y, base, length, new ArrayList<PImage>(), startImg);
@@ -86,9 +86,17 @@ public class Entity extends Asset {
     return "none";
   }
 
-  public void move() {
+  public void move(Level lvl) {
+    hitBoundary(lvl);
+    
+    ySpeed += gravity;
+
+    x += xSpeed;
+    y += ySpeed;
   }
 
-  public void damage(Entity other) {
+  public boolean damage(Entity other) {
+    other.lives--;
+    return false;
   }
 }

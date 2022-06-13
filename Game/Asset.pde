@@ -16,10 +16,11 @@ public class Asset {
   }
   
   public void display(int startFrame, int numFrames) {
-    texture.display(startFrame, numFrames, 1, x, y, w, h);
+    texture.display(startFrame, numFrames, 1, x, y);
   }
 
   public void display(int startFrame, int numFrames, int delay) {
-    texture.display(startFrame, numFrames, delay, x, y, w, h);
+    w = texture.w;
+    texture.display(startFrame, numFrames, delay, x, y);
   }
 }

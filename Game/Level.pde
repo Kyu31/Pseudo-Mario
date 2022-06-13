@@ -29,30 +29,32 @@ public class Level {
     enemies = new ArrayList<Enemy>();
     for (int r = 0; r < rows; r++) {
       for (int c = 0; c < cols; c++) {
+        float x = sizeUnit/2 + c*sizeUnit;
+        float y = height-(rows-1)*sizeUnit + r*sizeUnit;
         //background
         if (lines[r].charAt(c) == 'c') {
-          background.add(new Castle(sizeUnit/2 + c*sizeUnit, height-(rows-1)*sizeUnit + r*sizeUnit));
+          background.add(new Castle(x, y));
         }
         //collectables
         if (lines[r].charAt(c) == 'o') {
-          collectables.add(new Collectable(5, "coin", sizeUnit/2 + c*sizeUnit, height-(rows-1)*sizeUnit + r*sizeUnit - 3, 14, 16, "Coin"));
+          collectables.add(new Coin(x, y));
         }
-        
+
         //blocks
         if (lines[r].charAt(c) == 'b') {
-          map.add(new Brick(null, sizeUnit/2 + c*sizeUnit, height-(rows-1)*sizeUnit + r*sizeUnit));
+          map.add(new Brick(null, x, y));
         }
         if (lines[r].charAt(c) == 'f') {
-          map.add(new Floor(sizeUnit/2 + c*sizeUnit, height-(rows-1)*sizeUnit + r*sizeUnit));
+          map.add(new Floor(x, y));
         }
         //enemies
         if (lines[r].charAt(c) == 'g') {
-          enemies.add(new Goomba(sizeUnit/2 + c*sizeUnit, height-(rows-1)*sizeUnit + r*sizeUnit - 3));
+          enemies.add(new Goomba(x, y));
         }
 
         if (lines[r].charAt(c) == 'p') {
-          start[0] = sizeUnit/2 + c*sizeUnit;
-          start[1] = height-(rows-1)*sizeUnit + r*sizeUnit;
+          start[0] = x;
+          start[1] = y;
         }
       }
     }
@@ -63,47 +65,44 @@ public class Level {
     for (Asset scenery : background) {
       scenery.display(0, 1);
     }
-    
+
     for (Block b : map) {
-      //if (b.x >= 0 && b.x <= 400) {
+      if (b.x+b.w/2 >= 0 && b.x-b.w/2 <= width) {
         b.display(0, 1);
-      //}
+      }
       b.event(this, player);
     }
-    
-    for (int c = 0; c < collectables.size(); c++) {
-      if ((player.x + 3 >= collectables.get(c).x - 7) && (player.x - 3 <= collectables.get(c).x + 7) && (player.y >= collectables.get(c).y - 6) && (player.y <= collectables.get(c).y + 14)) {
-        collectables.get(c).event(this, player);
-        player.points += collectables.get(c).value;
-        player.numCoins++;
+
+    for (int c = collectables.size()-1; c >= 0; c--) {
+      if (!player.sideColliding(collectables.get(c)).equals("none")) {
+        collectables.get(c).event(player);
         collectables.remove(c);
-        c --;
-      } else {
-        collectables.get(c).event(this, player);
-        //collectables.get(c).move();
-        collectables.get(c).display(0, 1);
+      }
+    }
+    for (Collectable c : collectables) {
+      if (c.x+c.w/2 >= 0 && c.x-c.w/2 <= width) {
+        c.display(0, 1);
       }
     }
 
-    for (int e = 0; e < enemies.size(); e++) {
-      if ((player.x + 3 >= enemies.get(e).x - 7) && (player.x - 3 <= enemies.get(e).x + 7) && (player.y >= enemies.get(e).y - 16) && (player.y <= enemies.get(e).y - 8)) {
+    for (int e = enemies.size()-1; e >= 0; e--) {
+      if (player.damage(enemies.get(e))) {
         enemies.remove(e);
-        player.points += 50;
-        e--;
-        player.ySpeed = -12;
-        player.friction = 1;
-      } else {
-        enemies.get(e).move();
-        enemies.get(e).hitBoundary(this);
-        enemies.get(e).display(0, 2);
+      }
+    }
+    for (Enemy e : enemies) {
+      e.damage(player);
+      e.move(this);
+      if (e.x+e.w/2 >= 0 && e.x-e.w/2 <= width) {
+        e.display(0, 1);
       }
     }
 
     if (!cleared) {
       player.hitBoundary(this);
-      player.move();
+      player.move(this);
       player.display();
-      text("Coords: " + (int)player.x + ", " + (int)player.y, 20, 20);
+      //text("Coords: " + (int)player.x + ", " + (int)player.y, 20, 20);
       text("Points: " + player.points, 150, 20);
       text(" Coins x " + player.numCoins, 265, 20);
     }
@@ -111,32 +110,32 @@ public class Level {
   }
 
   public void scroll() {
-    if ((player.accelerationX > 0) && (player.x >= 300) && (background.get(background.size() - 1).x + 32 >= 800)){
+    if ((player.xSpeed > 0) && (player.x >= width*0.75) && (background.get(background.size() - 1).x + background.get(background.size() - 1).w/2 >= width)) {
       for (Block b : map) {
-        b.x -= (32) * player.accelerationX * 1.75;
+        b.x -= sizeUnit*2 * player.accelerationX * 1.75;
       }
       for (Asset a : background) {
-        a.x -= (32) * player.accelerationX * 1.75;
+        a.x -= sizeUnit*2 * player.accelerationX * 1.75;
       }
       for (Collectable c : collectables) {
-        c.x -= (32) * player.accelerationX * 1.75;
+        c.x -= sizeUnit*2 * player.accelerationX * 1.75;
       }
       for (Enemy e : enemies) {
-        e.x -= (32) * player.accelerationX * 1.75;
+        e.x -= sizeUnit*2 * player.accelerationX * 1.75;
       }
     }
-    if ((player.accelerationX < 0) && (player.x <= 400) && (background.get(0).x - 32 <= -1)) {
+    if ((player.xSpeed < 0) && (player.x <= width*0.25) && (background.get(0).x - background.get(0).w/2 < 0)) {
       for (Block b : map) {
-        b.x += (32) * -1 * player.accelerationX * 1.75;
+        b.x += sizeUnit*2 * -1 * player.accelerationX * 1.75;
       }
       for (Asset a : background) {
-        a.x += (32) * -1 * player.accelerationX * 1.75;
+        a.x += sizeUnit*2 * -1 * player.accelerationX * 1.75;
       }
       for (Collectable c : collectables) {
-        c.x += (32) * -1 * player.accelerationX * 1.75;
+        c.x += sizeUnit*2 * -1 * player.accelerationX * 1.75;
       }
       for (Enemy e : enemies) {
-        e.x += (32) * -1 * player.accelerationX * 1.75;
+        e.x += sizeUnit*2 * -1 * player.accelerationX * 1.75;
       }
     }
   }

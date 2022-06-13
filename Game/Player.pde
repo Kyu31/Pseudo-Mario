@@ -64,7 +64,9 @@ public class Player extends Entity {
     }
   }
 
-  public void move() {
+  public void move(Level lvl) {
+    hitBoundary(lvl);
+
     if (Left && !Right) {
       accelerationX = -0.05;
       friction = 1;
@@ -124,7 +126,7 @@ public class Player extends Entity {
     if (ySpeed < 3*-maxSpeed) {
       ySpeed = 3*-maxSpeed;
     }
-    
+
     if (!((x + xSpeed >= 800) || (x + xSpeed <= 0))) {
       x += xSpeed;
     }
@@ -144,9 +146,9 @@ public class Player extends Entity {
           super.display(13, 1);                 //jump
         } else if (abs(accelerationX) > 0) {
           if (Shift) {
-            super.display(14, 3, 8);               //run
+            super.display(14, 3, 3);               //run
           } else {
-            super.display(14, 3, 10);               //walk
+            super.display(14, 3, 5);               //walk
           }
         } else {
           super.display(12, 1);                 //idle
@@ -157,9 +159,9 @@ public class Player extends Entity {
           super.display(18, 1);                 //jump
         } else if (abs(accelerationX) > 0) {
           if (Shift) {
-            super.display(19, 3, 8);               //run
+            super.display(19, 3, 3);               //run
           } else {
-            super.display(19, 3, 10);               //walk
+            super.display(19, 3, 5);               //walk
           }
         } else {
           super.display(17, 1);                 //idle
@@ -167,19 +169,18 @@ public class Player extends Entity {
       }
       break;
     case 2:                                        //big
-      w = sizeUnit;
-      h = 2*sizeUnit;
+      //w = sizeUnit;
+      //h = 2*sizeUnit;
       if (direction.equals("Right")) {
         if (!isOnFloor) {
           super.display(2, 1, 1);                  //jump
         } else if (Down) {
-          //h = 11/16*sizeUnit;
           super.display(1, 1);                //duck
         } else if (abs(accelerationX) > 0) {
           if (Shift) {
-            super.display(3, 3, 8);                //run
+            super.display(3, 3, 3);                //run
           } else {
-            super.display(3, 3, 10);                //walk
+            super.display(3, 3, 5);                //walk
           }
         } else {
           super.display(0, 1);                //idle
@@ -189,13 +190,13 @@ public class Player extends Entity {
         if (!isOnFloor) {
           super.display(8, 1, 1);                  //jump
         } else if (Down) {
-          //h = 16;
+          //h = 11/16*sizeUnit;
           super.display(7, 1);                //duck
         } else if (abs(accelerationX) > 0) {
           if (Shift) {
-            super.display(9, 3, 8);                //run
+            super.display(9, 3, 3);                //run
           } else {
-            super.display(9, 3, 10);                //walk
+            super.display(9, 3, 5);                //walk
           }
         } else {
           super.display(6, 1);                //idle
@@ -207,5 +208,18 @@ public class Player extends Entity {
 
   public boolean isNearEdge(Level lvl) {
     return false;
+  }
+
+  public boolean damage(Enemy other) {
+    if (this.sideColliding(other).equals("bottom")) {
+      other.lives--;
+      points += other.value;
+      ySpeed = jump/2;
+      isOnFloor = false;
+      friction = 1;
+      return true;
+    } else {
+      return false;
+    }
   }
 }
