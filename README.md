@@ -8,7 +8,7 @@ Brief Summary:
     Our project will, in short, be a pseudo-Mario: A platformer that allows the player to complete levels that mimic those of a 1985 Mario game. This project will allow the player to operate the Mario avatar to move in various ways to overcome all obstacles, with the goal to reach the flag at the end of the level. We will code this project in Java processing to emphasize the graphics component of the project.
 
 Compile Instructions:
-    To Be Continued
+    All of the necessary files and images are uploaded to the repository. Once cloned, the folder should be opened using Processing, and run through it. When the program first runs, a initial menu screen of sorts will be displayed and the player will be prompted to click "press start" to being the game. The way to move mario around once you are presented with the level screen is by using the arrow keys. The game does not loop, so if you want to start again, then the program has to be closed and re-run.
 
 Development Log:
     Kelly Yu
