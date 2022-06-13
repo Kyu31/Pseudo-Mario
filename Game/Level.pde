@@ -77,14 +77,6 @@ public class Level {
       if (!player.sideColliding(collectables.get(c)).equals("none")) {
         collectables.get(c).event(player);
         collectables.remove(c);
-<<<<<<< HEAD
-=======
-        c --;
-      } else {
-        collectables.get(c).event(this, player);
-        //collectables.get(c).move();
-        collectables.get(c).display(0, 1);
->>>>>>> 51bb354b203aa3451b50df198f3e61735700704c
       }
     }
     for (Collectable c : collectables) {
