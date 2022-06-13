@@ -105,12 +105,11 @@ public class Level {
     if (!cleared) {
       player.display();
       player.move(this);
-      //text("Coords: " + (int)player.x + ", " + (int)player.y, 20, 20);
       text("Points: " + player.points, 150, 20);
       text(" Coins x " + player.numCoins, 265, 20);
       text(" Time : " + (startTimer.countdown / 60), 365, 20);
     }
-    
+
     if (player.y >= height || player.lives == 0) {
       menu.current = 7;
     }
@@ -118,7 +117,7 @@ public class Level {
   }
 
   public void scroll() {
-    if ((player.accelerationX > 0) && (player.x >= 300) && (background.get(background.size() - 1).x + 32 >= 800)){
+    if ((player.accelerationX > 0) && (player.x >= 300) && (background.get(background.size() - 1).x + 32 >= 800)) {
       for (Block b : map) {
         b.x -= (32) * player.accelerationX * 1.75;
       }
