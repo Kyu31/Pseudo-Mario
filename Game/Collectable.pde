@@ -20,7 +20,8 @@ public class Collectable extends Asset {
     y += ySpeed;
   }*/
 
-  public void event(Player player) {
+  public boolean event(Player player) {
     player.points += value;
+    return true;
   }
 }
