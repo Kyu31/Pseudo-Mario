@@ -98,7 +98,7 @@ public class Level {
       } else if ((player.x + 3 >= enemies.get(e).x - 7) && (player.x - 3 <= enemies.get(e).x + 7) && (player.y + 16 >= enemies.get(e).y + 8) && (player.y - 16 <= enemies.get(e).y - 8)) {
         if (player.lives != 0) {
           System.out.println("UMMM");
-          player.y -= 150;
+          player.y = 250;
           player.lives--;
         } else {
           menu.current = 9;
@@ -117,6 +117,10 @@ public class Level {
       text("Coords: " + (int)player.x + ", " + (int)player.y, 20, 20);
       text("Points: " + player.points, 150, 20);
       text(" Coins x " + player.numCoins, 265, 20);
+    }
+    
+    if (player.y >= 400) {
+      menu.current = 9;
     }
     scroll();
   }
