@@ -69,6 +69,15 @@ void draw() {
         menu.current = 0;
       }
     }
+    if ((mouseX <= 800) && (mouseX >= 0) && (mouseY <= 400) && (mouseY >= 0)) {
+      if (menu.current == 4) {
+        menu.display();
+        menu.current = 5;
+      } else if (menu.current == 6) {
+        menu.display();
+        menu.current = 7;
+      }
+    }
   }
 }
 
