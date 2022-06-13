@@ -139,8 +139,6 @@ public class Player extends Entity {
       super.display(22, 1);
       break;
     case 1:                                        //small
-      w = sizeUnit;
-      h = sizeUnit;
       if (direction.equals("Right")) {
         if (!isOnFloor) {      
           super.display(13, 1);                 //jump
@@ -169,8 +167,6 @@ public class Player extends Entity {
       }
       break;
     case 2:                                        //big
-      //w = sizeUnit;
-      //h = 2*sizeUnit;
       if (direction.equals("Right")) {
         if (!isOnFloor) {
           super.display(2, 1, 1);                  //jump
@@ -190,7 +186,6 @@ public class Player extends Entity {
         if (!isOnFloor) {
           super.display(8, 1, 1);                  //jump
         } else if (Down) {
-          //h = 11/16*sizeUnit;
           super.display(7, 1);                //duck
         } else if (abs(accelerationX) > 0) {
           if (Shift) {
@@ -214,7 +209,7 @@ public class Player extends Entity {
     if (this.sideColliding(other).equals("bottom")) {
       other.lives--;
       points += other.value;
-      ySpeed = jump/2;
+      ySpeed = jump*0.75;
       isOnFloor = false;
       friction = 1;
       return true;
