@@ -1,6 +1,5 @@
 Player player;
 Timer startTimer;
-boolean isStartMenuOn;
 ArrayList<Level> levels;
 boolean Left;
 boolean Right;
@@ -31,9 +30,9 @@ void setup () {
   levels.add(lvl1);
   levels.add(lvl2);
   levels.add(lvl3);
-  
+
   startTimer = new Timer();
-  
+
   //enemies.add(new Goomba(lvl1.end-sizeUnit, height-sizeUnit*2));
 }
 
@@ -43,8 +42,11 @@ void draw() {
     imageMode(CENTER);
     int thisLevel = menu.current - 3;
     Level currentlvl = levels.get(thisLevel);
+    text("Points: " + player.points, 150, 20);
+    text(" Coins x " + player.numCoins, 265, 20);
+    text(" Time : " + (startTimer.countdown / 60), 365, 20);
     if (!currentlvl.cleared) {
-      if(startTimer.countdown > 0){
+      if (startTimer.countdown > 0) {
         startTimer.countdown --;
       }
       if (startTimer.countdown <= 0) {
@@ -104,6 +106,23 @@ void keyPressed () {
     case SHIFT:
       Shift = true;
       break;
+    }
+  }
+  if (key == 'r') {
+    if (menu.current == 7) {
+      int i = 0;
+      while (levels.get(i).cleared) {
+        i++;
+      }
+      levels.remove(i);
+      levels.add(i, new Level("Levels/lvl"+(i+1)+".txt"));
+      player.lives++;
+      player.x = levels.get(i).start[0];
+      player.y = levels.get(i).start[1];
+      player.xSpeed = 0;
+      player.ySpeed = 0;
+      player.direction = "Right";
+      menu.current = 3+i;
     }
   }
 }
