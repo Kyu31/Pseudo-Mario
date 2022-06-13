@@ -15,7 +15,7 @@ public class Asset {
     w = base;
     h = length;
   }
-  
+
   public void display(int set) {
     w = texture[set].w;
     h = texture[set].h;

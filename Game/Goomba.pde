@@ -17,7 +17,7 @@ public class Goomba extends Enemy {
     if (y > height-h/2) {
       lives = 0;
     }
-    
+
     for (Block block : lvl.map) {
       sideColliding = sideColliding(block);
       if (sideColliding.equals("bottom") && ySpeed >= 0) {
@@ -35,12 +35,12 @@ public class Goomba extends Enemy {
       }
     }
   }
-  
-  public void display(){
-    if(lives == 0){
+
+  public void display() {
+    if (lives == 0) {
       super.display(1);
-    } else{
-     super.display(0, 3); 
+    } else {
+      super.display(0, 3);
     }
   }
 }

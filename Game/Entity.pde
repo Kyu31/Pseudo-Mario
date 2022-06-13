@@ -88,7 +88,7 @@ public class Entity extends Asset {
 
   public void move(Level lvl) {
     hitBoundary(lvl);
-    
+
     ySpeed += gravity;
 
     x += xSpeed;
@@ -99,8 +99,8 @@ public class Entity extends Asset {
     other.lives--;
     return false;
   }
-  
-  public void display(){
-   super.display(0); 
+
+  public void display() {
+    super.display(0);
   }
 }

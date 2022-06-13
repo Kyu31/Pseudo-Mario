@@ -5,20 +5,20 @@ public class Collectable extends Asset {
     super(n, xcor, ycor, base, length, sets, imagePrefix, frames);
     value = vals;
   }
-  
+
   public void display() {
   }
-  
-  /*public void move() {
-    int ySpeed = 1;
-    if (y <= originalY) {
-      ySpeed = -ySpeed;
-    } else if (y >= originalY - 24) {
-      ySpeed = -ySpeed;
-    }
 
-    y += ySpeed;
-  }*/
+  /*public void move() {
+   int ySpeed = 1;
+   if (y <= originalY) {
+   ySpeed = -ySpeed;
+   } else if (y >= originalY - 24) {
+   ySpeed = -ySpeed;
+   }
+   
+   y += ySpeed;
+   }*/
 
   public boolean event(Player player) {
     player.points += value;
