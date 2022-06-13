@@ -6,6 +6,7 @@ public class Level {
   float[] start;
   float end; 
   boolean cleared;
+  String filename;
 
   public Level(ArrayList<Block> lvlmap, ArrayList<Collectable> collect, ArrayList<Asset> scenery, ArrayList<Enemy> enemies, float[] startCoords, float endBoundary) {
     map = lvlmap;
@@ -17,12 +18,14 @@ public class Level {
     cleared = false;
   }
 
-  public Level(String filename) {
+  public Level(String f) {
+    filename = f;
     String[] lines = loadStrings(filename);
     int rows = lines.length;
     int cols = lines[0].length();
     start = new float[2];
     end = cols*sizeUnit;
+    System.out.println(sizeUnit);
     map = new ArrayList<Block>();
     collectables = new ArrayList<Collectable>();
     background = new ArrayList<Asset>();
@@ -59,7 +62,7 @@ public class Level {
     cleared = false;
   }
 
-  public void display(Player player) {
+  public void display(Player player, Screen menu) {
     for (Asset scenery : background) {
       scenery.display(0, 1);
     }
@@ -92,6 +95,14 @@ public class Level {
         e--;
         player.ySpeed = -12;
         player.friction = 1;
+      } else if ((player.x + 3 >= enemies.get(e).x - 7) && (player.x - 3 <= enemies.get(e).x + 7) && (player.y + 16 >= enemies.get(e).y + 8) && (player.y - 16 <= enemies.get(e).y - 8)) {
+        if (player.lives != 0) {
+          System.out.println("UMMM");
+          player.y -= 150;
+          player.lives--;
+        } else {
+          menu.current = 9;
+        }
       } else {
         enemies.get(e).move();
         enemies.get(e).hitBoundary(this);
