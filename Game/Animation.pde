@@ -1,11 +1,15 @@
 public class Animation {
   ArrayList<PImage> images;
   int frame;
+  float w;
+  float h;
   int currentTime;
 
   Animation(ArrayList<PImage> imgs, String startImg) {
     images = imgs;
     imgs.add(loadImage("Textures/"+startImg+".png"));
+    w = images.get(0).width;
+    h = images.get(0).height;
     currentTime = 0;
   }
 
@@ -21,12 +25,15 @@ public class Animation {
     }
   }
 
-  void display(int startFrame, int frames, int delay, float x, float y, float w, float h) {
+  void display(int startFrame, int frames, int delay, float x, float y) {
     if (currentTime == 0) {
       frame = (frame+1) % frames;
     }
     currentTime = (currentTime+1) % delay;
 
-    image(images.get(frame+startFrame), x, y, w, h);
+    PImage currentFrame = images.get(frame+startFrame);
+    w = currentFrame.width;
+    h = currentFrame.height;
+    image(currentFrame, x, y, currentFrame.width, currentFrame.height);
   }
 }

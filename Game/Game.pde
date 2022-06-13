@@ -14,7 +14,6 @@ Screen menu;
 void setup () {
   size(800, 400);
   //startTimer = new Timer(160);
-  isStartMenuOn = true;
   Left = false;
   Right = false;
   Up = false;

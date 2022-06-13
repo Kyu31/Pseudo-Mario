@@ -86,9 +86,17 @@ public class Entity extends Asset {
     return "none";
   }
 
-  public void move() {
+  public void move(Level lvl) {
+    hitBoundary(lvl);
+    
+    ySpeed += gravity;
+
+    x += xSpeed;
+    y += ySpeed;
   }
 
-  public void damage(Entity other) {
+  public boolean damage(Entity other) {
+    other.lives--;
+    return false;
   }
 }
