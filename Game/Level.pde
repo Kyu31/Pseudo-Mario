@@ -6,6 +6,7 @@ public class Level {
   float[] start;
   float end; 
   boolean cleared;
+  String filename;
 
   public Level(ArrayList<Block> lvlmap, ArrayList<Collectable> collect, ArrayList<Asset> scenery, ArrayList<Enemy> enemies, float[] startCoords, float endBoundary) {
     map = lvlmap;
@@ -17,7 +18,8 @@ public class Level {
     cleared = false;
   }
 
-  public Level(String filename) {
+  public Level(String f) {
+    filename = f;
     String[] lines = loadStrings(filename);
     int rows = lines.length;
     int cols = lines[0].length();
@@ -37,7 +39,7 @@ public class Level {
         }
         //collectables
         if (lines[r].charAt(c) == 'o') {
-          collectables.add(new Coin(x, y));
+          collectables.add(new Coin(x, y - 3));
         }
 
         //blocks
@@ -61,7 +63,7 @@ public class Level {
     cleared = false;
   }
 
-  public void display(Player player) {
+  public void display(Player player, Screen menu, Timer time) {
     for (Asset scenery : background) {
       scenery.display(0, 1);
     }
@@ -74,8 +76,9 @@ public class Level {
     }
 
     for (int c = collectables.size()-1; c >= 0; c--) {
-      if (!player.sideColliding(collectables.get(c)).equals("none")) {
+      if ((player.x + 3 >= collectables.get(c).x - 7) && (player.x - 3 <= collectables.get(c).x + 7) && (player.y >= collectables.get(c).y - 6) && (player.y <= collectables.get(c).y + 14)) {
         collectables.get(c).event(player);
+        player.points += collectables.get(c).value;
         collectables.remove(c);
       }
     }
@@ -107,37 +110,42 @@ public class Level {
       //text("Coords: " + (int)player.x + ", " + (int)player.y, 20, 20);
       text("Points: " + player.points, 150, 20);
       text(" Coins x " + player.numCoins, 265, 20);
+      text(" Time : " + (startTimer.countdown / 60), 365, 20);
+    }
+    
+    if (player.y >= height || player.lives == 0) {
+      menu.current = 7;
     }
     scroll();
   }
 
   public void scroll() {
-    if ((player.xSpeed > 0) && (player.x >= width*0.75) && (background.get(background.size() - 1).x + background.get(background.size() - 1).w/2 >= width)) {
+    if ((player.accelerationX > 0) && (player.x >= 300) && (background.get(background.size() - 1).x + 32 >= 800)){
       for (Block b : map) {
-        b.x -= sizeUnit*2 * player.accelerationX * 1.75;
+        b.x -= (32) * player.accelerationX * 1.75;
       }
       for (Asset a : background) {
-        a.x -= sizeUnit*2 * player.accelerationX * 1.75;
+        a.x -= (32) * player.accelerationX * 1.75;
       }
       for (Collectable c : collectables) {
-        c.x -= sizeUnit*2 * player.accelerationX * 1.75;
+        c.x -= (32) * player.accelerationX * 1.75;
       }
       for (Enemy e : enemies) {
-        e.x -= sizeUnit*2 * player.accelerationX * 1.75;
+        e.x -= (32) * player.accelerationX * 1.75;
       }
     }
-    if ((player.xSpeed < 0) && (player.x <= width*0.25) && (background.get(0).x - background.get(0).w/2 < 0)) {
+    if ((player.accelerationX < 0) && (player.x <= 400) && (background.get(0).x - 32 <= -1)) {
       for (Block b : map) {
-        b.x += sizeUnit*2 * -1 * player.accelerationX * 1.75;
+        b.x += (32) * -1 * player.accelerationX * 1.75;
       }
       for (Asset a : background) {
-        a.x += sizeUnit*2 * -1 * player.accelerationX * 1.75;
+        a.x += (32) * -1 * player.accelerationX * 1.75;
       }
       for (Collectable c : collectables) {
-        c.x += sizeUnit*2 * -1 * player.accelerationX * 1.75;
+        c.x += (32) * -1 * player.accelerationX * 1.75;
       }
       for (Enemy e : enemies) {
-        e.x += sizeUnit*2 * -1 * player.accelerationX * 1.75;
+        e.x += (32) * -1 * player.accelerationX * 1.75;
       }
     }
   }
