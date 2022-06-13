@@ -25,7 +25,6 @@ public class Level {
     int cols = lines[0].length();
     start = new float[2];
     end = cols*sizeUnit;
-    System.out.println(sizeUnit);
     map = new ArrayList<Block>();
     collectables = new ArrayList<Collectable>();
     background = new ArrayList<Asset>();
@@ -62,7 +61,7 @@ public class Level {
     cleared = false;
   }
 
-  public void display(Player player, Screen menu) {
+  public void display(Player player, Screen menu, Timer time) {
     for (Asset scenery : background) {
       scenery.display(0, 1);
     }
@@ -97,11 +96,10 @@ public class Level {
         player.friction = 1;
       } else if ((player.x + 3 >= enemies.get(e).x - 7) && (player.x - 3 <= enemies.get(e).x + 7) && (player.y + 16 >= enemies.get(e).y + 8) && (player.y - 16 <= enemies.get(e).y - 8)) {
         if (player.lives != 0) {
-          System.out.println("UMMM");
           player.y = 250;
           player.lives--;
         } else {
-          menu.current = 9;
+          menu.current = 7;
         }
       } else {
         enemies.get(e).move();
@@ -117,10 +115,11 @@ public class Level {
       text("Coords: " + (int)player.x + ", " + (int)player.y, 20, 20);
       text("Points: " + player.points, 150, 20);
       text(" Coins x " + player.numCoins, 265, 20);
+      text(" Time : " + (startTimer.countdown / 60), 365, 20);
     }
     
     if (player.y >= 400) {
-      menu.current = 9;
+      menu.current = 7;
     }
     scroll();
   }
