@@ -108,7 +108,7 @@ public class Level {
       text(" Time : " + (startTimer.countdown / 60), 365, 20);
     }
 
-    if (player.y >= height || player.lives == 0) {
+    if (player.y >= 400 || player.lives == 0) {
       menu.current = 7;
     }
     scroll();
