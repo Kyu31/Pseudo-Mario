@@ -87,7 +87,10 @@ public class Level {
 
     for (int e = enemies.size()-1; e >= 0; e--) {
       if (player.damage(enemies.get(e))) {
-        enemies.remove(e);
+        enemies.get(e).display();
+        if (enemies.get(e).lives == 0) {
+          enemies.remove(e);
+        }
       }
     }
     for (Enemy e : enemies) {
@@ -99,9 +102,8 @@ public class Level {
     }
 
     if (!cleared) {
-      player.hitBoundary(this);
-      player.move(this);
       player.display();
+      player.move(this);
       //text("Coords: " + (int)player.x + ", " + (int)player.y, 20, 20);
       text("Points: " + player.points, 150, 20);
       text(" Coins x " + player.numCoins, 265, 20);
