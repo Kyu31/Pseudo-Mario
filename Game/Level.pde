@@ -6,6 +6,7 @@ public class Level {
   float[] start;
   float end; 
   boolean cleared;
+  String filename;
 
   public Level(ArrayList<Block> lvlmap, ArrayList<Collectable> collect, ArrayList<Asset> scenery, ArrayList<Enemy> enemies, float[] startCoords, float endBoundary) {
     map = lvlmap;
@@ -17,7 +18,8 @@ public class Level {
     cleared = false;
   }
 
-  public Level(String filename) {
+  public Level(String f) {
+    filename = f;
     String[] lines = loadStrings(filename);
     int rows = lines.length;
     int cols = lines[0].length();
@@ -61,7 +63,7 @@ public class Level {
     cleared = false;
   }
 
-  public void display(Player player) {
+  public void display(Player player, Screen menu, Timer time) {
     for (Asset scenery : background) {
       scenery.display(0, 1);
     }
@@ -88,13 +90,21 @@ public class Level {
     for (int e = enemies.size()-1; e >= 0; e--) {
       if (player.damage(enemies.get(e))) {
         enemies.remove(e);
-      }
-    }
-    for (Enemy e : enemies) {
-      e.damage(player);
-      e.move(this);
-      if (e.x+e.w/2 >= 0 && e.x-e.w/2 <= width) {
-        e.display(0, 1);
+        player.points += 50;
+        e--;
+        player.ySpeed = -12;
+        player.friction = 1;
+      } else if ((player.x + 3 >= enemies.get(e).x - 7) && (player.x - 3 <= enemies.get(e).x + 7) && (player.y + 16 >= enemies.get(e).y + 8) && (player.y - 16 <= enemies.get(e).y - 8)) {
+        if (player.lives != 0) {
+          player.y = 250;
+          player.lives--;
+        } else {
+          menu.current = 7;
+        }
+      } else {
+        enemies.get(e).move();
+        enemies.get(e).hitBoundary(this);
+        enemies.get(e).display(0, 2);
       }
     }
 
@@ -105,6 +115,11 @@ public class Level {
       //text("Coords: " + (int)player.x + ", " + (int)player.y, 20, 20);
       text("Points: " + player.points, 150, 20);
       text(" Coins x " + player.numCoins, 265, 20);
+      text(" Time : " + (startTimer.countdown / 60), 365, 20);
+    }
+    
+    if (player.y >= 400) {
+      menu.current = 7;
     }
     scroll();
   }
