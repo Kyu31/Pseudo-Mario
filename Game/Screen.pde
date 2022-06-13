@@ -31,24 +31,24 @@ public class Screen {
       firstStart.resize(800, 400);
       image(firstStart, 400, 200);
       fill(0);
-      delay(15);
-      current = 3;
+      current++;
     } else if (current == 4) {
       PImage secondStart = loadImage("Menus/secondStart.png");
       secondStart.resize(800, 400);
       image(secondStart, 400, 200);
       fill(0);
-      delay(15);
-      current = 5;
+      current++;
     } else if (current == 6) {
-      PImage secondStart = loadImage("Menus/thirdStart.png");
-      secondStart.resize(800, 400);
-      image(secondStart, 400, 200);
+      PImage thirdStart = loadImage("Menus/thirdStart.png");
+      thirdStart.resize(800, 400);
+      image(thirdStart, 400, 200);
       fill(0);
-      delay(15);
-      current = 7;
+      current++;
+    } else if (current == 8) {
+      PImage thirdStart = loadImage("Menus/thirdStart.png");
+      thirdStart.resize(800, 400);
+      image(thirdStart, 400, 200);
+      fill(0);
     }
   }
-  
-  
 }
