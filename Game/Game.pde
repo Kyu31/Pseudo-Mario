@@ -1,5 +1,5 @@
 Player player;
-//Timer startTimer;
+Timer startTimer;
 boolean isStartMenuOn;
 ArrayList<Level> levels;
 boolean Left;
@@ -33,17 +33,28 @@ void setup () {
   levels.add(lvl2);
   levels.add(lvl3);
   
+  startTimer = new Timer();
+  
   //enemies.add(new Goomba(lvl1.end-sizeUnit, height-sizeUnit*2));
 }
 
 void draw() {
-  if ((menu.current == 3) || (menu.current == 5) || (menu.current == 7)) {
+  if ((menu.current == 3) || (menu.current == 4) || (menu.current == 5)) {
     background(95, 200, 245);
     imageMode(CENTER);
-    int thisLevel = menu.current / 2 - 1;
+    int thisLevel = menu.current - 3;
     Level currentlvl = levels.get(thisLevel);
     if (!currentlvl.cleared) {
-      currentlvl.display(player, menu);
+      if(startTimer.countdown > 0){
+        startTimer.countdown --;
+      }
+      if (startTimer.countdown <= 0) {
+        menu.current = 7;
+      } else {
+        currentlvl.display(player, menu, startTimer);
+      }
+    } else {
+      startTimer.countdown = 3600;
     }
     if (player.x >= currentlvl.background.get(currentlvl.background.size() - 1).x) {
       currentlvl.cleared = true;
@@ -51,24 +62,16 @@ void draw() {
       player.y = 300;
       menu.current++;
     }
-  }/* else if ((menu.current == 3) || (menu.current == 5)) {
-    System.out.println("BRUH");
-    System.out.println(menu.current);
-    menu.current++;
-    menu.display();
-    if ((menu.current == 4) || (menu.current == 6)) {
-      delay(2000);
-    }
-   */ else {
+  } else {
     background(0, 0, 0);
     imageMode(CENTER);
     menu.display();
-    if ((menu.current != 0) && (menu.current != 1) && (menu.current % 2 == 0) || (menu.current == 9)) {
-      System.out.println("AYY");
+    if ((menu.current == 6) || (menu.current == 7)) {
       fill(255, 255, 255);
       textSize(20);
       text(player.points, 160, 45);
       text(player.numCoins, 360, 45);
+      text((startTimer.countdown / 60), 600, 45);
       textSize(1);
     }
     if ((mouseX <= 430) && (mouseX >= 350) && (mouseY <= 330) && (mouseY >= 300)) {
@@ -78,15 +81,6 @@ void draw() {
     } else {
       if (menu.current == 1) {
         menu.current = 0;
-      }
-    }
-    if ((mouseX <= 800) && (mouseX >= 0) && (mouseY <= 400) && (mouseY >= 0)) {
-      if (menu.current == 4) {
-        menu.display();
-        menu.current = 5;
-      } else if (menu.current == 6) {
-        menu.display();
-        menu.current = 7;
       }
     }
   }
