@@ -37,13 +37,13 @@ public class Screen {
       secondStart.resize(800, 400);
       image(secondStart, 400, 200);
       fill(0);
-      current++;
+      //current++;
     } else if (current == 6) {
       PImage thirdStart = loadImage("Menus/thirdStart.png");
       thirdStart.resize(800, 400);
       image(thirdStart, 400, 200);
       fill(0);
-      current++;
+      //current++;
     } else if (current == 8) {
       PImage thirdStart = loadImage("Menus/thirdStart.png");
       thirdStart.resize(800, 400);
