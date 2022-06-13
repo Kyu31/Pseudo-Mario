@@ -37,6 +37,7 @@ void setup () {
 }
 
 void draw() {
+  System.out.println(menu.current);
   if ((menu.current == 3) || (menu.current == 5) || (menu.current == 7)) {
     background(95, 200, 245);
     imageMode(CENTER);
@@ -47,14 +48,19 @@ void draw() {
       player.x = 40;
       player.y = 300;
       menu.current++;
-      //levels.remove(0);
+      System.out.println(menu.current);
     }
-  } else if ((menu.current != 0) && (menu.current % 2 == 0)) {
+  }/* else if ((menu.current == 3) || (menu.current == 5)) {
+    System.out.println("BRUH");
+    System.out.println(menu.current);
+    menu.current++;
     menu.display();
-  } else {
+    if ((menu.current == 4) || (menu.current == 6)) {
+      delay(2000);
+    }
+   */ else {
     background(0, 0, 0);
     imageMode(CENTER);
-    //menu.display(menu.current);
     menu.display();
     if ((mouseX <= 430) && (mouseX >= 350) && (mouseY <= 330) && (mouseY >= 300)) {
       if (menu.current == 0) {
