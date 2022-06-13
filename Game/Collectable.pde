@@ -6,9 +6,6 @@ public class Collectable extends Asset {
     value = vals;
   }
 
-  public void display() {
-  }
-
   /*public void move() {
    int ySpeed = 1;
    if (y <= originalY) {
