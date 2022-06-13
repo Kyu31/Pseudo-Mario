@@ -7,8 +7,8 @@ public class Entity extends Asset {
   String sideColliding;
   boolean debug = false;
 
-  public Entity(String name, float x, float y, float base, float length, String startImg, float dx, float dy, int life) {
-    super(name, x, y, base, length, new ArrayList<PImage>(), startImg);
+  public Entity(String name, float x, float y, float base, float length, int sets, String imagePrefix, int frames, float dx, float dy, int life) {
+    super(name, x, y, base, length, sets, imagePrefix, frames);
     xSpeed = dx;
     ySpeed = dy;
     lives = life;
@@ -88,7 +88,7 @@ public class Entity extends Asset {
 
   public void move(Level lvl) {
     hitBoundary(lvl);
-    
+
     ySpeed += gravity;
 
     x += xSpeed;
@@ -98,5 +98,9 @@ public class Entity extends Asset {
   public boolean damage(Entity other) {
     other.lives--;
     return false;
+  }
+
+  public void display() {
+    super.display(0);
   }
 }

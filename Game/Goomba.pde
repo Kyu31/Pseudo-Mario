@@ -1,7 +1,7 @@
 public class Goomba extends Enemy {
   public Goomba(float xcor, float ycor) {
-    super("goomba", xcor, ycor, sizeUnit, sizeUnit, "goomba0000", 100);
-    texture.addFrames("goomba0001", 1);
+    super("goomba", xcor, ycor, sizeUnit, sizeUnit, 2, "goomba", 2, 100);
+    texture[1] = new Animation("goomba_death", 1, sizeUnit, sizeUnit);
   }
 
 
@@ -33,6 +33,14 @@ public class Goomba extends Enemy {
       if (!sideColliding.equals("bottom") && ySpeed > 0) {
         isOnFloor = false;
       }
+    }
+  }
+
+  public void display() {
+    if (lives == 0) {
+      super.display(1);
+    } else {
+      super.display(0, 3);
     }
   }
 }

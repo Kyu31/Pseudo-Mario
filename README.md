@@ -8,7 +8,7 @@ Brief Summary:
     Our project will, in short, be a pseudo-Mario: A platformer that allows the player to complete levels that mimic those of a 1985 Mario game. This project will allow the player to operate the Mario avatar to move in various ways to overcome all obstacles, with the goal to reach the flag at the end of the level. We will code this project in Java processing to emphasize the graphics component of the project.
 
 Compile Instructions:
-    To Be Continued
+    All of the necessary files and images are uploaded to the repository. Once cloned, the folder should be opened using Processing, and run through it. When the program first runs, a initial menu screen of sorts will be displayed and the player will be prompted to click "press start" to being the game. The way to move mario around once you are presented with the level screen is by using the arrow keys. To sprint, use the shift key. If you fail a level you can press the r key to go back to the level you failed. If you want to start again from the beginning, then the program has to be closed and re-run.
 
 Development Log:
     Kelly Yu
@@ -37,6 +37,8 @@ Development Log:
       6/7: I have implemented a global variable of sizeUnit & used it to dictate size in Asset's w & h. I have added floor as one of the blocks being read in by the file for map.
 
       6/9: I have merged the Map class into Level to create a constructor for Level that takes in a file & added new fields for different aspects to be displayed such as background. I have moved all the displaying for assets into a display function for the level.
+
+      6/12: I have redone how texture is implemented for assets & subsequently revised Animation. I have adjusted the code for collecting coins & taking damage. I have added a reset key so that players can go back to the level they failed.
 
     Emily Young-Squire
       5/23: I have begun to write the skeletons for the Asset class instance variables and methods we have planned.
@@ -68,3 +70,15 @@ Development Log:
       6/5: I have begun and finished the new subclass of the block class, trap class, and added a corresponding new instance variable to the Game class (died).
 
       6/6: I have figured out how to create a map file that can be read into the program to generate the map of blocks that will appear on the screen (extending beyond the dimensions of the window) and will later include the location of other assets.
+
+      6/7: I have further improved the map file to include the castle in the background (which would be visible but not treated the same way as a block would be treated). I also have begun to work on a scroll method.
+
+      6/8: I have worked on the scroll function more to be not too fast or slow (most similar to the original game).
+
+      6/9: I have worked on merging the main branch to my own, and edited the Game class to be able to compile and run.
+
+      6/10: I have fixed the issues that came up when implementing the scroll function (it was misplaced and never called), and I worked on a better format for the map text file.
+
+      6/11: I have finally fixed the problem regarding left motion for Mario, and worked on displaying multiple menu screens before and after the game.
+
+      6/12: I have polished up the program and made sure everything works, and looked at the enemies, collectables, and screens to make sure that everything fits in well together.

@@ -1,8 +1,8 @@
 public class Enemy extends Entity {
   int value;
 
-  public Enemy(String n, float xcor, float ycor, float base, float length, String startImg, int points) {
-    super(n, xcor, ycor, base, length, startImg, 0, 0, 1);
+  public Enemy(String n, float xcor, float ycor, float base, float length, int sets, String imagePrefix, int frames, int points) {
+    super(n, xcor, ycor, base, length, sets, imagePrefix, frames, 0, 0, 1);
     value = points;
     xSpeed = 1;
   }

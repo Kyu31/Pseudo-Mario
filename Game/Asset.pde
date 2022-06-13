@@ -4,23 +4,27 @@ public class Asset {
   float y;
   float w;
   float h;
-  Animation texture;
+  Animation[] texture;
 
-  public Asset(String n, float xcor, float ycor, float base, float length, ArrayList<PImage> imgs, String startImg) {
+  public Asset(String n, float xcor, float ycor, float base, float length, int sets, String imagePrefix, int frames) {
     name = n;
     x = xcor;
     y = ycor;
-    texture = new Animation(imgs, startImg);
+    texture = new Animation[sets];
+    texture[0] = new Animation(imagePrefix, frames, base, length);
     w = base;
     h = length;
   }
-  
-  public void display(int startFrame, int numFrames) {
-    texture.display(startFrame, numFrames, 1, x, y);
+
+  public void display(int set) {
+    w = texture[set].w;
+    h = texture[set].h;
+    texture[set].display(1, x, y);
   }
 
-  public void display(int startFrame, int numFrames, int delay) {
-    w = texture.w;
-    texture.display(startFrame, numFrames, delay, x, y);
+  public void display(int set, int delay) {
+    w = texture[set].w;
+    h = texture[set].h;
+    texture[set].display(delay, x, y);
   }
 }
