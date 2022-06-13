@@ -18,7 +18,7 @@ public class Player extends Entity {
   final int duck = 3;
 
   public Player() {
-    super("Mario", 40, 300, sizeUnit, 2*sizeUnit, 15, "Mario_idleRight", 1, 0, 0, 2);
+    super("Mario", 40, 300, sizeUnit, 2*sizeUnit, 15, "Mario_idleRight", 1, 0, 0, 1);
     points = 0;
     accelerationX = 0;
     accelerationY = 0;
