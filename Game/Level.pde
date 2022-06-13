@@ -76,9 +76,7 @@ public class Level {
     }
 
     for (int c = collectables.size()-1; c >= 0; c--) {
-      if ((player.x + 3 >= collectables.get(c).x - 7) && (player.x - 3 <= collectables.get(c).x + 7) && (player.y >= collectables.get(c).y - 6) && (player.y <= collectables.get(c).y + 14)) {
-        collectables.get(c).event(player);
-        player.points += collectables.get(c).value;
+      if (collectables.get(c).event(player)) {
         collectables.remove(c);
       }
     }
