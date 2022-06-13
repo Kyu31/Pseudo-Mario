@@ -68,3 +68,15 @@ Development Log:
       6/5: I have begun and finished the new subclass of the block class, trap class, and added a corresponding new instance variable to the Game class (died).
 
       6/6: I have figured out how to create a map file that can be read into the program to generate the map of blocks that will appear on the screen (extending beyond the dimensions of the window) and will later include the location of other assets.
+
+      6/7: I have further improved the map file to include the castle in the background (which would be visible but not treated the same way as a block would be treated). I also have begun to work on a scroll method.
+
+      6/8: I have worked on the scroll function more to be not too fast or slow (most similar to the original game).
+
+      6/9: I have worked on merging the main branch to my own, and edited the Game class to be able to compile and run.
+
+      6/10: I have fixed the issues that came up when implementing the scroll function (it was misplaced and never called), and I worked on a better format for the map text file.
+
+      6/11: I have finally fixed the problem regarding left motion for Mario, and worked on displaying multiple menu screens before and after the game.
+
+      6/12: I have polished up the program and made sure everything works, and looked at the enemies, collectables, and screens to make sure that everything fits in well together.
