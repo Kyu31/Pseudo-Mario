@@ -39,7 +39,7 @@ public class Level {
         }
         //collectables
         if (lines[r].charAt(c) == 'o') {
-          collectables.add(new Coin(x, y));
+          collectables.add(new Coin(x, y - 3));
         }
 
         //blocks
@@ -76,8 +76,9 @@ public class Level {
     }
 
     for (int c = collectables.size()-1; c >= 0; c--) {
-      if (!player.sideColliding(collectables.get(c)).equals("none")) {
+      if ((player.x + 3 >= collectables.get(c).x - 7) && (player.x - 3 <= collectables.get(c).x + 7) && (player.y >= collectables.get(c).y - 6) && (player.y <= collectables.get(c).y + 14)) {
         collectables.get(c).event(player);
+        player.points += collectables.get(c).value;
         collectables.remove(c);
       }
     }
@@ -88,7 +89,7 @@ public class Level {
     }
 
     for (int e = enemies.size()-1; e >= 0; e--) {
-      if (player.damage(enemies.get(e))) {
+      if ((player.x + 3 >= enemies.get(e).x - 7) && (player.x - 3 <= enemies.get(e).x + 7) && (player.y >= enemies.get(e).y - 16) && (player.y <= enemies.get(e).y - 8)) {
         enemies.remove(e);
         player.points += 50;
         e--;
@@ -102,7 +103,7 @@ public class Level {
           menu.current = 7;
         }
       } else {
-        enemies.get(e).move();
+        enemies.get(e).move(this);
         enemies.get(e).hitBoundary(this);
         enemies.get(e).display(0, 2);
       }
@@ -125,32 +126,32 @@ public class Level {
   }
 
   public void scroll() {
-    if ((player.xSpeed > 0) && (player.x >= width*0.75) && (background.get(background.size() - 1).x + background.get(background.size() - 1).w/2 >= width)) {
+    if ((player.accelerationX > 0) && (player.x >= 300) && (background.get(background.size() - 1).x + 32 >= 800)){
       for (Block b : map) {
-        b.x -= sizeUnit*2 * player.accelerationX * 1.75;
+        b.x -= (32) * player.accelerationX * 1.75;
       }
       for (Asset a : background) {
-        a.x -= sizeUnit*2 * player.accelerationX * 1.75;
+        a.x -= (32) * player.accelerationX * 1.75;
       }
       for (Collectable c : collectables) {
-        c.x -= sizeUnit*2 * player.accelerationX * 1.75;
+        c.x -= (32) * player.accelerationX * 1.75;
       }
       for (Enemy e : enemies) {
-        e.x -= sizeUnit*2 * player.accelerationX * 1.75;
+        e.x -= (32) * player.accelerationX * 1.75;
       }
     }
-    if ((player.xSpeed < 0) && (player.x <= width*0.25) && (background.get(0).x - background.get(0).w/2 < 0)) {
+    if ((player.accelerationX < 0) && (player.x <= 400) && (background.get(0).x - 32 <= -1)) {
       for (Block b : map) {
-        b.x += sizeUnit*2 * -1 * player.accelerationX * 1.75;
+        b.x += (32) * -1 * player.accelerationX * 1.75;
       }
       for (Asset a : background) {
-        a.x += sizeUnit*2 * -1 * player.accelerationX * 1.75;
+        a.x += (32) * -1 * player.accelerationX * 1.75;
       }
       for (Collectable c : collectables) {
-        c.x += sizeUnit*2 * -1 * player.accelerationX * 1.75;
+        c.x += (32) * -1 * player.accelerationX * 1.75;
       }
       for (Enemy e : enemies) {
-        e.x += sizeUnit*2 * -1 * player.accelerationX * 1.75;
+        e.x += (32) * -1 * player.accelerationX * 1.75;
       }
     }
   }
