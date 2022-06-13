@@ -24,11 +24,11 @@ void setup () {
   menu.current = 0;
 
   levels = new ArrayList<Level>();
+  player = new Player();
 
   Level lvl1 = new Level("Levels/lvl1.txt");
   Level lvl2 = new Level("Levels/lvl2.txt");
   Level lvl3 = new Level("Levels/lvl3.txt");
-  player = new Player();
   levels.add(lvl1);
   levels.add(lvl2);
   levels.add(lvl3);
@@ -50,7 +50,6 @@ void draw() {
       player.x = 40;
       player.y = 300;
       menu.current++;
-      System.out.println(menu.current);
     }
   }/* else if ((menu.current == 3) || (menu.current == 5)) {
     System.out.println("BRUH");
@@ -70,6 +69,7 @@ void draw() {
       textSize(20);
       text(player.points, 160, 45);
       text(player.numCoins, 360, 45);
+      textSize(1);
     }
     if ((mouseX <= 430) && (mouseX >= 350) && (mouseY <= 330) && (mouseY >= 300)) {
       if (menu.current == 0) {
