@@ -64,7 +64,9 @@ public class Player extends Entity {
     }
   }
 
-  public void move() {
+  public void move(Level lvl) {
+    hitBoundary(lvl);
+
     if (Left && !Right) {
       accelerationX = -0.05;
       friction = 1;
@@ -124,10 +126,10 @@ public class Player extends Entity {
     if (ySpeed < 3*-maxSpeed) {
       ySpeed = 3*-maxSpeed;
     }
-    
-    //if (!((x + xSpeed >= 800) || (x + xSpeed <= 0))) {
+
+    if (!((x + xSpeed >= 800) || (x + xSpeed <= 0))) {
       x += xSpeed;
-    //}
+    }
     y += ySpeed;
   } 
 
@@ -206,5 +208,18 @@ public class Player extends Entity {
 
   public boolean isNearEdge(Level lvl) {
     return false;
+  }
+
+  public boolean damage(Enemy other) {
+    if (this.sideColliding(other).equals("bottom")) {
+      other.lives--;
+      points += other.value;
+      ySpeed = jump/2;
+      isOnFloor = false;
+      friction = 1;
+      return true;
+    } else {
+      return false;
+    }
   }
 }
