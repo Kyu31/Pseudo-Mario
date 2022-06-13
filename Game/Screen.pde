@@ -34,7 +34,7 @@ public class Screen {
       fill(0);
       current++;
     } else if (current == 4) {
-      PImage secondStart = loadImage("Menus/secondStart.png");
+      PImage secondStart = loadImage("Menus/SecondStart.png");
       secondStart.resize(800, 400);
       delay(2000);
       image(secondStart, 400, 200);
