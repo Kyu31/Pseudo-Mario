@@ -37,14 +37,16 @@ void setup () {
 }
 
 void draw() {
-  System.out.println(menu.current);
   if ((menu.current == 3) || (menu.current == 5) || (menu.current == 7)) {
     background(95, 200, 245);
     imageMode(CENTER);
     int thisLevel = menu.current / 2 - 1;
     Level currentlvl = levels.get(thisLevel);
-    currentlvl.display(player);
+    if (!currentlvl.cleared) {
+      currentlvl.display(player, menu);
+    }
     if (player.x >= currentlvl.background.get(currentlvl.background.size() - 1).x) {
+      currentlvl.cleared = true;
       player.x = 40;
       player.y = 300;
       menu.current++;
@@ -62,6 +64,13 @@ void draw() {
     background(0, 0, 0);
     imageMode(CENTER);
     menu.display();
+    if ((menu.current != 0) && (menu.current != 1) && (menu.current % 2 == 0) || (menu.current == 9)) {
+      System.out.println("AYY");
+      fill(255, 255, 255);
+      textSize(20);
+      text(player.points, 160, 45);
+      text(player.numCoins, 360, 45);
+    }
     if ((mouseX <= 430) && (mouseX >= 350) && (mouseY <= 330) && (mouseY >= 300)) {
       if (menu.current == 0) {
         menu.current = 1;
