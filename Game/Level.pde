@@ -80,26 +80,27 @@ public class Level {
       }
     }
     for (Collectable c : collectables) {
-      c.display(0, 1);
+      if (c.x+c.w/2 >= 0 && c.x-c.w/2 <= width) {
+        c.display(0, 1);
+      }
     }
 
-    for (int e = 0; e < enemies.size(); e++) {
-      if ((player.x + 3 >= enemies.get(e).x - 7) && (player.x - 3 <= enemies.get(e).x + 7) && (player.y >= enemies.get(e).y - 16) && (player.y <= enemies.get(e).y - 8)) {
+    for (int e = enemies.size()-1; e >= 0; e--) {
+      if (player.damage(enemies.get(e))) {
         enemies.remove(e);
-        player.points += 50;
-        e--;
-        player.ySpeed = -12;
-        player.friction = 1;
-      } else {
-        enemies.get(e).move();
-        enemies.get(e).hitBoundary(this);
-        enemies.get(e).display(0, 2);
+      }
+    }
+    for (Enemy e : enemies) {
+      e.damage(player);
+      e.move(this);
+      if (e.x+e.w/2 >= 0 && e.x-e.w/2 <= width) {
+        e.display(0, 1);
       }
     }
 
     if (!cleared) {
       player.hitBoundary(this);
-      player.move();
+      player.move(this);
       player.display();
       //text("Coords: " + (int)player.x + ", " + (int)player.y, 20, 20);
       text("Points: " + player.points, 150, 20);
